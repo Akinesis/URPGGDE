@@ -10,33 +10,33 @@ int PORTNUM = 443;
 myHostInfo uHostAddress;
 string localHostName = uHostAddress.getHostName();
 string localHostAddr = uHostAddress.getHostIPAddress();
-cout << "----------------------------------------" << endl;
-cout << "   My local host information:" << endl;
-cout << "         Name:    " << localHostName << endl;
-cout << "         Address: " << localHostAddr << endl;
-cout << "----------------------------------------" << endl;
+std::cout << "----------------------------------------" << std::endl;
+std::cout << "   My local host information:" << std::endl;
+std::cout << "         Name:    " << localHostName << std::endl;
+std::cout << "         Address: " << localHostAddr << std::endl;
+std::cout << "----------------------------------------" << std::endl;
 
 // open socket on the local host
 myTcpSocket myServer(PORTNUM);
-cout << myServer;
+std::cout << myServer;
 
 myServer.bindSocket();
-cout   << endl << "server finishes binding process... " << endl;
+std::cout   << std::endl << "server finishes binding process... " << std::endl;
 
 myServer.listenToClient();
-cout   << "server is listening to the port ... " << endl;
+std::cout   << "server is listening to the port ... " << std::endl;
 
 // wait to accept a client connection.
 // processing is suspended until the client connects
-cout   << "server is waiting for client connecction ... " << endl;
+std::cout   << "server is waiting for client connecction ... " << std::endl;
 
 // connection dedicated for client communication
 myTcpSocket* client;
 string clientHost;      // client name etc.
 client = myServer.acceptClient(clientHost);
 
-cout   << endl << "==> A client from [" << clientHost
-       << "] is connected!" << endl << endl;
+std::cout   << std::endl << "==> A client from [" << clientHost
+       << "] is connected!" << std::endl << std::endl;
 
 while(1){
    string clientMessageIn = "";
@@ -46,15 +46,15 @@ while(1){
    int numBytes = client->recieveMessage(clientMessageIn);
    if ( numBytes == -99 ) break;
 
-   cout   << "[RECV:" << clientHost << "]: "
-          << clientMessageIn << endl;
+   std::cout   << "[RECV:" << clientHost << "]: "
+          << clientMessageIn << std::endl;
 
    // send to the clien
 
    char sendmsg[MAX_MSG_LEN+1];
-   memset(sendmsg,0,sizeof(sendmsg));
-   cout << "[" << localHostName << ":SEND] ";
-   cin.getline(sendmsg,MAX_MSG_LEN);
+   std::memset(sendmsg,0,sizeof(sendmsg));
+   std::cout << "[" << localHostName << ":SEND] ";
+   std::cin.getline(sendmsg,MAX_MSG_LEN);
 
    if ( numBytes == -99 ) break;
    string sendMsg(sendmsg);
