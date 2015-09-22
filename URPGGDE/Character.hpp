@@ -4,8 +4,27 @@
 #include <string>
 
 class Character {
+	protected:
+		std::string name;
+
+		int lifePoints;
+		int manaPoints;
+
+		int strength;
+		int constitution;
+		int dexterity;
+		int intelligence;
+		int wisdom;
+		int charisma;
+
+		int attack;
+		int defense;
+
+		int protection;
 
 	public:
+		virtual std::string performAttack();
+		virtual std::string defend();
 
 	// Getters Setters START
 		void setName(std::string n);
@@ -28,22 +47,17 @@ class Character {
 		int getWisdom();
 		void setCharisma(int cha);
 		int getCharisma();
+
+		int getAttack();
+		void setAttack(int att);
+		int getDefense();
+		void setDefense(int def);
+
+		int getProtection();
+		void setProtection(int pr);
 	// Getters Setters END
 
-	private:
-		virtual std::string name;
-
-		virtual int lifePoints;
-		virtual int manaPoints;
-
-		virtual int strength;
-		virtual int constitution;
-		virtual int dexterity;
-		virtual int intelligence;
-		virtual int wisdom;
-		virtual int charisma;
 };
-
 
 #endif
 
