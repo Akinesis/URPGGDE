@@ -12,7 +12,7 @@ class PNJ : public Character {
 		std::string lastName;
 
 	public:
-		std::string aperformAttack();
+		std::string performAttack();
 		std::string defend();
 
 

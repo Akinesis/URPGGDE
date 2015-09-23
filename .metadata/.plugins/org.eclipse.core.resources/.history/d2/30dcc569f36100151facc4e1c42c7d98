@@ -89,12 +89,5 @@ int Character::getProtection(){
 void Character::setProtection(int pr){
 	protection = pr;
 }
-	//Get Set level
-int Character::getLevel(){
-	return level;
-}
-void Character::setLevel(int l){
-	level = l;
-}
 // Getters Setters STOP
 

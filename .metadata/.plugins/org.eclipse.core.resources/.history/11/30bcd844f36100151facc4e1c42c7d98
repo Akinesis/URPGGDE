@@ -22,8 +22,6 @@ class Character {
 
 		int protection;
 
-		int level;
-
 	public:
 		virtual std::string performAttack();
 		virtual std::string defend();
@@ -57,9 +55,6 @@ class Character {
 
 		int getProtection();
 		void setProtection(int pr);
-
-		int getLevel();
-		void setLevel(int l);
 	// Getters Setters END
 
 };
