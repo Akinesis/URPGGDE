@@ -1,5 +1,10 @@
 #include "PNJ.hpp"
 
+PNJ::PNJ(std::string lastName){
+	this->lastName = lastName;
+}
+
+
 std::string PNJ::performAttack(){
 	std::srand(std::time(0));
 		int random_variable = (std::rand() % 20) + 1;

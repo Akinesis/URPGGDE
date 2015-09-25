@@ -25,6 +25,8 @@ class Character {
 		int level;
 
 	public:
+		Character(std::string, int, int, int, int, int, int, int, int, int, int, int, int);
+		virtual ~Character();
 		virtual std::string performAttack();
 		virtual std::string defend();
 

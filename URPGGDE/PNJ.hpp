@@ -12,12 +12,13 @@ class PNJ : public Character {
 		std::string lastName;
 
 	public:
+		PNJ(std::string);
 		std::string performAttack();
 		std::string defend();
 
 
 		std::string getLastName();
-		void setLasteName(std::string lName);
+		void setLasteName(std::string);
 };
 
 
