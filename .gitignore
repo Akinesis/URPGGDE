@@ -1,0 +1,4 @@
+#ignore .metadata files
+.metadata/
+#ignore .gitignore~
+.gitignore~
