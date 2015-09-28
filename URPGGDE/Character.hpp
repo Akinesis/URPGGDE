@@ -23,6 +23,7 @@ class Character {
 		int protection;
 
 		int level;
+		int bagCapacity;
 
 	public:
 		Character(std::string, int, int, int, int, int, int, int, int, int, int, int, int);
@@ -62,6 +63,9 @@ class Character {
 
 		int getLevel();
 		void setLevel(int l);
+
+		int getBagCapacity();
+		void setBagCapacity(int);
 	// Getters Setters END
 
 };

@@ -1,20 +1,20 @@
 #include "Character.hpp"
 
 
-Character::Character(std::string name, int lifePoints, int manaPoints, int strength, int constitution, int dexterity, int intelligence, int wisdom, int charisma, int attack, int defense, int protection, int level){
-	this->name = name;
-	this->lifePoints = lifePoints;
-	this->manaPoints = manaPoints;
-	this->strength = strength;
-	this->constitution = constitution;
-	this->dexterity = dexterity;
-	this->intelligence = intelligence;
-	this->wisdom = wisdom;
-	this->charisma = charisma;
-	this->attack = attack;
-	this->defense = defense;
-	this->protection = protection;
-	this->level = level;
+Character::Character(std::string na, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl){
+	name = na;
+	lifePoints = lPoints;
+	manaPoints = mPoints;
+	strength = stgth;
+	constitution = cons;
+	dexterity = dex;
+	intelligence = intel;
+	wisdom = wisd;
+	charisma = chari;
+	attack = att;
+	defense = def;
+	protection = pr;
+	level = lvl;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -109,6 +109,13 @@ int Character::getLevel(){
 }
 void Character::setLevel(int l){
 	level = l;
+}
+	//Get Set bagCapacity
+int Character::getBagCapacity(){
+	return bagCapacity;
+}
+void Character::setBagCapacity(int cap){
+	bagCapacity = cap;
 }
 // Getters Setters STOP
 

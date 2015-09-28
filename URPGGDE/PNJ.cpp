@@ -1,7 +1,7 @@
 #include "PNJ.hpp"
 
-PNJ::PNJ(std::string lastName){
-	this->lastName = lastName;
+PNJ::PNJ(std::string lName){
+	lastName = lName;
 }
 
 

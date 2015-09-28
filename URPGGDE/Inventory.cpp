@@ -1,52 +1,42 @@
 #include "Inventory.hpp"
 
 
-Inventory::Inventory(std::string weapon1, std::string weapon2, std::string shield, std::string headEquip, std::string torsoEquip, std::string legEquip, std::string footEquip){
-	this->weapon1 = weapon1;
-	this->weapon2 = weapon2;
-	this->shield = shield;
-	this->headEquip = headEquip;
-	this->torsoEquip = torsoEquip;
-	this->legsEquip = legEquip;
-	this->footEquip = footEquip;
+Inventory::Inventory(std::string w1, std::string w2, std::string sh, std::string hEquip, std::string tEquip, std::string lEquip, std::string fEquip, int maxBC){
+	weapon1 = w1;
+	weapon2 = w2;
+	shield = sh;
+	headEquip = hEquip;
+	torsoEquip = tEquip;
+	legsEquip = lEquip;
+	footEquip = fEquip;
+	maxBagCapacity = maxBC;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Getters Setters START
 
 std::string Inventory::getBag(){
-	std::string res;
-	for(int i = 0; i<= 20; i++){
-		if(bag[i] != NULL)
-		res += bag[i]+", ";
+	std::string bagContent = "";
+	for(int i = 0; i < bag.size(); i++){
+		bagContent += bag.at(i)+", ";
 	}
-	return res;
+	return bagContent;
 }
 
 void Inventory::addBag(std::string obj){
-	for(int i = 0; i <= 20 ; i++){
-		if(bag[i] == NULL){
-			bag[i] = obj;
-		}
-	}
+	bag.push_back(obj);
 }
 
 void Inventory::deleteBag(std::string obj){
-	for(int i = 0; i <= 20; i++){
-		if(bag[i] == obj){
-			bag[i] = NULL;
+	for(int i = 0 ; i < bag.size(); i++){
+		if(bag.at(i) == obj){
+			bag.erase(bag.begin()+(i-1));
 		}
 	}
 }
 
 int Inventory::freeBagSpace(){
-	int cpt = 0;
-	for(int i = 0; i <= 20; i++){
-		if(bag[i] != NULL){
-			cpt += 1;
-		}
-	}
-	return cpt;
+	return maxBagCapacity - bag.size();
 }
 
 //Get Set weapon1 and weapon2
@@ -94,4 +84,11 @@ std::string Inventory::getFootEquip(){
 }
 void Inventory::setFootEquip(std::string feq){
 	footEquip = feq;
+}
+//Get Set maxBagCapacity
+int Inventory::getMaxBagCapacity(){
+	return maxBagCapacity;
+}
+void Inventory::setMaxBagCapacity(int max){
+	maxBagCapacity = max;
 }

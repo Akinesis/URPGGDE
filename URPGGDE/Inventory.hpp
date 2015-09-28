@@ -11,6 +11,7 @@
 #include <string>
 #include <stdlib.h>
 #include <cstddef>
+#include <vector>
 
 class Inventory{
 	private:
@@ -23,10 +24,11 @@ class Inventory{
 		std::string legsEquip;
 		std::string footEquip;
 
-		std::string bag[20];
+		std::vector<std::string> bag;
+		int maxBagCapacity;
 
 	public:
-		Inventory(std::string, std::string, std::string, std::string, std::string, std::string, std::string);
+		Inventory(std::string, std::string, std::string, std::string, std::string, std::string, std::string, int);
 		~Inventory();
 
 	//Getters and Setters
@@ -51,6 +53,8 @@ class Inventory{
 		void deleteBag(std::string);
 		int freeBagSpace();
 
+		int getMaxBagCapacity();
+		void setMaxBagCapacity(int);
 };
 
 
