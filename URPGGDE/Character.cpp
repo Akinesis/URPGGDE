@@ -1,7 +1,7 @@
 #include "Character.hpp"
 
 
-Character::Character(std::string na, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl){
+Character::Character(std::string na, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap){
 	name = na;
 	lifePoints = lPoints;
 	manaPoints = mPoints;
@@ -15,6 +15,7 @@ Character::Character(std::string na, int lPoints, int mPoints, int stgth, int co
 	defense = def;
 	protection = pr;
 	level = lvl;
+	bagCapacity = bcap;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -118,4 +119,3 @@ void Character::setBagCapacity(int cap){
 	bagCapacity = cap;
 }
 // Getters Setters STOP
-
