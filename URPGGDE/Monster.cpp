@@ -1,5 +1,9 @@
 #include "Monster.hpp"
 
+Monster::Monster(std::string na, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
+	Character(na, lPoints, mPoints, stgth, cons, dex, intel, wisd, chari, att, def, pr, lvl, bcap, b);
+}
+
 std::string Monster::performAttack(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;

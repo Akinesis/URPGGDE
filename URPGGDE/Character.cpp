@@ -1,7 +1,7 @@
 #include "Character.hpp"
 
 
-Character::Character(std::string na, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap){
+Character::Character(std::string na, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
 	name = na;
 	lifePoints = lPoints;
 	manaPoints = mPoints;
@@ -16,6 +16,7 @@ Character::Character(std::string na, int lPoints, int mPoints, int stgth, int co
 	protection = pr;
 	level = lvl;
 	bagCapacity = bcap;
+	Inventory * bag = new Inventory[b];
 }
 
 ////////////////////////////////////////////////////////////////////////////////

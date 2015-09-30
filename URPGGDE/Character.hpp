@@ -24,9 +24,10 @@ class Character {
 
 		int level;
 		int bagCapacity;
+		Inventory bag;
 
 	public:
-		Character(std::string, int, int, int, int, int, int, int, int, int, int, int, int, int);
+		Character(std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
 		virtual ~Character();
 		virtual std::string performAttack();
 		virtual std::string defend();
