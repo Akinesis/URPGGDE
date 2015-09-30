@@ -14,6 +14,7 @@ class Boss : public Character{
 
 
 	public:
+		Boss(std::string);
 		std::string performAttack();
 		std::string defend();
 

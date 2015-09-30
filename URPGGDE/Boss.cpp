@@ -1,10 +1,16 @@
-#include "Monster.hpp"
+#include "Boss.hpp"
 
-std::string Monster::performAttack(){
+
+
+Boss::Boss(std::string lname){
+	lastName = lname;
+}
+
+std::string Boss::performAttack(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
 	if (random_variable <= attack()){
-		std::cout << name << " a lanc� son attaque en faisant un " << random_variable << ". C'est une r�ussite!";
+		std::cout << name << " a lanc� une puissante attaque en faisant un " << random_variable << ". C'est une r�ussite!";
 		return name+" a r�ussi sa vil attaque gr�ce � un "+random_variable;
 	}
 	else {
@@ -13,11 +19,12 @@ std::string Monster::performAttack(){
 	}
 }
 
-std::string Monster::defend(){
+
+std::string Boss::defend(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
 	if (random_variable <= attack()){
-		std::cout << name << " c'est d�fendu en faisant un " << random_variable << ". C'est une r�ussite!";
+		std::cout << name << " c'est aisément d�fendu en faisant un " << random_variable << ". C'est une r�ussite!";
 		return name+" effectu� une parade r�ussit gr�ce � un "+random_variable;
 	}
 	else {
@@ -25,3 +32,13 @@ std::string Monster::defend(){
 		return name+" a bien rat� sa parade avec un "+random_variable;
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Getters Setters START
+std::string Boss::getLastName(){
+	return lastName;
+}
+void Boss::setLastName(std::string ln){
+	lastName = ln;
+}
+// Getters Setters END
