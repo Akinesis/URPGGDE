@@ -1,7 +1,7 @@
 #include "PNJ.hpp"
 
-PNJ::PNJ(std::string na, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b, std::string lName){
-	Character(na, lPoints, mPoints, stgth, cons, dex, intel, wisd, chari, att, def, pr, lvl, bcap, b);
+PNJ::PNJ(std::string na, std::string sx, std::string ra, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b, std::string lName){
+	Character(na, sx, ra, lPoints, mPoints, stgth, cons, dex, intel, wisd, chari, att, def, pr, lvl, bcap, b);
 	lastName = lName;
 }
 

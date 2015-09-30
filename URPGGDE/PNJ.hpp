@@ -12,7 +12,7 @@ class PNJ : public Character {
 		std::string lastName;
 
 	public:
-		PNJ(std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory, std::string);
+		PNJ(std::string, std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory, std::string);
 		std::string performAttack();
 		std::string defend();
 
