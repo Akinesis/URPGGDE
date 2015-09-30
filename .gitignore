@@ -2,3 +2,6 @@
 .metadata/
 #ignore .gitignore~
 .gitignore~
+.settings
+.project
+.cproject
