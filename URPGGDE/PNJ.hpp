@@ -1,11 +1,11 @@
 #ifndef PNJ_HPP_
 #define PNJ_HPP_
 
-#include <string>
+#include <string>;
 
-#include <ctime>
-#include <cstdlib>
-#include <iostream>
+#include <ctime>;
+#include <cstdlib>;
+#include <iostream>;
 
 class PNJ : public Character {
 	private:

@@ -9,48 +9,35 @@
 #define RACE_HPP_
 
 #include <string>;
+#include <stdlib.h>;
+#include <vector>;
+#include <cstddef>;
+#include <ctime>;
+#include <cstdlib>;
 
 class Race{
-	protected:
+	private:
+		std::vector<std::string> humanNames;
+		std::vector<int>humanStats;
+
+		std::vector<std::string> orcNames;
+		std::vector<std::string> orcStats;
+
+		std::vector<std::string> elfNames;
+		std::vector<std::string> elfStats;
+
 
 	public:
-		virtual ~Race();
-		virtual int randomLife(int, int);
-		virtual int randomMana(int, int);
+		Race();
+		void humanCreateVector(std::vector<std::string>, std::vector<std::string>);
 
-		virtual int randomStrength(int, int);
-		virtual int randomConstitution(int, int);
-		virtual int randomDexterity(int, int);
-		virtual int randomIntelligence(int, int);
-		virtual int randomWisdom(int, int);
-		virtual int randomCharisma(int, int);
+		int randomVariable(int, int);
 
-		virtual int randomAttack(int, int);
-		virtual int randomDefense(int, int);
+		std::string randomName(std::string);
+		std::string randomLastName(std::string);
 
 	// Getters Setters START
-		int getRandomLife(void);
-		void setRandomLife(int);
-		int getRandomMana(void);
-		void setRandomMana(int);
 
-		int getRandomStrength(void);
-		void setRandomStrength(int);
-		int getRandomConstitution(void);
-		void setRandomConstitution(int);
-		int getRandomDexterity(void);
-		void setRandomDexterity(int);
-		int getRandomIntelligence(void);
-		void setRandomIntelligence(int);
-		int getRandomWisdom(void);
-		void setRandomWisdom(int);
-		int getRandomCharisma(void);
-		void setRandomCharisma(int);
-
-		int getRandomAttack(void);
-		void setRandomAttack(int);
-		int getRandomDefense(void);
-		void setRandomDefense(int);
 	// Getters Setters END
 
 };

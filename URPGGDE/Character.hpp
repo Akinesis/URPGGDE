@@ -1,7 +1,7 @@
 #ifndef _Character;
 #define _Character;
 
-#include <string>
+#include <string>;
 
 class Character {
 	protected:

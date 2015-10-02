@@ -8,10 +8,10 @@
 #ifndef INVENTORY_HPP_
 #define INVENTORY_HPP_
 
-#include <string>
-#include <stdlib.h>
-#include <cstddef>
-#include <vector>
+#include <string>;
+#include <stdlib.h>;
+#include <cstddef>;
+#include <vector>;
 
 class Inventory{
 	private:
