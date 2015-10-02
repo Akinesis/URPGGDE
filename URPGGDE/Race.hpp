@@ -23,15 +23,15 @@ class Race{
 		std::vector<int>humanStats;
 
 		std::vector<std::string> orcNames;
-		std::vector<std::string> orcStats;
+		std::vector<int> orcStats;
 
 		std::vector<std::string> elfNames;
-		std::vector<std::string> elfStats;
+		std::vector<int> elfStats[18];
 
 
 	public:
 		Race();
-		void humanCreateVector(std::vector<std::string>, std::vector<std::string>);
+		void CreateVector(std::vector<std::string>, std::vector<std::string>);
 
 		int randomVariable(int, int);
 
@@ -43,6 +43,8 @@ class Race{
 		std::string getHumanNames();
 		void setHumanNames(std::string, std::string);
 		void setRandomHumanNames(std::string);
+
+
 
 
 	// Getters Setters END

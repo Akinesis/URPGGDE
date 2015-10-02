@@ -7,7 +7,7 @@ class Character {
 	protected:
 		std::string name;
 		std::string sexe;
-		std::string race;
+		Race race;
 
 		int lifePoints;
 		int manaPoints;
@@ -29,7 +29,7 @@ class Character {
 		Inventory bag;
 
 	public:
-		Character(std::string, std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
+		Character(std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
 		virtual ~Character();
 		virtual std::string performAttack();
 		virtual std::string defend();

@@ -11,7 +11,7 @@ class Monster : public Character{
 	private:
 
 	public:
-		Monster(std::string, std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
+		Monster(std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
 		std::string performAttack();
 		std::string defend();
 

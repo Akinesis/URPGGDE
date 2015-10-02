@@ -12,6 +12,19 @@ Character createAllRandomCharacter(std::string chara){
 	if(chara == "PNJ"){
 		Character pnj = new PNJ[];
 
+		std::srand(std::time(0));
+		const int taille = 2; // Taille des fichiers de nom
+		int random_variable = (std::rand() % taille);
+		if(random_variable == 0){
+			pnj.race.setRandomHumanNames();
+		}
+		else if(random_variable == 1){
+
+		}
+		else{
+
+		}
+
 		return pnj;
 	}
 	else if (chara == "BOSS"){

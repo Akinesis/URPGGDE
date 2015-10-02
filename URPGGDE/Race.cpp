@@ -1,10 +1,10 @@
 #include "Race.hpp";
 
 
-void Race::humanCreateVector(std::vector<std::string> vecn, std::vector<std::string> vecs){
+void Race::CreateVector(std::vector<std::string> vecn, std::vector<std::string> vecs){
 	vecn.push_back(NULL);
 	vecn.push_back(NULL);
-	for(int i = 0; i < 12 ; i++){
+	for(int i = 0; i < 18 ; i++){
 		vecs.push_back(NULL);
 	}
 }
@@ -140,3 +140,4 @@ void Race::setRandomHumanNames(std::string sexe){
 		file.close();
 	}
 }
+

@@ -8,6 +8,9 @@
 #ifndef CHARACTERFACTORY_HPP_
 #define CHARACTERFACTORY_HPP_
 
+#include <ctime>
+#include <cstdlib>
+
 /**
  * @param
  *
@@ -15,8 +18,6 @@
 class CharacterFactory{
 	public:
 		Character createAllRandomCharacter(std::string);
-		Character createStatRandomCharacter(std::string);
-		Character createRaceRandomCharacter(std::string);
 		Character createPersonalizeCharacter(std::string);
 };
 

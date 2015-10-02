@@ -1,7 +1,7 @@
 #include "Monster.hpp"
 
-Monster::Monster(std::string na, std::string sx, std::string ra, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
-	Character(na, sx, ra, lPoints, mPoints, stgth, cons, dex, intel, wisd, chari, att, def, pr, lvl, bcap, b);
+Monster::Monster(std::string na, std::string sx, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
+	Character(na, sx, lPoints, mPoints, stgth, cons, dex, intel, wisd, chari, att, def, pr, lvl, bcap, b);
 }
 
 std::string Monster::performAttack(){
