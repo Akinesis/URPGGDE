@@ -8,12 +8,14 @@
 #ifndef RACE_HPP_
 #define RACE_HPP_
 
-#include <string>;
-#include <stdlib.h>;
-#include <vector>;
-#include <cstddef>;
-#include <ctime>;
-#include <cstdlib>;
+#include <string>
+#include <stdlib.h>
+#include <vector>
+#include <cstddef>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
 
 class Race{
 	private:
@@ -33,10 +35,15 @@ class Race{
 
 		int randomVariable(int, int);
 
-		std::string randomName(std::string);
+		std::string randomName(std::string, std::string);
 		std::string randomLastName(std::string);
 
+
 	// Getters Setters START
+		std::string getHumanNames();
+		void setHumanNames(std::string, std::string);
+		void setRandomHumanNames(std::string);
+
 
 	// Getters Setters END
 
