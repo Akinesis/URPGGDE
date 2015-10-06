@@ -19,30 +19,25 @@
 
 class Race{
 	private:
-		std::vector<std::string> humanNames;
-		std::vector<int>humanStats;
+		struct range{
+			int min;
+			int max;
+		};
 
-		std::vector<std::string> orcNames;
-		std::vector<int> orcStats;
+		range rangeLife;
+		range rangeMana;
 
-		std::vector<std::string> elfNames;
-		std::vector<int> elfStats[18];
+		range rangeStrength;
+		range rangeConstitution;
+		range rangeDexterity;
+		range rangeIntelligence;
+		range rangeWisdom;
+		range rangeCharisma;
+
 
 
 	public:
 		Race();
-		void CreateVector(std::vector<std::string>, std::vector<std::string>);
-
-		int randomVariable(int, int);
-
-		std::string randomName(std::string, std::string);
-		std::string randomLastName(std::string);
-
-
-	// Getters Setters START
-		std::string getHumanNames();
-		void setHumanNames(std::string, std::string);
-		void setRandomHumanNames(std::string);
 
 
 
