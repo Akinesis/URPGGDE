@@ -15,9 +15,6 @@ class Monster : public Character{
 		std::string performAttack();
 		std::string defend();
 
-
-
-
 };
 
 

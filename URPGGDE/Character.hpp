@@ -44,24 +44,25 @@ class Character {
 
 	// Getters Setters START
 		void setName(std::string n);
+		virtual void setRandomName(std::string);
 		std::string getName();
 
-		void setLifePoints(int lPoints);
+		void setLifePoints(int);
 		int getLifePoints();
-		void setManaPoint(int mPoints);
+		void setManaPoint(int);
 		int getManaPoints();
 
-		void setStrength(int str);
+		void setStrength(int);
 		int getStrength();
-		void setConstitution(int cons);
+		void setConstitution(int);
 		int getConstitution();
-		void setDexterity(int dex);
+		void setDexterity(int);
 		int getDexterity();
-		void setIntelligence(int intel);
+		void setIntelligence(int);
 		int getIntelligence();
-		void setWisdom(int wisd);
+		void setWisdom(int);
 		int getWisdom();
-		void setCharisma(int cha);
+		void setCharisma(int);
 		int getCharisma();
 <<<<<<< HEAD
 	// Getters Setters END
@@ -88,15 +89,15 @@ class Character {
 =======
 
 		int getAttack();
-		void setAttack(int att);
+		void setAttack(int);
 		int getDefense();
-		void setDefense(int def);
+		void setDefense(int);
 
 		int getProtection();
-		void setProtection(int pr);
+		void setProtection(int);
 
 		int getLevel();
-		void setLevel(int l);
+		void setLevel(int);
 
 		int getBagCapacity();
 		void setBagCapacity(int);

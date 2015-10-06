@@ -8,9 +8,13 @@
 
 int main()
 {
+	std::string human = "Human";
+	char* make;
+	std::string make2 =  "../NameGenerator/"+human+"MaleNames.txt";
+	make= (char*)make2.c_str() ;
 	using namespace std;
 
-	ifstream fichier("../NameGenerator/HumanMaleNames.txt", ios::in);
+	ifstream fichier(make, ios::in);
 
 	if(fichier){
 		int pos = 51;
@@ -25,5 +29,6 @@ int main()
 	else{
 		cout << "Impossible d'ouvrir le fichier" << endl;
 	}
+
 
 }

@@ -19,31 +19,45 @@
 
 class Race{
 	private:
-		std::vector<std::string> humanNames;
-		std::vector<int>humanStats;
+		std::string race;
 
-		std::vector<std::string> orcNames;
-		std::vector<int> orcStats;
+		struct range{
+			int min;
+			int max;
+		};
+		range rangeStrength;
+		range rangeConstitution;
+		range rangeDexterity;
+		range rangeIntelligence;
+		range rangeWisdom;
+		range rangeCharisma;
 
-		std::vector<std::string> elfNames;
-		std::vector<int> elfStats[18];
 
 
 	public:
-		Race();
-		void CreateVector(std::vector<std::string>, std::vector<std::string>);
+		void createHuman();
+		void createOrc();
+		void createElf();
+		void createDwarf();
 
-		int randomVariable(int, int);
+		//Constructor, Destructor, Getters, Setters
+		Race(std::string);
+		~Race();
+		std::string getRace();
+		void setRace(std::string);
 
-		std::string randomName(std::string, std::string);
-		std::string randomLastName(std::string);
-
-
-	// Getters Setters START
-		std::string getHumanNames();
-		void setHumanNames(std::string, std::string);
-		void setRandomHumanNames(std::string);
-
+		int getRangeStrengthMin();
+		int getRangeStrengthMax();
+		int getRangeConstitutionMin();
+		int getRangeConstitutionMax();
+		int getRangeDexterityMin();
+		int getRangeDexterityMax();
+		int getRangeIntelligenceMin();
+		int getRangeIntelligenceMax();
+		int getRangeWisdomMin();
+		int getRangeWisdomMax();
+		int getRangeCharismaMin();
+		int getRangeCharismaMax();
 
 
 
