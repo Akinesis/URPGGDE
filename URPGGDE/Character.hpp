@@ -1,11 +1,46 @@
 #ifndef _Character;
 #define _Character;
 
+<<<<<<< HEAD
 #include <string>
 
 class Character {
 
 	public:
+=======
+#include <string>;
+
+class Character {
+	protected:
+		std::string name;
+		std::string sexe;
+		Race race;
+
+		int lifePoints;
+		int manaPoints;
+
+		int strength;
+		int constitution;
+		int dexterity;
+		int intelligence;
+		int wisdom;
+		int charisma;
+
+		int attack;
+		int defense;
+
+		int protection;
+
+		int level;
+		int bagCapacity;
+		Inventory bag;
+
+	public:
+		Character(std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
+		virtual ~Character();
+		virtual std::string performAttack();
+		virtual std::string defend();
+>>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
 
 	// Getters Setters START
 		void setName(std::string n);
@@ -28,6 +63,7 @@ class Character {
 		int getWisdom();
 		void setCharisma(int cha);
 		int getCharisma();
+<<<<<<< HEAD
 	// Getters Setters END
 
 	private:
@@ -49,3 +85,24 @@ class Character {
 
 
 
+=======
+
+		int getAttack();
+		void setAttack(int att);
+		int getDefense();
+		void setDefense(int def);
+
+		int getProtection();
+		void setProtection(int pr);
+
+		int getLevel();
+		void setLevel(int l);
+
+		int getBagCapacity();
+		void setBagCapacity(int);
+	// Getters Setters END
+
+};
+
+#endif
+>>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe

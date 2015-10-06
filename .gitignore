@@ -1,0 +1,7 @@
+#ignore .metadata files
+.metadata/
+#ignore .gitignore~
+.gitignore~
+.settings
+.project
+.cproject
