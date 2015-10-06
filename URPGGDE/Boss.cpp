@@ -42,4 +42,44 @@ std::string Boss::getLastName(){
 void Boss::setLastName(std::string ln){
 	lastName = ln;
 }
+
+void Boss::setRandomName(){
+	std::srand(std::time(0));
+	const int taille = 150; // Taille des fichiers de nom
+	int random_variable = (std::rand() % taille) +1;
+
+	std::string characterRace = race.getRace();
+	char* raceFile;
+	std::string cast = "../NameGenerator/"+characterRace+sexe+"Names.txt";
+	raceFile = (char*)cast.c_str();
+	std::ifstream file(raceFile, std::ios::in);
+
+	if(file){
+		std::string chaine;
+		for(int i = 0; i < random_variable; ++i){
+			file << chaine;
+		}
+		name = file;
+	}
+}
+
+void Boss::setRandomLastName(){
+	std::srand(std::time(0));
+	const int taille = 150; // Taille des fichiers de noms
+	int random_variable = (std::rand() % taille) +1;
+
+	std::string characterRace = race.getRace();
+	char* raceFile;
+	std::string cast = "../NameGenerator/"+characterRace+"LastNames.txt";
+	raceFile = (char*)cast.c_str();
+	std::ifstream file(raceFile, std::ios::in);
+
+	if(file){
+		std::string chaine;
+		for(int i = 0; i < random_variable; ++i){
+			file << chaine;
+		}
+		name = file;
+	}
+}
 // Getters Setters END

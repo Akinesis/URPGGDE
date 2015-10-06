@@ -8,7 +8,6 @@
 
 #include "CharacterFactory.hpp";
 
-Character createAllRandomCharacter(std::string chara){
-}
+
 
 

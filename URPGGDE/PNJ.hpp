@@ -19,6 +19,8 @@ class PNJ : public Character {
 
 		std::string getLastName();
 		void setLastName(std::string);
+		void setRandomName();
+		void setRandomLastName();
 };
 
 

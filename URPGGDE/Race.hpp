@@ -19,14 +19,12 @@
 
 class Race{
 	private:
+		std::string race;
+
 		struct range{
 			int min;
 			int max;
 		};
-
-		range rangeLife;
-		range rangeMana;
-
 		range rangeStrength;
 		range rangeConstitution;
 		range rangeDexterity;
@@ -37,8 +35,29 @@ class Race{
 
 
 	public:
-		Race();
+		void createHuman();
+		void createOrc();
+		void createElf();
+		void createDwarf();
 
+		//Constructor, Destructor, Getters, Setters
+		Race(std::string);
+		~Race();
+		std::string getRace();
+		void setRace(std::string);
+
+		int getRangeStrengthMin();
+		int getRangeStrengthMax();
+		int getRangeConstitutionMin();
+		int getRangeConstitutionMax();
+		int getRangeDexterityMin();
+		int getRangeDexterityMax();
+		int getRangeIntelligenceMin();
+		int getRangeIntelligenceMax();
+		int getRangeWisdomMin();
+		int getRangeWisdomMax();
+		int getRangeCharismaMin();
+		int getRangeCharismaMax();
 
 
 

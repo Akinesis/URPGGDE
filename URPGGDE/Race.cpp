@@ -1,143 +1,127 @@
-#include "Race.hpp";
+#include "Race.hpp"
 
-
-void Race::CreateVector(std::vector<std::string> vecn, std::vector<std::string> vecs){
-	vecn.push_back(NULL);
-	vecn.push_back(NULL);
-	for(int i = 0; i < 18 ; i++){
-		vecs.push_back(NULL);
-	}
+Race::Race(std::string ra){
+	std::string race = ra;
 }
 
-int Race::randomVariable(int min, int max){
-	std::srand(std::time(0));
-	int interval = max - min;
-	int random_variable = (std::rand() % interval) + 1;
-	return random_variable;
+void Race::createHuman(){
+	race = "Human";
+	rangeStrength.min = 8;
+	rangeStrength.max = 12;
+	rangeConstitution.min = 8;
+	rangeConstitution.max = 12;
+	rangeDexterity.min = 8;
+	rangeDexterity.max = 12;
+	rangeIntelligence.min = 8;
+	rangeIntelligence.max = 12;
+	rangeWisdom.max = 8;
+	rangeWisdom.min = 12;
+	rangeCharisma.min = 8;
+	rangeCharisma.max = 12;
 }
 
-std::string Race::randomName(std::string race, std::string sexe){
-	std::srand(std::time(0));
-	const int taille = 150; // Taille des fichiers de nom
-	int random_variable = (std::rand() % taille) +1;
-
-	std::string name;
-	std::ifstream file;
-
-	if (sexe == "Male"){
-		if(race == "human"){
-			file("../NameGenerator/HumanMaleNames.txt", std::ios::in);
-		}
-		else if (race == "orc"){
-			file("../NameGenerator/OrcMaleNames.txt", std::ios::in);
-		}
-		else if (race == "elf"){
-			file("../NameGenerator/ElficMaleNames.txt", std::ios::in);
-		}
-		else{
-			std::cout << "Race inconnue. Enrez un race existante." << std::endl;
-		}
-	}
-	else
-	{
-		if(race == "human"){
-			file("../NameGenerator/HumanFemaleNames.txt", std::ios::in);
-		}
-		else if (race == "orc"){
-			file("../NameGenerator/OrcFemaleNames.txt", std::ios::in);
-		}
-		else if (race == "elf"){
-			file("../NameGenerator/ElficFemaleNames.txt", std::ios::in);
-		}
-		else{
-			std::cout << "Race inconnue. Enrez un race existante." << std::endl;
-		}
-
-	}
-
-	if(file){
-		for(int i = 0; i < random_variable ; i++){
-			file >> name;
-		}
-		file.close();
-	}
-	return name;
+void Race::createOrc(){
+	race = "Orc";
+	rangeStrength.min = 11;
+	rangeStrength.max = 15;
+	rangeConstitution.min = 10;
+	rangeConstitution.max = 14;
+	rangeDexterity.min = 8;
+	rangeDexterity.max = 12;
+	rangeIntelligence.min = 5;
+	rangeIntelligence.max = 9;
+	rangeWisdom.max = 6;
+	rangeWisdom.min = 10;
+	rangeCharisma.min = 8;
+	rangeCharisma.max = 12;
 }
 
-std::string Race::randomLastName(std::string race){
-	std::srand(std::time(0));
-	const int taille = 150; // Taille des fichiers de nom
-	int random_variable = (std::rand() % taille) +1;
-
-	std::string lname;
-	std::ifstream file;
-
-	if(race == "human"){
-		file("../NameGenerator/HumanLastNames.txt", std::ios::in);
-	}
-	if(race == "orc"){
-		file("../NameGenerator/OrcLastNames.txt", std::ios::in);
-	}
-	if(race == "elf"){
-		file("../NameGenerator/ElficLastNames.txt", std::ios::in);
-	}
-	else{
-		std::cout << "Race inconnue. Enrez un race existante." << std::endl;
-	}
-	if(file){
-		for(int i = 0; i < random_variable ; i++){
-			file >> lname;
-		}
-		file.close();
-	}
-	return lname;
+void Race::createElf(){
+	race = "Elf";
+	rangeStrength.min = 5;
+	rangeStrength.max = 9;
+	rangeConstitution.min = 5;
+	rangeConstitution.max = 9;
+	rangeDexterity.min = 11;
+	rangeDexterity.max = 15;
+	rangeIntelligence.min = 8;
+	rangeIntelligence.max = 12;
+	rangeWisdom.max = 9;
+	rangeWisdom.min = 13;
+	rangeCharisma.min = 10;
+	rangeCharisma.max = 14;
 }
 
+void Race::createDwarf(){
+	race = "Dwarf";
+	rangeStrength.min = 9;
+	rangeStrength.max = 13;
+	rangeConstitution.min = 11;
+	rangeConstitution.max = 15;
+	rangeDexterity.min = 9;
+	rangeDexterity.max = 13;
+	rangeIntelligence.min = 8;
+	rangeIntelligence.max = 12;
+	rangeWisdom.max = 5;
+	rangeWisdom.min = 9;
+	rangeCharisma.min = 6;
+	rangeCharisma.max = 10;
+}
 ////////////////////////////////////////////////////////////////////////////////
 // Getters Setters START
-std::string Race::getHumanNames(){
-	std::string hnames;
-	for(int i = 0; i < humanNames.size(); i++){
-		hnames += humanNames[i] + ", ";
-	}
-	return hnames;
-}
-void Race::setHumanNames(std::string hname, std::string hlname){
-	humanNames[0] = hname;
-	humanNames[1] = hlname;
- }
 
-void Race::setRandomHumanNames(std::string sexe){
-	std::srand(std::time(0));
-	const int taille = 150; // Taille des fichiers de nom
-	int random_variable = (std::rand() % taille) +1;
-
-	std::string name;
-	std::ifstream file;
-
-	if(sexe == "Male"){
-		file("../NameGenerator/HumanMaleNames.txt", std::ios::in);
-	}
-	else{
-		file("../NameGenerator/HumanFemaleNames.txt", std::ios::in);
-	}
-	if(file){
-		for(int i = 0; i < random_variable ; i++){
-			file >> name;
-		}
-		file.close();
-	}
-
-	std::srand(std::time(0));
-	const int taille = 150; // Taille des fichiers de nom
-	int random_variable = (std::rand() % taille) +1;
-	std::ifstream file2("../NameGenerator/HumanLastNames.txt", std::ios::in);
-
-	if(file2){
-		for(int i = 0; i < random_variable ; i++){
-			file >> name;
-		}
-		file.close();
-	}
+std::string Race::getRace(){
+	return race;
 }
 
+void Race::setRace(std::string ra){
+	race = ra;
+}
+
+int Race::getRangeStrengthMin(){
+	return rangeStrength.min;
+}
+
+int Race::getRangeStrengthMax(){
+	return rangeStrength.max;
+}
+
+int Race::getRangeConstitutionMin(){
+	return rangeConstitution.min;
+}
+
+int Race::getRangeConstitutionMax(){
+	return rangeConstitution.max;
+}
+
+int Race::getRangeDexterityMin(){
+	return rangeDexterity.min;
+}
+
+int Race::getRangeDexterityMax(){
+	return rangeDexterity.max;
+}
+
+int Race::getRangeIntelligenceMin(){
+	return rangeIntelligence.min;
+}
+
+int Race::getRangeIntelligenceMax(){
+	return rangeIntelligence.max;
+}
+
+int Race::getRangeWisdomMin(){
+	return rangeWisdom.min;
+}
+
+int Race::getRangeWisdomMax(){
+	return rangeWisdom.max;
+}
+
+int Race::getRangeCharismaMin(){
+	return rangeCharisma.min;
+}
+
+int Race::getRangeCharismaMax(){
+	return rangeCharisma.max;
+}
