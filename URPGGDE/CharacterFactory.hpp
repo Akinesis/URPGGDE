@@ -17,8 +17,10 @@
  **/
 class CharacterFactory{
 	public:
-		Character createAllRandomCharacter(std::string);
-		Character createPersonalizeCharacter(std::string);
+		CharacterFactory();
+		virtual ~CharacterFactory();
+		virtual Character createAllRandomCharacter(std::string);
+		virtual Character createPersonalizeCharacter(std::string);
 };
 
 

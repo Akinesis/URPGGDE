@@ -1,10 +1,10 @@
 #include "Character.hpp"
 
 
-Character::Character(std::string na, std::string sx, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
+Character::Character(std::string na, std::string sx, Race ra, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
 	name = na;
 	sexe = sx;
-	Race race = new Race();
+	race = new Race(ra);
 	lifePoints = lPoints;
 	manaPoints = mPoints;
 	strength = stgth;
