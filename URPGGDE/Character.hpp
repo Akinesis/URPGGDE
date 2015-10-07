@@ -1,6 +1,13 @@
 #ifndef _Character;
 #define _Character;
 
+<<<<<<< HEAD
+#include <string>
+
+class Character {
+
+	public:
+=======
 #include <string>;
 
 class Character {
@@ -33,6 +40,7 @@ class Character {
 		virtual ~Character();
 		virtual std::string performAttack();
 		virtual std::string defend();
+>>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
 
 	// Getters Setters START
 		void setName(std::string n);
@@ -56,6 +64,29 @@ class Character {
 		int getWisdom();
 		void setCharisma(int);
 		int getCharisma();
+<<<<<<< HEAD
+	// Getters Setters END
+
+	private:
+		virtual std::string name;
+
+		virtual int lifePoints;
+		virtual int manaPoints;
+
+		virtual int strength;
+		virtual int constitution;
+		virtual int dexterity;
+		virtual int intelligence;
+		virtual int wisdom;
+		virtual int charisma;
+};
+
+
+#endif
+
+
+
+=======
 
 		int getAttack();
 		void setAttack(int);
@@ -75,3 +106,4 @@ class Character {
 };
 
 #endif
+>>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe

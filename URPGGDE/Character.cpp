@@ -1,5 +1,7 @@
 #include "Character.hpp"
 
+<<<<<<< HEAD
+=======
 
 Character::Character(std::string na, std::string sx, Race ra, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
 	name = na;
@@ -22,6 +24,7 @@ Character::Character(std::string na, std::string sx, Race ra, int lPoints, int m
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+>>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
 // Getters Setters START
 	//Get Set name
 std::string Character::getName() {
@@ -79,13 +82,21 @@ int  Character::getWisdom(){
 void Character::setWisdom(int wisd){
 	wisdom = wisd;
 }
+<<<<<<< HEAD
+	//Get Set Charisma
+=======
 	//Get Set charisma
+>>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
 int Character::getCharisma(){
 	return charisma;
 }
 void Character::setCharisma(int cha){
 	charisma = cha;
 }
+<<<<<<< HEAD
+// Getters Setters STOP
+
+=======
 	//Get Set attack
 int Character::getAttack(){
 	return attack;
@@ -122,3 +133,4 @@ void Character::setBagCapacity(int cap){
 	bagCapacity = cap;
 }
 // Getters Setters STOP
+>>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
