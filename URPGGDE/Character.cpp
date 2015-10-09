@@ -1,8 +1,5 @@
 #include "Character.hpp"
 
-<<<<<<< HEAD
-=======
-
 Character::Character(std::string na, std::string sx, Race ra, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
 	name = na;
 	sexe = sx;
@@ -24,7 +21,7 @@ Character::Character(std::string na, std::string sx, Race ra, int lPoints, int m
 }
 
 ////////////////////////////////////////////////////////////////////////////////
->>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
+
 // Getters Setters START
 	//Get Set name
 std::string Character::getName() {
@@ -32,6 +29,15 @@ std::string Character::getName() {
 }
 void Character::setName(std::string n) {
 	name = n;
+}
+std::string Character::getSexe(){
+	return sexe;
+}
+void Character::setSexe(std::string sx){
+	sexe = sx;
+}
+Race Character::getRace(){
+	return race;
 }
 	//Get Set lifePoints
 int Character::getLifePoints(){
@@ -47,6 +53,7 @@ int Character::getManaPoints(){
 void Character::setManaPoint(int mPoints){
 	manaPoints = mPoints;
 }
+
 	//Get Set strength
 int Character::getStrength(){
 	return strength;
@@ -82,55 +89,10 @@ int  Character::getWisdom(){
 void Character::setWisdom(int wisd){
 	wisdom = wisd;
 }
-<<<<<<< HEAD
-	//Get Set Charisma
-=======
-	//Get Set charisma
->>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
 int Character::getCharisma(){
 	return charisma;
 }
 void Character::setCharisma(int cha){
 	charisma = cha;
 }
-<<<<<<< HEAD
-// Getters Setters STOP
 
-=======
-	//Get Set attack
-int Character::getAttack(){
-	return attack;
-}
-void Character::setAttack(int att){
-	attack = att;
-}
-	//Get Set defense
-int Character::getDefense(){
-	return defense;
-}
-void Character::setDefense(int def){
-	defense = def;
-}
-	//Get Set protection
-int Character::getProtection(){
-	return protection;
-}
-void Character::setProtection(int pr){
-	protection = pr;
-}
-	//Get Set level
-int Character::getLevel(){
-	return level;
-}
-void Character::setLevel(int l){
-	level = l;
-}
-	//Get Set bagCapacity
-int Character::getBagCapacity(){
-	return bagCapacity;
-}
-void Character::setBagCapacity(int cap){
-	bagCapacity = cap;
-}
-// Getters Setters STOP
->>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe

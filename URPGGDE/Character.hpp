@@ -1,14 +1,8 @@
 #ifndef _Character;
 #define _Character;
 
-<<<<<<< HEAD
+
 #include <string>
-
-class Character {
-
-	public:
-=======
-#include <string>;
 
 class Character {
 	protected:
@@ -40,12 +34,21 @@ class Character {
 		virtual ~Character();
 		virtual std::string performAttack();
 		virtual std::string defend();
->>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
+
 
 	// Getters Setters START
 		void setName(std::string n);
-		virtual void setRandomName(std::string);
+		virtual void setRandomName();
 		std::string getName();
+
+		virtual void setRandomLastName();
+		virtual void setLastName(std::string);
+		virtual std::string getLastName();
+
+		void setSexe(std::string);
+		std::string getSexe();
+
+		Race getRace();
 
 		void setLifePoints(int);
 		int getLifePoints();
@@ -64,46 +67,9 @@ class Character {
 		int getWisdom();
 		void setCharisma(int);
 		int getCharisma();
-<<<<<<< HEAD
-	// Getters Setters END
-
-	private:
-		virtual std::string name;
-
-		virtual int lifePoints;
-		virtual int manaPoints;
-
-		virtual int strength;
-		virtual int constitution;
-		virtual int dexterity;
-		virtual int intelligence;
-		virtual int wisdom;
-		virtual int charisma;
-};
-
-
-#endif
-
-
-
-=======
-
-		int getAttack();
-		void setAttack(int);
-		int getDefense();
-		void setDefense(int);
-
-		int getProtection();
-		void setProtection(int);
-
-		int getLevel();
-		void setLevel(int);
-
-		int getBagCapacity();
-		void setBagCapacity(int);
 	// Getters Setters END
 
 };
 
 #endif
->>>>>>> f65488f031f314e53ee45a12ed717564fbc773fe
+

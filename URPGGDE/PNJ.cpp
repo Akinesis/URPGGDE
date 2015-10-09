@@ -47,7 +47,7 @@ void PNJ::setRandomName(){
 	const int taille = 150; // Taille des fichiers de nom
 	int random_variable = (std::rand() % taille) +1;
 
-	std::string characterRace = race.getRace();
+	std::string characterRace = getRace().getRaceName();
 	char* raceFile;
 	std::string cast = "../NameGenerator/"+characterRace+sexe+"Names.txt";
 	raceFile = (char*)cast.c_str();
@@ -67,7 +67,7 @@ void PNJ::setRandomLastName(){
 	const int taille = 150; // Taille des fichiers de nom
 	int random_variable = (std::rand() % taille) +1;
 
-	std::string characterRace = race.getRace();
+	std::string characterRace = getRace().getRaceName();
 	char* raceFile;
 	std::string cast = "../NameGenerator/"+characterRace+"LastNames.txt";
 	raceFile = (char*)cast.c_str();

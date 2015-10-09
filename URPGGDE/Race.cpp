@@ -67,10 +67,14 @@ void Race::createDwarf(){
 	rangeCharisma.min = 6;
 	rangeCharisma.max = 10;
 }
+// A creer
+void createRandomRace(){
+
+}
 ////////////////////////////////////////////////////////////////////////////////
 // Getters Setters START
 
-std::string Race::getRace(){
+std::string Race::getRaceName(){
 	return race;
 }
 

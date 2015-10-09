@@ -35,6 +35,7 @@ class Race{
 
 
 	public:
+		void createRandomRace();
 		void createHuman();
 		void createOrc();
 		void createElf();
@@ -43,7 +44,7 @@ class Race{
 		//Constructor, Destructor, Getters, Setters
 		Race(std::string);
 		~Race();
-		std::string getRace();
+		std::string getRaceName();
 		void setRace(std::string);
 
 		int getRangeStrengthMin();
