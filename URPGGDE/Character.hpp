@@ -9,6 +9,7 @@ class Character {
 		std::string name;
 		std::string sexe;
 		Race race;
+		Classes classe;
 
 		int lifePoints;
 		int manaPoints;
@@ -30,7 +31,7 @@ class Character {
 		Inventory bag;
 
 	public:
-		Character(std::string, std::string, Race, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
+		Character(std::string, std::string, Race, Classes, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
 		virtual ~Character();
 		virtual std::string performAttack();
 		virtual std::string defend();
@@ -50,6 +51,8 @@ class Character {
 
 		Race getRace();
 
+		Classes getClasse();
+
 		void setLifePoints(int);
 		int getLifePoints();
 		void setManaPoint(int);
@@ -67,6 +70,11 @@ class Character {
 		int getWisdom();
 		void setCharisma(int);
 		int getCharisma();
+
+		void setAttack(int);
+		int getAttack();
+		void setDefense(int);
+		int getDefense();
 	// Getters Setters END
 
 };

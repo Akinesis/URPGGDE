@@ -35,11 +35,13 @@ class Race{
 
 
 	public:
-		void createRandomRace();
-		void createHuman();
-		void createOrc();
-		void createElf();
-		void createDwarf();
+		void createRandomRace(Character);
+		void createHuman(Character);
+		void createOrc(Character);
+		void createElf(Character);
+		void createDwarf(Character);
+
+		void applyMinStats(Character chara);
 
 		//Constructor, Destructor, Getters, Setters
 		Race(std::string);

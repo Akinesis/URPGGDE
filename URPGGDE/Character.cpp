@@ -1,9 +1,10 @@
 #include "Character.hpp"
 
-Character::Character(std::string na, std::string sx, Race ra, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
+Character::Character(std::string na, std::string sx, Race ra, Classes cl, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
 	name = na;
 	sexe = sx;
 	race = new Race(ra);
+	classe = new Classes(cl);
 	lifePoints = lPoints;
 	manaPoints = mPoints;
 	strength = stgth;
@@ -38,6 +39,9 @@ void Character::setSexe(std::string sx){
 }
 Race Character::getRace(){
 	return race;
+}
+Classes Character::getClasse(){
+	return classe;
 }
 	//Get Set lifePoints
 int Character::getLifePoints(){
@@ -95,4 +99,16 @@ int Character::getCharisma(){
 void Character::setCharisma(int cha){
 	charisma = cha;
 }
-
+	//Get Set Attack Defense
+void Character::setAttack(int att){
+	attack = att;
+}
+int Character::getAttack(){
+	return attack;
+}
+void Character::setDefense(int def){
+	defense = def;
+}
+int Character::getDefense(){
+	return defense;
+}

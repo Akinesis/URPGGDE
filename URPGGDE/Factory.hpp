@@ -15,10 +15,12 @@
  **/
 class Factory{
 	public:
-		Factory();
+		Factory(Character);
 		virtual ~Factory();
 		virtual Character createAllRandom(std::string);
 		virtual Character createPersonalize(std::string);
+	protected:
+		Character chara;
 };
 
 

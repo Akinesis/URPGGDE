@@ -68,6 +68,27 @@ void Classes::createThief(Character chara){
 	applyModifications(chara);
 }
 
+void Classes::createRandomClass(Character chara){
+	std::srand(std::time(0));
+	int rdmVar = (std::rand() % 5) + 1;
+
+	if(rdmVar == 1){
+		createPaladin(chara);
+	}
+	else if(rdmVar == 2){
+		createWarrior(chara);
+	}
+	else if(rdmVar == 3){
+		createMage(chara);
+	}
+	else if(rdmVar == 4){
+		createHunter(chara);
+	}
+	else{
+		createThief(chara);
+	}
+}
+
 ////////////////////////////////////////
 //Getters Setters START
 
@@ -93,4 +114,8 @@ int Classes::getModifWisdom(){
 
 int Classes::getModifCharisma(){
 	return modifCharisma;
+}
+
+std::string Classes::getClassName(){
+	return className;
 }

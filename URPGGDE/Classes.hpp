@@ -8,6 +8,9 @@
 #ifndef CLASSES_HPP_
 #define CLASSES_HPP_
 
+#include <cstddef>
+#include <ctime>
+#include <cstdlib>
 
 class Classes{
 	private:
@@ -31,6 +34,8 @@ class Classes{
 		void createHunter(Character);
 		void createThief(Character);
 
+		void createRandomClass(Character);
+
 		//Getters Setters
 		int getModifStrength();
 		int getModifConstitution();
@@ -38,6 +43,7 @@ class Classes{
 		int getModifIntelligence();
 		int getModifWisdom();
 		int getModifCharisma();
+		std::string getClassName();
 
 
 };
