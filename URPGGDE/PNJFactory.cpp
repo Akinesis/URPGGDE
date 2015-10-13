@@ -7,6 +7,7 @@
 
 #include "PNJFactory.hpp"
 
+
 PNJFactory::PNJFactory() {
 	// TODO Auto-generated constructor stub
 
@@ -16,7 +17,7 @@ PNJFactory::~PNJFactory() {
 	// TODO Auto-generated destructor stub
 }
 
-Character PNJFactory::createAllRandom(){
+void PNJFactory::createAllRandom(){
 	chara = new PNJ<>;
 	std::srand(std::time(0));
 	int rdmVar = (std::rand() % 2) + 1;
@@ -70,9 +71,30 @@ Character PNJFactory::createAllRandom(){
 	std::cout << "Votre classe est" << chara.getClasse().getClassName() << std::endl;
 
 	//Application des stats à la vie, au mana à l'attaque et à la défense
+	chara.setCurrentLifePoints(chara.getLifePoints());
+	chara.setCurrentManaPoints(chara.getManaPoints());
 	chara.setLifePoints(chara.getConstitution() * 3);
 	chara.setManaPoint(((chara.getIntelligence() + chara.getWisdom()) / 2) * 3);
 	chara.setAttack((chara.getStrength() + chara.getDexterity()) / 2);
 	chara.setDefense(chara.getConstitution());
 
+	//Création fichier texte
+	std::string mySave = "../Saves/save"+num+"txt";
+	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
+
+	if(save){
+		save << "Prenom: " << chara.getName() << "	Nom : " << chara.getLastName() << std::endl;
+		save << "Sexe : " << chara.getSexe() << "	Race : " << chara.getRace().getRaceName() << std::endl;
+		save << "Classe : " << chara.getClasse().getClassName() << std::endl;
+		save << std::endl;
+		save << "Points de vie :  " << chara.getCurrentLifePoints() << " / " << chara.getLifePoints() << std::endl;
+		save << "Points de mana : " << chara.getCurrentManaPoints() << " / " << chara.getManaPoints() << std::endl;
+		save << std::endl;
+		save << "Force : 		" << chara.getStrength() << std::endl;
+		save << "Constitution : " << chara.getConstitution() << std::endl;
+		save << "Dexterite : 	" << chara.getDexterity() << std::endl;
+		save << "Intelligence : " << chara.getIntelligence() << std::endl;
+		save << "Sagesse : 		" << chara.getWisdom() << std::endl;
+		save << "Charisme :		" << chara.getCharisma() << std::endl;
+	}
 }

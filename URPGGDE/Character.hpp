@@ -1,8 +1,15 @@
-#ifndef _Character;
-#define _Character;
+#ifndef CHARACTER_HPP_
+#define CHARACTER_HPP_
 
 
 #include <string>
+#include <stdlib.h>
+#include <vector>
+#include <cstddef>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
 
 class Character {
 	protected:
@@ -11,7 +18,9 @@ class Character {
 		Race race;
 		Classes classe;
 
+		int currentLifePoints;
 		int lifePoints;
+		int currentManaPoints;
 		int manaPoints;
 
 		int strength;
@@ -31,10 +40,19 @@ class Character {
 		Inventory bag;
 
 	public:
-		Character(std::string, std::string, Race, Classes, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
+		Character(std::string, std::string, Race, Classes, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
 		virtual ~Character();
 		virtual std::string performAttack();
 		virtual std::string defend();
+
+		//Methodes de création de race
+		void createRandomRace();
+		void createHuman();
+		void createOrc();
+		void createElf();
+		void createDwarf();
+
+		void applyMinStats();
 
 
 	// Getters Setters START
@@ -53,8 +71,12 @@ class Character {
 
 		Classes getClasse();
 
+		void setCurrentLifePoints(int);
+		int getCurrentLifePoints();
 		void setLifePoints(int);
 		int getLifePoints();
+		void setCurrentManaPoints(int);
+		int getCurrentManaPoints();
 		void setManaPoint(int);
 		int getManaPoints();
 

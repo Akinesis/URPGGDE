@@ -12,13 +12,14 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <fstream>
 
 class PNJFactory : public Factory{
 	public:
 		PNJFactory();
 		virtual ~PNJFactory();
-		Character createAllRandom();
-		Character createPersonalize(std::string);
+		void createAllRandom();
+		void createPersonalize(std::string);
 	private:
 
 };

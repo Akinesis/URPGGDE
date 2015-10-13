@@ -17,10 +17,11 @@ class Factory{
 	public:
 		Factory(Character);
 		virtual ~Factory();
-		virtual Character createAllRandom(std::string);
-		virtual Character createPersonalize(std::string);
+		virtual void createAllRandom();
+		virtual void createPersonalize(std::string);
 	protected:
 		Character chara;
+		static int num = 000;
 };
 
 

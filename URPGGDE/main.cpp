@@ -1,3 +1,7 @@
+#include "Character.hpp"
+#include "Factory.hpp"
+#include "Race.hpp"
+
 #include <ctime> //ancien methode
 #include <cstdlib>
 #include <iostream>
@@ -8,27 +12,9 @@
 
 int main()
 {
-	std::string human = "Human";
-	char* make;
-	std::string make2 =  "../NameGenerator/"+human+"MaleNames.txt";
-	make= (char*)make2.c_str() ;
 	using namespace std;
 
-	ifstream fichier(make, ios::in);
-
-	if(fichier){
-		int pos = 51;
-		string chaine;
-		for(int i = 0; i < pos ; i++){
-			fichier >> chaine;
-		}
-		cout << chaine << endl;
-		fichier.close();
-
-	}
-	else{
-		cout << "Impossible d'ouvrir le fichier" << endl;
-	}
-
-
+	Character chara;
+	Factory pnj = new PNJFactory();
+	pnj.createAllRandom();
 }
