@@ -5,9 +5,19 @@
  *      Author: Xavier
  */
 
-
 #ifndef RACE_HPP_
 #define RACE_HPP_
+
+#include <string>
+#include <stdlib.h>
+#include <vector>
+#include <cstddef>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+
+class Character;
 
 class Race{
 	private:
@@ -24,6 +34,14 @@ class Race{
 		range rangeWisdom;
 		range rangeCharisma;
 
+		//Methodes de création de race
+		void createRandomRace(Character);
+		void createHuman(Character);
+		void createOrc(Character);
+		void createElf(Character);
+		void createDwarf(Character);
+
+		void applyMinStats(Character);
 
 
 	public:

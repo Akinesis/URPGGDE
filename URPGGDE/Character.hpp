@@ -1,15 +1,11 @@
 #ifndef CHARACTER_HPP_
 #define CHARACTER_HPP_
 
-
 #include <string>
-#include <stdlib.h>
-#include <vector>
-#include <cstddef>
-#include <ctime>
-#include <cstdlib>
-#include <fstream>
-#include <iostream>
+
+#include "Race.hpp"
+#include "Classes.hpp"
+#include "Inventory.hpp"
 
 class Character {
 	protected:
@@ -40,20 +36,11 @@ class Character {
 		Inventory bag;
 
 	public:
+		Character();
 		Character(std::string, std::string, Race, Classes, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
 		virtual ~Character();
 		virtual std::string performAttack();
 		virtual std::string defend();
-
-		//Methodes de création de race
-		void createRandomRace();
-		void createHuman();
-		void createOrc();
-		void createElf();
-		void createDwarf();
-
-		void applyMinStats();
-
 
 	// Getters Setters START
 		void setName(std::string n);

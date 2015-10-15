@@ -17,7 +17,8 @@
 class PNJFactory : public Factory{
 	public:
 		PNJFactory();
-		virtual ~PNJFactory();
+		PNJFactory(Character);
+		~PNJFactory();
 		void createAllRandom();
 		void createPersonalize(std::string);
 	private:

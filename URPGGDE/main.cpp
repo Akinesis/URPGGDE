@@ -1,6 +1,10 @@
 #include "Character.hpp"
 #include "Factory.hpp"
 #include "Race.hpp"
+#include "PNJFactory.hpp"
+#include "PNJ.hpp"
+#include "Classes.hpp"
+#include "Inventory.hpp"
 
 #include <ctime> //ancien methode
 #include <cstdlib>
@@ -13,8 +17,6 @@
 int main()
 {
 	using namespace std;
-
-	Character chara;
-	Factory pnj = new PNJFactory();
-	pnj.createAllRandom();
+	PNJFactory* pnj;
+	pnj->createAllRandom();
 }

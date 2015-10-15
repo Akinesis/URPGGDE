@@ -8,14 +8,13 @@
 #include "PNJFactory.hpp"
 
 
-PNJFactory::PNJFactory() {
-	// TODO Auto-generated constructor stub
+PNJFactory::PNJFactory() {}
 
+PNJFactory::PNJFactory(Character ch){
+	Factory(ch);
 }
 
-PNJFactory::~PNJFactory() {
-	// TODO Auto-generated destructor stub
-}
+PNJFactory::~PNJFactory() {}
 
 void PNJFactory::createAllRandom(){
 	chara = new PNJ<>;

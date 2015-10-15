@@ -8,6 +8,8 @@
 
 #include "Factory.hpp"
 
+Factory::Factory(){}
+
 Factory::Factory(Character ch){
 	chara = ch;
 }

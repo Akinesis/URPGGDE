@@ -15,13 +15,14 @@
  **/
 class Factory{
 	public:
+		Factory();
 		Factory(Character);
 		virtual ~Factory();
 		virtual void createAllRandom();
 		virtual void createPersonalize(std::string);
 	protected:
 		Character chara;
-		static int num = 000;
+		static int num;
 };
 
 

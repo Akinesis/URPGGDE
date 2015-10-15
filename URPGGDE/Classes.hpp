@@ -12,6 +12,8 @@
 #include <ctime>
 #include <cstdlib>
 
+class Character;
+
 class Classes{
 	private:
 		std::string className;
@@ -25,7 +27,7 @@ class Classes{
 
 	public:
 		Classes(std::string, int, int, int, int, int, int);
-		~Classes(std::string, int, int, int, int, int, int);
+		~Classes();
 
 		void applyModifications(Character);
 		void createPaladin(Character);
