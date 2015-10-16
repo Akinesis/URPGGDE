@@ -17,6 +17,7 @@
 int main()
 {
 	using namespace std;
-	PNJFactory* pnj;
-	pnj->createAllRandom();
+	Character* chara = new PNJ();
+	Factory* pnjFac = new PNJFactory(chara);
+
 }

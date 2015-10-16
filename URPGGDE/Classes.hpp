@@ -29,14 +29,14 @@ class Classes{
 		Classes(std::string, int, int, int, int, int, int);
 		~Classes();
 
-		void applyModifications(Character);
-		void createPaladin(Character);
-		void createWarrior(Character);
-		void createMage(Character);
-		void createHunter(Character);
-		void createThief(Character);
+		//void applyModifications(Character);
+		void createPaladin();
+		void createWarrior();
+		void createMage();
+		void createHunter();
+		void createThief();
 
-		void createRandomClass(Character);
+		void createRandomClass();
 
 		//Getters Setters
 		int getModifStrength();

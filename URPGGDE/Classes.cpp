@@ -7,7 +7,7 @@
 
 #include "Classes.hpp"
 #include "Character.hpp"
-
+/*
 void Classes::applyModifications(Character chara){
 	chara.setStrength(chara.getStrength()+modifStrength);
 	chara.setConstitution(chara.getConstitution()+modifConstitution);
@@ -16,7 +16,7 @@ void Classes::applyModifications(Character chara){
 	chara.setWisdom(chara.getWisdom()+modifWisdom);
 	chara.setCharisma(chara.getCharisma()+modifCharisma);
 }
-
+*/
 void Classes::createPaladin(Character chara){
 	modifStrength = 1;
 	modifConstitution = 2;

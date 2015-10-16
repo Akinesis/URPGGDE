@@ -7,7 +7,7 @@ Race::Race(std::string ra){
 
 //Méthodes de création de race
 
-
+/*
 void Race::applyMinStats(Character chara){
 	chara.setStrength(rangeStrength.min);
 	chara.setConstitution(rangeConstitution.min);
@@ -16,7 +16,7 @@ void Race::applyMinStats(Character chara){
 	chara.setWisdom(rangeWisdom.min);
 	chara.setCharisma(rangeCharisma.min);
 }
-
+*/
 
 void Race::createHuman(Character chara){
 	race = "Human";
@@ -33,7 +33,7 @@ void Race::createHuman(Character chara){
 	rangeCharisma.min = 8;
 	rangeCharisma.max = 12;
 
-	applyMinStats(chara);
+	//applyMinStats(chara);
 }
 
 void Race::createOrc(Character chara){
@@ -51,7 +51,7 @@ void Race::createOrc(Character chara){
 	rangeCharisma.min = 8;
 	rangeCharisma.max = 12;
 
-	applyMinStats(chara);
+	//applyMinStats(chara);
 }
 
 void Race::createElf(Character chara){
@@ -69,7 +69,7 @@ void Race::createElf(Character chara){
 	rangeCharisma.min = 10;
 	rangeCharisma.max = 14;
 
-	applyMinStats(chara);
+	//applyMinStats(chara);
 }
 
 void Race::createDwarf(Character chara){
@@ -87,7 +87,7 @@ void Race::createDwarf(Character chara){
 	rangeCharisma.min = 6;
 	rangeCharisma.max = 10;
 
-	applyMinStats(chara);
+	//applyMinStats(chara);
 }
 
 void Race::createRandomRace(Character chara){
@@ -107,6 +107,8 @@ void Race::createRandomRace(Character chara){
 		createDwarf(chara);
 	}
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // Getters Setters START
 

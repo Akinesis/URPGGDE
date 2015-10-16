@@ -10,7 +10,15 @@
 
 Factory::Factory(){}
 
+Factory::~Factory(){}
+
 Factory::Factory(Character ch){
 	chara = ch;
 }
 
+void Factory::setCharacter(Character charac){
+	chara = charac;
+}
+int Factory::getCharacter(){
+	return chara;
+}

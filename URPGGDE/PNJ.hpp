@@ -13,8 +13,7 @@ class PNJ : public Character {
 
 	public:
 		PNJ();
-		PNJ(std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory, std::string);
-		~PNJ();
+		//PNJ(std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory, std::string);
 		std::string performAttack();
 		std::string defend();
 

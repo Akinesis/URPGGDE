@@ -1,7 +1,7 @@
 #ifndef CHARACTER_HPP_
 #define CHARACTER_HPP_
 
-#include <string>
+#include "string"
 
 #include "Race.hpp"
 #include "Classes.hpp"
@@ -37,10 +37,14 @@ class Character {
 
 	public:
 		Character();
-		Character(std::string, std::string, Race, Classes, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
-		virtual ~Character();
+		//Character(std::string, std::string, Race, Classes, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
+		virtual ~Character()=0;
 		virtual std::string performAttack();
 		virtual std::string defend();
+
+		void applyMinStat();
+		void applyModifications();
+
 
 	// Getters Setters START
 		void setName(std::string n);

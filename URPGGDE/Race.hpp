@@ -34,17 +34,17 @@ class Race{
 		range rangeWisdom;
 		range rangeCharisma;
 
-		//Methodes de création de race
-		void createRandomRace(Character);
-		void createHuman(Character);
-		void createOrc(Character);
-		void createElf(Character);
-		void createDwarf(Character);
-
-		void applyMinStats(Character);
-
-
 	public:
+		//Methodes de création de race
+		void createRandomRace();
+		void createHuman();
+		void createOrc();
+		void createElf();
+		void createDwarf();
+
+		//void applyMinStats(Character);
+
+
 		//Constructor, Destructor, Getters, Setters
 		Race(std::string);
 		~Race();

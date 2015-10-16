@@ -21,6 +21,9 @@ class PNJFactory : public Factory{
 		~PNJFactory();
 		void createAllRandom();
 		void createPersonalize(std::string);
+
+		void setCharacter(Character);
+		int getCharacter();
 	private:
 
 };

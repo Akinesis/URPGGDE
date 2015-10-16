@@ -9,14 +9,14 @@
 
 
 PNJFactory::PNJFactory() {}
-
+/*
 PNJFactory::PNJFactory(Character ch){
 	Factory(ch);
 }
-
+*/
 PNJFactory::~PNJFactory() {}
 
-void PNJFactory::createAllRandom(){
+void PNJFactory::createAllRandom(Character chara){
 	chara = new PNJ<>;
 	std::srand(std::time(0));
 	int rdmVar = (std::rand() % 2) + 1;
@@ -33,6 +33,7 @@ void PNJFactory::createAllRandom(){
 
 	//Random de la race
 	chara.getRace().createRandomRace(chara);
+	chara.applyMinStat();
 	std::cout << "Vous êtes un " << chara.getRace().getRaceName() << std::endl;
 
 	//Random du prénom
@@ -96,4 +97,11 @@ void PNJFactory::createAllRandom(){
 		save << "Sagesse : 		" << chara.getWisdom() << std::endl;
 		save << "Charisme :		" << chara.getCharisma() << std::endl;
 	}
+}
+
+void PNJFactory::setCharacter(Character charac){
+	chara = charac;
+}
+int PNJFactory::getCharacter(){
+	return chara;
 }

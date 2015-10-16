@@ -1,7 +1,7 @@
 #include "Character.hpp"
 
 Character::Character(){}
-
+/*
 Character::Character(std::string na, std::string sx, Race ra, Classes cl, int cLPoints, int lPoints, int cMPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b){
 	name = na;
 	sexe = sx;
@@ -24,7 +24,25 @@ Character::Character(std::string na, std::string sx, Race ra, Classes cl, int cL
 	bagCapacity = bcap;
 	Inventory * bag = new Inventory[b];
 }
+*/
 
+void Character::applyMinStat(){
+	strength = race.getRangeStrengthMin();
+	constitution = race.getRangeConstitutionMin();
+	dexterity = race.getRangeDexterityMin();
+	intelligence = race.getRangeIntelligenceMin();
+	wisdom = race.getRangeWisdomMin();
+	charisma = race.getRangeCharismaMin();
+}
+
+void Character::applyModifications(){
+	strength = strength + race.getModifStrength();
+	constitution = constitution + race.getModifConstitution();
+	dexterity = dexterity + race.getModifDexterity();
+	intelligence = intelligence + race.getModifIntelligence();
+	wisdom = wisdom + race.getModifWisdom();
+	charisma = charisma + race.getModifCharisma();
+}
 ////////////////////////////////////////////////////////////////////////////////
 
 // Getters Setters START
@@ -35,12 +53,14 @@ std::string Character::getName() {
 void Character::setName(std::string n) {
 	name = n;
 }
+	//Get Set sexe
 std::string Character::getSexe(){
 	return sexe;
 }
 void Character::setSexe(std::string sx){
 	sexe = sx;
 }
+	//Get Set race
 Race Character::getRace(){
 	return race;
 }
