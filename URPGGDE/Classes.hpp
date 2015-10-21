@@ -11,8 +11,7 @@
 #include <cstddef>
 #include <ctime>
 #include <cstdlib>
-
-class Character;
+#include <string>
 
 class Classes{
 	private:
@@ -26,10 +25,9 @@ class Classes{
 		int modifCharisma;
 
 	public:
-		Classes(std::string, int, int, int, int, int, int);
+		Classes();
 		~Classes();
 
-		//void applyModifications(Character);
 		void createPaladin();
 		void createWarrior();
 		void createMage();

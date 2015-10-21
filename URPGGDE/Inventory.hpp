@@ -28,7 +28,7 @@ class Inventory{
 		int maxBagCapacity;
 
 	public:
-		Inventory(std::string, std::string, std::string, std::string, std::string, std::string, std::string, int);
+		Inventory();
 		~Inventory();
 
 	//Getters and Setters

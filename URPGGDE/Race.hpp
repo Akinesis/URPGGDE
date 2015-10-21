@@ -17,11 +17,9 @@
 #include <fstream>
 #include <iostream>
 
-class Character;
-
 class Race{
 	private:
-		std::string race;
+		std::string raceName;
 
 		struct range{
 			int min;
@@ -35,6 +33,11 @@ class Race{
 		range rangeCharisma;
 
 	public:
+
+		//Constructor, Destructor, Getters, Setters
+		Race();
+		~Race();
+		
 		//Methodes de création de race
 		void createRandomRace();
 		void createHuman();
@@ -42,15 +45,10 @@ class Race{
 		void createElf();
 		void createDwarf();
 
-		//void applyMinStats(Character);
-
-
-		//Constructor, Destructor, Getters, Setters
-		Race(std::string);
-		~Race();
 		std::string getRaceName();
 		void setRace(std::string);
 
+		// Getters Setters
 		int getRangeStrengthMin();
 		int getRangeStrengthMax();
 		int getRangeConstitutionMin();

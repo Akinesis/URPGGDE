@@ -8,6 +8,8 @@
 #include <ctime>
 #include <iostream>
 
+#include "Character.hpp"
+
 class Boss : public Character{
 	private:
 		std::string lastName;
@@ -15,7 +17,7 @@ class Boss : public Character{
 
 	public:
 		Boss();
-		Boss(std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory b, std::string);
+		virtual ~Boss() = 0;
 		std::string performAttack();
 		std::string defend();
 

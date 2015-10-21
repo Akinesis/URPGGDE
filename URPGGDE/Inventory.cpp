@@ -1,16 +1,9 @@
 #include "Inventory.hpp"
 
 
-Inventory::Inventory(std::string w1, std::string w2, std::string sh, std::string hEquip, std::string tEquip, std::string lEquip, std::string fEquip, int maxBC){
-	weapon1 = w1;
-	weapon2 = w2;
-	shield = sh;
-	headEquip = hEquip;
-	torsoEquip = tEquip;
-	legsEquip = lEquip;
-	footEquip = fEquip;
-	maxBagCapacity = maxBC;
-}
+Inventory::Inventory(){}
+
+Inventory::~Inventory(){}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Getters Setters START

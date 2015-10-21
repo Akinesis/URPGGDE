@@ -2,21 +2,20 @@
 
 Boss::Boss(){}
 
-Boss::Boss(std::string na, std::string sx, int lPoints, int mPoints, int stgth, int cons, int dex, int intel, int wisd, int chari, int att, int def, int pr, int lvl, int bcap, Inventory b, std::string lname){
-	Character(na, sx, lPoints, mPoints, stgth, cons, dex, intel, wisd, chari, att, def, pr, lvl, bcap, b);
-	lastName = lname;
-}
+Boss::~Boss(){}
 
 std::string Boss::performAttack(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
-	if (random_variable <= attack()){
-		std::cout << name << " a lanc� une puissante attaque en faisant un " << random_variable << ". C'est une r�ussite!";
-		return name+" a r�ussi sa vil attaque gr�ce � un "+random_variable;
+	if (random_variable <= attack){
+		std::cout << name << " a lance une puissante attaque en faisant un " << random_variable << ". C'est une reussite!";
+		std::string rdm = std::to_string(random_variable);
+		return name+" a reussi sa vil attaque grace a un "+rdm;
 	}
 	else {
-		std::cout << name << " a lanc� une attaque avec un d� de " << random_variable << ". C'est un �chec!";
-		return name+" a bien rat� son attaque avec un "+random_variable;
+		std::cout << name << " a lance une attaque avec un de de " << random_variable << ". C'est un echec!";
+		std::string rdm = std::to_string(random_variable);
+		return name+" a bien rate son attaque avec un "+rdm;
 	}
 }
 
@@ -24,13 +23,15 @@ std::string Boss::performAttack(){
 std::string Boss::defend(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
-	if (random_variable <= attack()){
-		std::cout << name << " c'est aisément d�fendu en faisant un " << random_variable << ". C'est une r�ussite!";
-		return name+" effectu� une parade r�ussit gr�ce � un "+random_variable;
+	if (random_variable <= attack){
+		std::cout << name << " c'est aisément defendu en faisant un " << random_variable << ". C'est une reussite!";
+		std::string rdm = std::to_string(random_variable);
+		return name+" effectue une parade reussit grace a un "+rdm;
 	}
 	else {
-		std::cout << name << " c'est d�fendu en faisant un " << random_variable << ". C'est un �chec!";
-		return name+" a bien rat� sa parade avec un "+random_variable;
+		std::cout << name << " c'est defendu en faisant un " << random_variable << ". C'est un echec!";
+		std::string rdm = std::to_string(random_variable);
+		return name+" a bien rate sa parade avec un "+rdm;
 	}
 }
 
@@ -48,7 +49,7 @@ void Boss::setRandomName(){
 	const int taille = 150; // Taille des fichiers de nom
 	int random_variable = (std::rand() % taille) +1;
 
-	std::string characterRace = race.getRace();
+	std::string characterRace = race->getRaceName();
 	char* raceFile;
 	std::string cast = "../NameGenerator/"+characterRace+sexe+"Names.txt";
 	raceFile = (char*)cast.c_str();
@@ -57,9 +58,9 @@ void Boss::setRandomName(){
 	if(file){
 		std::string chaine;
 		for(int i = 0; i < random_variable; ++i){
-			file << chaine;
+			file >> chaine;
 		}
-		name = file;
+		name = chaine;
 	}
 }
 
@@ -68,7 +69,7 @@ void Boss::setRandomLastName(){
 	const int taille = 150; // Taille des fichiers de noms
 	int random_variable = (std::rand() % taille) +1;
 
-	std::string characterRace = race.getRace();
+	std::string characterRace = race->getRaceName();
 	char* raceFile;
 	std::string cast = "../NameGenerator/"+characterRace+"LastNames.txt";
 	raceFile = (char*)cast.c_str();
@@ -77,9 +78,9 @@ void Boss::setRandomLastName(){
 	if(file){
 		std::string chaine;
 		for(int i = 0; i < random_variable; ++i){
-			file << chaine;
+			file >> chaine;
 		}
-		name = file;
+		name = chaine;
 	}
 }
 // Getters Setters END

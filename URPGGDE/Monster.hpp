@@ -7,12 +7,14 @@
 #include <cstdlib>;
 #include <iostream>;
 
+#include "Character.hpp"
+
 class Monster : public Character{
 	private:
 
 	public:
 		Monster();
-		Monster(std::string, std::string, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
+		virtual ~Monster();
 		std::string performAttack();
 		std::string defend();
 

@@ -17,7 +17,7 @@ PNJFactory::PNJFactory(Character ch){
 PNJFactory::~PNJFactory() {}
 
 void PNJFactory::createAllRandom(Character chara){
-	chara = new PNJ<>;
+	chara = new PNJ();
 	std::srand(std::time(0));
 	int rdmVar = (std::rand() % 2) + 1;
 

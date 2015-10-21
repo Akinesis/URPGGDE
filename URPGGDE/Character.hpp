@@ -1,7 +1,7 @@
 #ifndef CHARACTER_HPP_
 #define CHARACTER_HPP_
 
-#include "string"
+#include <string>
 
 #include "Race.hpp"
 #include "Classes.hpp"
@@ -11,8 +11,8 @@ class Character {
 	protected:
 		std::string name;
 		std::string sexe;
-		Race race;
-		Classes classe;
+		Race* race;
+		Classes* classe;
 
 		int currentLifePoints;
 		int lifePoints;
@@ -33,14 +33,13 @@ class Character {
 
 		int level;
 		int bagCapacity;
-		Inventory bag;
+		Inventory* bag;
 
 	public:
 		Character();
-		//Character(std::string, std::string, Race, Classes, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, Inventory);
-		virtual ~Character()=0;
-		virtual std::string performAttack();
-		virtual std::string defend();
+		virtual ~Character() = 0;
+		virtual std::string performAttack() = 0;
+		virtual std::string defend() = 0;
 
 		void applyMinStat();
 		void applyModifications();
@@ -48,19 +47,21 @@ class Character {
 
 	// Getters Setters START
 		void setName(std::string n);
-		virtual void setRandomName();
+		virtual void setRandomName() = 0;
 		std::string getName();
 
-		virtual void setRandomLastName();
-		virtual void setLastName(std::string);
-		virtual std::string getLastName();
+		virtual void setRandomLastName() = 0;
+		virtual void setLastName(std::string) = 0;
+		virtual std::string getLastName() = 0;
 
 		void setSexe(std::string);
 		std::string getSexe();
 
-		Race getRace();
+		Race* getRace();
 
-		Classes getClasse();
+		Classes* getClasse();
+
+		Inventory* getBag();
 
 		void setCurrentLifePoints(int);
 		int getCurrentLifePoints();
@@ -92,5 +93,5 @@ class Character {
 
 };
 
-#endif
+#endif /* CHARACTER_HPP_ */
 

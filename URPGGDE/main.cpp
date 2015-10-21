@@ -1,23 +1,24 @@
+
 #include "Character.hpp"
-#include "Factory.hpp"
-#include "Race.hpp"
-#include "PNJFactory.hpp"
-#include "PNJ.hpp"
 #include "Classes.hpp"
+#include "PNJ.hpp"
 #include "Inventory.hpp"
 
-#include <ctime> //ancien methode
+#include <ctime>
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <stdio.h>
 
+int main(){
 
-int main()
-{
-	using namespace std;
 	Character* chara = new PNJ();
-	Factory* pnjFac = new PNJFactory(chara);
-
+	chara->setName("Roger");
+	chara->setLastName("Simon");
+	chara->getBag()->setWeapon1("épée");
+	chara->getRace()->createHuman();
+	chara->getClasse()->createRandomClass();
+	std::string a = chara->getClasse()->getClassName();
+	std::cout << a << std::endl;
 }
