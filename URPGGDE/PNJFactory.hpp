@@ -14,17 +14,21 @@
 #include <string>
 #include <fstream>
 
+#include "Factory.hpp"
+#include "PNJ.hpp"
+
 class PNJFactory : public Factory{
 	public:
 		PNJFactory();
-		PNJFactory(Character);
-		~PNJFactory();
-		void createAllRandom();
-		void createPersonalize(std::string);
+		virtual ~PNJFactory();
 
-		void setCharacter(Character);
-		int getCharacter();
+		Character* createAllRandom();
+		//void createPersonalize();
+
+		void setCharacter(Character*);
+		Character* getCharacter();
 	private:
+		int num;
 
 };
 

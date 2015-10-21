@@ -73,7 +73,6 @@ void PNJ::setRandomLastName(){
 	std::srand(std::time(0));
 	const int taille = 150; // Taille des fichiers de nom
 	int random_variable = (std::rand() % taille) +1;
-
 	std::string characterRace = getRace()->getRaceName();
 	char* raceFile;
 	std::string cast = "../NameGenerator/"+characterRace+"LastNames.txt";
@@ -84,7 +83,7 @@ void PNJ::setRandomLastName(){
 		for(int i = 0; i < random_variable; i++){
 			file >> chaine;
 		}
-		name = chaine;
+		lastName = chaine;
 	}
 }
 

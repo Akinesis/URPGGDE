@@ -12,13 +12,17 @@ Factory::Factory(){}
 
 Factory::~Factory(){}
 
-Factory::Factory(Character ch){
-	chara = ch;
-}
 
-void Factory::setCharacter(Character charac){
+void Factory::setCharacter(Character* charac){
 	chara = charac;
 }
-int Factory::getCharacter(){
+Character* Factory::getCharacter(){
 	return chara;
+}
+
+void Factory::setNum(int n){
+	num = n;
+}
+int Factory::getNum(){
+	return num;
 }

@@ -20,6 +20,7 @@
 class Race{
 	private:
 		std::string raceName;
+		std::string frenchRaceName;
 
 		struct range{
 			int min;
@@ -47,6 +48,8 @@ class Race{
 
 		std::string getRaceName();
 		void setRace(std::string);
+		std::string getFrenchRaceName();
+		void setFrenchRaceName(std::string);
 
 		// Getters Setters
 		int getRangeStrengthMin();

@@ -1,11 +1,11 @@
 #ifndef MONSTER_HPP_
 #define MONSTER_HPP_
 
-#include <string>;
+#include <string>
 
-#include <ctime>;
-#include <cstdlib>;
-#include <iostream>;
+#include <ctime>
+#include <cstdlib>
+#include <iostream>
 
 #include "Character.hpp"
 

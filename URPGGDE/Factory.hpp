@@ -8,25 +8,26 @@
 #ifndef FACTORY_HPP_
 #define FACTORY_HPP_
 
-
+#include "Character.hpp"
 /**
  * @param
  *
  **/
 class Factory{
-	private:
-		virtual Character chara;
-		static int num;
+	protected:
+		Character* chara;
+		int num;
 	public:
 		Factory();
-		Factory(Character);
 		virtual ~Factory()=0;
-		virtual void createAllRandom()=0;
-		virtual void createPersonalize(std::string)=0;
+		virtual Character* createAllRandom()=0;
+		//virtual void createPersonalize()=0;
+		
+		void setCharacter(Character*);
+		Character* getCharacter();
 
-		void setCharacter(Character);
-		int getCharacter();
-
+		void setNum(int);
+		int getNum();
 };
 
 

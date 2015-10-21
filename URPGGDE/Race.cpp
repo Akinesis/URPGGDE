@@ -9,6 +9,7 @@ Race::~Race(){}
 // Methodes de la classe Race
 void Race::createHuman(){
 	raceName = "Human";
+	frenchRaceName = "Humain";
 	rangeStrength.min = 8;
 	rangeStrength.max = 12;
 	rangeConstitution.min = 8;
@@ -25,6 +26,7 @@ void Race::createHuman(){
 
 void Race::createOrc(){
 	raceName = "Orc";
+	frenchRaceName = "Orc";
 	rangeStrength.min = 11;
 	rangeStrength.max = 15;
 	rangeConstitution.min = 10;
@@ -41,6 +43,7 @@ void Race::createOrc(){
 
 void Race::createElf(){
 	raceName = "Elf";
+	frenchRaceName = "Elfe";
 	rangeStrength.min = 5;
 	rangeStrength.max = 9;
 	rangeConstitution.min = 5;
@@ -57,6 +60,7 @@ void Race::createElf(){
 
 void Race::createDwarf(){
 	raceName = "Dwarf";
+	frenchRaceName = "Nain";
 	rangeStrength.min = 9;
 	rangeStrength.max = 13;
 	rangeConstitution.min = 11;
@@ -99,6 +103,14 @@ std::string Race::getRaceName(){
 
 void Race::setRace(std::string ra){
 	raceName = ra;
+}
+
+std::string Race::getFrenchRaceName(){
+	return frenchRaceName;
+}
+
+void Race::setFrenchRaceName(std::string fra){
+	frenchRaceName = fra;
 }
 
 int Race::getRangeStrengthMin(){
