@@ -80,9 +80,14 @@ void PNJ::setRandomLastName(){
 	std::ifstream file(raceFile, std::ios::in);
 	if(file){
 		std::string chaine;
+		std::string fName;
 		for(int i = 0; i < random_variable; i++){
 			file >> chaine;
+			file >> chaine;
 		}
+		fName = chaine + " ";
+		file >> chaine;
+		fName += chaine;
 		lastName = chaine;
 	}
 }

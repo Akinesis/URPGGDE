@@ -68,7 +68,7 @@ Character* PNJFactory::createAllRandom(){
 	//Random de la classe
 	chara->getClasse()->createRandomClass();
 	chara->applyModifications();
-	std::cout << "Votre classe est" << chara->getClasse()->getClassName() << std::endl;
+	std::cout << "Votre classe est " << chara->getClasse()->getClassName() << std::endl;
 
 	//Application des stats à la vie, au mana à l'attaque et à la défense
 	chara->setLifePoints(chara->getConstitution() * 3);
@@ -80,7 +80,7 @@ Character* PNJFactory::createAllRandom(){
 	//Création fichier texte
 	int num = getNum();
 	std::string n = std::to_string(num);
-	std::string mySave = "../Saves/save" + n + ".txt";
+	std::string mySave = "../Saves/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
 	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
 	if(save){
@@ -102,7 +102,17 @@ Character* PNJFactory::createAllRandom(){
 	return chara;
 }
 
-//void createPersonalize(){}
+Character* PNJFactory::createPersonalize(){
+	chara = new PNJ();
+	std::cout << "Quel personnage voulez-vous charger?" << std::endl;
+	return chara;
+}
+
+Character* PNJFactory::createCharacterSaved(){
+	chara = new PNJ();
+
+	return chara;
+}
 
 
 void PNJFactory::setCharacter(Character* charac){

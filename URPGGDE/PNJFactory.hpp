@@ -13,6 +13,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <stdio.h>
+#include <dirent.h>
 
 #include "Factory.hpp"
 #include "PNJ.hpp"
@@ -23,7 +25,8 @@ class PNJFactory : public Factory{
 		virtual ~PNJFactory();
 
 		Character* createAllRandom();
-		//void createPersonalize();
+		Character* createPersonalize();
+		Character* createCharacterSaved();
 
 		void setCharacter(Character*);
 		Character* getCharacter();
