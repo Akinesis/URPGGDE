@@ -1,0 +1,19 @@
+NOM			VIE		ATT		PRD		PR		DMGD  DMGA   
+Humanoid:
+Bandit		10		   8		   8		   1		6     0
+Chef_Bandit	15		   10		   10		   3		6     2
+Soldat		13		   12		   12		   3		8     0
+Zombie		8		   10		   10		   0		6     0
+Beast:
+Loup		   12		   12		   8		   0		6     1
+Ours		   18		   13		   7		   0		8     0
+Tigre		   13		   15		   6		   0		8     2
+Sanglier	   16		   12		   8		   0		10    0
+Canard		2		   2		   2		   0		100   100
+Fantasy:
+Centaure	   13		   13		   10		   2		10    0
+Wyverne		12		   12		   12		   3		8     2
+Gobelin		9		   8		   8		   2		6     0
+Golem		   15		   11		   11		   3		8     1
+Dragon		20		   15		   15		   4		10    3
+

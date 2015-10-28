@@ -19,10 +19,3 @@ void Factory::setCharacter(Character* charac){
 Character* Factory::getCharacter(){
 	return chara;
 }
-
-void Factory::setNum(int n){
-	num = n;
-}
-int Factory::getNum(){
-	return num;
-}

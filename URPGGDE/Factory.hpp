@@ -16,7 +16,6 @@
 class Factory{
 	protected:
 		Character* chara;
-		int num;
 	public:
 		Factory();
 		virtual ~Factory()=0;
@@ -26,9 +25,6 @@ class Factory{
 		
 		void setCharacter(Character*);
 		Character* getCharacter();
-
-		void setNum(int);
-		int getNum();
 };
 
 

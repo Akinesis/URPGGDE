@@ -8,6 +8,7 @@
 
 #include <ctime>
 #include <cstdlib>
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -22,6 +23,8 @@ int main(){
 	fact->createAllRandom();
 	*/
 	
+	// Lecture dossier
+	/*
 	DIR* rep = NULL;
 	struct dirent* fichierLu = NULL;
 	rep = opendir("../Saves/");
@@ -42,5 +45,24 @@ int main(){
 
 	if(closedir(rep) == -1)
 		exit(-1);
+	*/
+	std::ifstream bestiaryFile("../NameGenerator/Bestiary.txt", std::ios::in);
 	
+	if(bestiaryFile){
+		std::string chaine;
+		bestiaryFile >> chaine;
+		bestiaryFile >> chaine;
+		bestiaryFile >> chaine;
+		bestiaryFile >> chaine;
+		bestiaryFile >> chaine;
+		bestiaryFile >> chaine;
+		bestiaryFile >> chaine;
+		bestiaryFile >> chaine;
+		bestiaryFile >> chaine;
+
+		for(int i = 0; i < 7 ; ++i){
+			bestiaryFile >> chaine;
+		}
+		std::cout << prout << std::endl;
+	}
 }

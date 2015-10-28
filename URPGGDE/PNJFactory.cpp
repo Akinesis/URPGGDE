@@ -1,12 +1,4 @@
-/*
- * PNJFactory.cpp
- *
- *  Created on: 9 oct. 2015
- *      Author: E139824H
- */
-
 #include "PNJFactory.hpp"
-
 
 PNJFactory::PNJFactory() {}
 
@@ -78,8 +70,6 @@ Character* PNJFactory::createAllRandom(){
 	chara->setCurrentLifePoints(chara->getLifePoints());
 	chara->setCurrentManaPoints(chara->getManaPoints());
 	//Création fichier texte
-	int num = getNum();
-	std::string n = std::to_string(num);
 	std::string mySave = "../Saves/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
 	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
@@ -98,7 +88,6 @@ Character* PNJFactory::createAllRandom(){
 		save << "Sagesse : 		" << chara->getWisdom() << std::endl;
 		save << "Charisme :		" << chara->getCharisma() << std::endl;
 	}
-	setNum(getNum()+1);
 	return chara;
 }
 

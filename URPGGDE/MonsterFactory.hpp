@@ -1,29 +1,28 @@
-#ifndef PNJFACTORY_HPP_
-#define PNJFACTORY_HPP_
+#ifndef MONSTERFACTORY_HPP_
+#define MONSTERFACTORY_HPP_
 
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <stdio.h>
-#include <dirent.h>
 
 #include "Factory.hpp"
-#include "PNJ.hpp"
+#include "Monster.hpp"
 
-class PNJFactory : public Factory{
+class MonsterFactory : public Factory{
 	public:
-		PNJFactory();
-		virtual ~PNJFactory();
+		MonsterFactory();
+		virtual ~MonsterFactory();
 
 		Character* createAllRandom();
 		Character* createPersonalize();
 		Character* createCharacterSaved();
 
-		// Getters Setters
-		void setCharacter(Character*);
+		//Getters Setters
 		Character* getCharacter();
+		void setCharacter(Character*);
+
 };
 
-#endif /* PNJFACTORY_HPP_ */
+#endif /* MONSTERFACTORY_HPP_ */

@@ -1,9 +1,13 @@
 #include "Monster.hpp"
 
+
+// Constructeur destructeurs de la classe Monster
 Monster::Monster(){}
 
 Monster::~Monster(){}
 
+
+// Methodes de la classe Monster
 std::string Monster::performAttack(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
@@ -32,4 +36,19 @@ std::string Monster::defend(){
 		std::string rdm = std::to_string(random_variable);
 		return name+" a bien rate sa parade avec un "+rdm;
 	}
+}
+
+//////////////////////////////////////////////////////////////////::
+//	GETTERS SETTERS
+int Monster::getDommagesDe(){
+	return dommagesDe;
+}
+int Monster::getDommagesAdditionnels(){
+	return dommagesAdditionnels;
+}
+void Monster::setDommagesDe(int dd){
+	dommagesDe = dd;
+}
+void Monster::setDommagesAdditionnels(int da){
+	dommagesAdditionnels = da;
 }
