@@ -31,7 +31,7 @@ int StatePlay::host(){
 	return 1;
 }
 
-int StateCreate::exit(){
+int StatePlay::exit(){
 	std::cout << "Retours au début du programme ! Êtes vous sure ?" << std::endl;
 	std::string rep;
 	std::cin >> rep;
