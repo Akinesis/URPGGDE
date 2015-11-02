@@ -21,6 +21,10 @@ class PNJFactory : public Factory{
 		Character* createPersonalize();
 		Character* createCharacterSaved();
 
+		void randomSex(Character*);
+		void randomSkillPoints(Character*);
+		void ApplySkillPoints(Character*);
+
 		// Getters Setters
 		void setCharacter(Character*);
 		Character* getCharacter();

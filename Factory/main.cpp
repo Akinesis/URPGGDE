@@ -5,6 +5,7 @@
 #include "Inventory.hpp"
 #include "Factory.hpp"
 #include "PNJFactory.hpp"
+#include "../state/commandManager.hpp"
 
 #include <ctime>
 #include <cstdlib>
@@ -18,10 +19,10 @@
 #include <dirent.h>
 
 int main(){
-	/*
+	
 	Factory* fact = new PNJFactory();
 	fact->createAllRandom();
-	*/
+	
 	
 	// Lecture dossier
 	/*
@@ -46,6 +47,7 @@ int main(){
 	if(closedir(rep) == -1)
 		exit(-1);
 	*/
+	/*
 	std::ifstream bestiaryFile("../NameGenerator/Bestiary.txt", std::ios::in);
 	
 	if(bestiaryFile){
@@ -65,4 +67,6 @@ int main(){
 		}
 		std::cout << prout << std::endl;
 	}
+	*/
+
 }

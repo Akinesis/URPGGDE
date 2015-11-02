@@ -9,6 +9,7 @@
 #define FACTORY_HPP_
 
 #include "Character.hpp"
+ #include "../state/commandManager.hpp"
 /**
  * @param
  *
@@ -16,6 +17,7 @@
 class Factory{
 	protected:
 		Character* chara;
+		CommandManager* commandManager;
 	public:
 		Factory();
 		virtual ~Factory()=0;

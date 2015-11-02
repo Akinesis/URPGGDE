@@ -50,13 +50,19 @@ void PNJ::setLastName(std::string lName){
 }
 
 void PNJ::setRandomName(){
+	std::string cast;
 	std::srand((unsigned int)std::time(0));
 	const int taille = 150; // Taille des fichiers de nom
 	int random_variable = (std::rand() % taille) +1;
 
 	std::string characterRace = getRace()->getRaceName();
 	char* raceFile;
-	std::string cast = "../NameGenerator/"+characterRace+sexe+"Names.txt";
+	if(characterRace == "Dwarf"){
+		cast = "../NameGenerator/Orc"+sexe+"Names.txt";
+	}
+	else{
+		cast = "../NameGenerator/"+characterRace+sexe+"Names.txt";
+	}
 	raceFile = (char*)cast.c_str();
 	std::ifstream file(raceFile, std::ios::in);
 
@@ -70,12 +76,18 @@ void PNJ::setRandomName(){
 }
 
 void PNJ::setRandomLastName(){
+	std::string cast;
 	std::srand(std::time(0));
 	const int taille = 150; // Taille des fichiers de nom
 	int random_variable = (std::rand() % taille) +1;
 	std::string characterRace = getRace()->getRaceName();
 	char* raceFile;
-	std::string cast = "../NameGenerator/"+characterRace+"LastNames.txt";
+	if(characterRace == "Dwarf"){
+		cast = "../NameGenerator/HumanLastNames.txt";
+	}
+	else{
+		cast = "../NameGenerator/"+characterRace+"LastNames.txt";
+	}
 	raceFile = (char*)cast.c_str();
 	std::ifstream file(raceFile, std::ios::in);
 	if(file){
