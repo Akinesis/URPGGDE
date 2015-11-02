@@ -12,8 +12,8 @@ LFLAGS=$(IDIRFLAG)
 
 # Directories
 SRCDIR=./Factory ./state
-OBJDIR=.
-BINDIR=./obj
+OBJDIR=./obj
+BINDIR=.
 
 # Files
 SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))

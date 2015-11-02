@@ -112,40 +112,51 @@ Character* PNJFactory::createAllRandom(){
 
 Character* PNJFactory::createPersonalize(){
 	chara = new PNJ();
-	int reponseUtilisateur = -1;
-	
+	std::string reponseUtilisateur;
+	int rep = -1;
+	////////////////////////////////////////////////////////////////
+	commandManager->setState(commandManager->getStateCreate());
+	////////////////////////////////////////////////////////////////
+
 	// Choix du sexe
-	while(reponseUtilisateur != -1){
+	while(rep == -1){
 		std::cout << "Voulez-vous choisir le sexe de votre pesonnage ou en avoir un aleatoire? : ";
 		std::cin >> reponseUtilisateur;
-		if(reponseUtilisateur == 0){ // help
-			std::cout << "Aleatoire : attribue un sexe aléatoire." << std::endl;
-			std::cout << "Personnaliser : vous laisse le choix du sexe" << std::endl;
+		rep = commandManager->analyse(reponseUtilisateur);
+		std::cout << rep << std::endl;
+		if(rep == 0){ // help
+			std::cout << "aleatoire : attribue un sexe aléatoire." << std::endl;
+			std::cout << "personnaliser : vous laisse le choix du sexe" << std::endl;
+			rep = -1;
 		}
-		else if(reponseUtilisateur == 5){ // aleatoire
+		else if(rep == 5){ // aleatoire
 
 		}
-		else if(reponseUtilisateur == 6){ // personnaliser
-			while(reponseUtilisateur == -1 ){
+		else if(rep == 6){ // personnaliser
+			rep = -1;
+			while(rep == -1){
 			std::cout << "Quel est le sexe du personnage? : " << std::endl;
 			std::cin >> reponseUtilisateur;
-				if(commandManager->analyse(reponseUtilisateur) == -1){
+			rep = commandManager->analyse(reponseUtilisateur);
+				if(rep == -1){
 					commandManager->throwError();
 				}
-				else if(reponseUtilisateur == 0){
+				else if(rep == 0){
 					std::cout << "Homme : le sexe du personage est homme" << std::endl;
 					std::cout << "Femme : le sexe du personnage est femme" << std::endl;
-					std::endl;
+					std::cout << std::endl;
+					rep = -1;
 				}
-				else if(reponseUtilisateur == 3){
-
+				else if(rep == 3){
+					std::cout << "Homme" << std::endl;
 				}
-				else if(reponseUtilisateur == 4){
-
+				else if(rep == 4){
+					std::cout << "Femme" << std::endl;
 				}
 			}
 
 		}
+	}
 	return chara;
 }
 
@@ -159,6 +170,7 @@ Character* PNJFactory::createCharacterSaved(){
 void PNJFactory::setCharacter(Character* charac){
 	chara = charac;
 }
+
 Character* PNJFactory::getCharacter(){
 	return chara;
 }

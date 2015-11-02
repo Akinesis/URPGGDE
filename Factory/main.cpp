@@ -21,8 +21,7 @@
 int main(){
 	
 	Factory* fact = new PNJFactory();
-	fact->createAllRandom();
-	
+	fact->createPersonalize();
 	
 	// Lecture dossier
 	/*
