@@ -6,6 +6,7 @@
 class State;
 class StateStart;
 class StateCreate;
+class StatePlay;
 
 /*Liste des commandes possible :
 help, oui, non, personnage, monstre, boss, création, jouer, hote
@@ -21,6 +22,7 @@ class CommandManager{
 		bool inGame;
 		State *stateStart;
 		State *stateCreate;
+		State *statePlay;
 		State *currentState;
 
 	public:
@@ -32,6 +34,7 @@ class CommandManager{
 		State* getCurrentState();
 		State* getStateStart();
 		State* getStateCreate();
+		State* getStatePlay();
 	
 
 };
