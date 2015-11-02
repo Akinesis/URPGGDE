@@ -23,59 +23,59 @@ void StateCreate::help(){
 
 int StateCreate::man(){
 
-	return 2;
-}
-
-int StateCreate::woman(){
 	return 3;
 }
 
-int StateCreate::random(){
+int StateCreate::woman(){
 	return 4;
 }
 
-int StateCreate::custom(){
+int StateCreate::random(){
 	return 5;
 }
 
-int StateCreate::elf(){
+int StateCreate::custom(){
 	return 6;
 }
 
-int StateCreate::human(){
+int StateCreate::elf(){
 	return 7;
 }
 
-int StateCreate::orc(){
+int StateCreate::human(){
 	return 8;
 }
 
-int StateCreate::dwarf(){
+int StateCreate::orc(){
 	return 9;
 }
 
-int StateCreate::warrior(){
+int StateCreate::dwarf(){
 	return 10;
 }
 
-int StateCreate::mage(){
+int StateCreate::warrior(){
 	return 11;
 }
 
-int StateCreate::priest(){
+int StateCreate::mage(){
 	return 12;
 }
 
-int StateCreate::paladin(){
+int StateCreate::priest(){
 	return 13;
 }
 
-int StateCreate::hunter(){
+int StateCreate::paladin(){
 	return 14;
 }
 
-int StateCreate::rogue(){
+int StateCreate::hunter(){
 	return 15;
+}
+
+int StateCreate::rogue(){
+	return 16;
 }
 
 
