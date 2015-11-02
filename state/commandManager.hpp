@@ -1,26 +1,27 @@
 #ifndef COMMANDMANAGER
 #define	COMMANDMANAGER
 #include <string>
-#include <algorithm> 
+#include <algorithm>
 
 class State;
 class StateStart;
+class StateCreate;
 
 /*Liste des commandes possible :
 help, oui, non, personnage, monstre, boss, création, jouer, hote
-rejoindre, homme, femme, aléatoire, attaquer, elfe, orc
+rejoindre, homme, femme, aléatoire, personaliser, attaquer, elfe, orc
 huamin, nain, guerrier, mage, pretre, paladin, chasseur
-roublard, 
+roublard, exit,
 
 */
 
 
 class CommandManager{
 	private:
-		State *currentState;
+		bool inGame;
 		State *stateStart;
 		State *stateCreate;
-		bool inGame;
+		State *currentState;
 
 	public:
 		CommandManager();
