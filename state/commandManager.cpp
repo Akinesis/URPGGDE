@@ -2,9 +2,11 @@
 #include "state.hpp"
 #include "stateStart.hpp"
 #include "stateCreation.hpp"
+#include "statePlay.hpp"
 
 CommandManager::CommandManager(): inGame(false), stateStart(new StateStart(this)),
 									stateCreate(new StateCreate(this)),
+									statePlay(new StatePlay(this)),
 									currentState(stateStart) {
 
 }
@@ -23,6 +25,8 @@ int CommandManager::analyse(std::string commande){
 		return 0;
 	}else if(commande == "creation"){
 		return currentState->creation();
+	}else if(commande == "jouer"){
+		return currentState->play();
 	}else if(commande == "oui"){
 		return currentState->yes();
 	}else if(commande == "non"){
@@ -83,6 +87,10 @@ State* CommandManager::getStateStart(){
 
 State* CommandManager::getStateCreate(){
 	return stateCreate;
+}
+
+State* CommandManager::getStatePlay(){
+	return statePlay;
 }
 
 void CommandManager::setState(State* etat){

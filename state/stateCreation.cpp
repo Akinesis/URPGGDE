@@ -85,12 +85,12 @@ int StateCreate::exit(){
 	std::cin >> rep;
 	int decode = manager->analyse(rep);
 
-	if(decode ==1){
+	if(decode == 1){
 		manager->setState(manager->getStateStart());
 		return 0;
 	}else if(decode == 2){
 		std::cout << "Ok, on ne fait rien !" << std::endl;
-		return 1;
+		return 0;
 	}else{
 		std::cout << "Ce n'étais pas trop la réponse atendus !" << std::endl;
 		help();

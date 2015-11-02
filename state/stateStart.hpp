@@ -10,6 +10,7 @@ class StateStart : public State{
 		virtual ~StateStart();
 		void help();
 		int creation();
+		int play();
 
 		/* data */
 };
