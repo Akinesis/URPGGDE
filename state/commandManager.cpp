@@ -13,7 +13,7 @@ CommandManager::~CommandManager(){
 
 }
 
-int CommandManager::analys(std::string commande){
+int CommandManager::analyse(std::string commande){
 	//passage de la comamnde en minuscule, au cas oû.
 	std::transform(commande.begin(), commande.end(), commande.begin(), ::tolower);
 
@@ -67,6 +67,10 @@ int CommandManager::analys(std::string commande){
 	}
 
 	return 0;
+}
+
+void CommandManager::throwError(){
+	currentState->error();
 }
 
 State* CommandManager::getCurrentState(){

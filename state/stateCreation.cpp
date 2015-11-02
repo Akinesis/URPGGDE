@@ -83,7 +83,7 @@ int StateCreate::exit(){
 	std::cout << "Retours au début du programme ! Êtes vous sure ?" << std::endl;
 	std::string rep;
 	std::cin >> rep;
-	int decode = manager->analys(rep);
+	int decode = manager->analyse(rep);
 
 	if(decode ==1){
 		manager->setState(manager->getStateStart());

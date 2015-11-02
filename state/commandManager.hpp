@@ -26,8 +26,9 @@ class CommandManager{
 	public:
 		CommandManager();
 		~CommandManager();
-		int analys(std::string commande);
+		int analyse(std::string commande);
 		void setState(State* etat);
+		void throwError();
 		State* getCurrentState();
 		State* getStateStart();
 		State* getStateCreate();

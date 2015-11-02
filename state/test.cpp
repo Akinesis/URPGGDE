@@ -9,7 +9,7 @@ int main(){
 
 	while(rep!="stop"){
 		std::cin >> rep;
-		comm.analys(rep);
+		comm.analyse(rep);
 	}
 	
 	return 0;
