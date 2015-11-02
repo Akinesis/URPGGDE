@@ -63,7 +63,7 @@ int StateCreate::mage(){
 }
 
 int StateCreate::priest(){
-	return 12
+	return 12;
 }
 
 int StateCreate::paladin(){
