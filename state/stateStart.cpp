@@ -20,12 +20,12 @@ int StateStart::creation(){
 
 
 	manager->setState(manager->getStateCreate());
-	return 1;
+	return 0;
 }
 
 int StateStart::play(){
 	std::cout << "N'oubliez pas, vous ne pourrez jouer que si vous avez des personnages !" << std::endl;
 
 	manager->setState(manager->getStatePlay());
-	return 1;
+	return 0;
 }

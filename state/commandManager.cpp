@@ -61,7 +61,7 @@ int CommandManager::analyse(std::string commande){
 		return currentState->hunter();
 	}else if(commande == "roublard"){
 		return currentState->rogue();
-	}else if(commande == "personaliser"){
+	}else if(commande == "personnaliser"){
 		return currentState->custom();
 	}else if(commande == "canard"){
 		return currentState->what();
