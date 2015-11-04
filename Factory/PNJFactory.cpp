@@ -130,7 +130,7 @@ Character* PNJFactory::createPersonalize(){
 			rep = -1;
 		}
 		else if(rep == 5){ // aleatoire
-
+			randomSex(chara);
 		}
 		else if(rep == 6){ // personnaliser
 			rep = -1;
@@ -148,13 +148,178 @@ Character* PNJFactory::createPersonalize(){
 					rep = -1;
 				}
 				else if(rep == 3){
-					std::cout << "Homme" << std::endl;
+					while(rep == 3){
+						std::cout << "Etes-vous sur de vouloir créer un homme? : " << std::endl;
+						std::cin >> reponseUtilisateur;
+						rep = commandManager->analyse(reponseUtilisateur);
+						
+						if(rep == 1){
+							chara->setSexe("Homme");
+							std::cout << "Le personnage est desormais un Homme" << std::endl;
+						}
+						else if(rep == 2){
+							rep = -1;
+						}
+						else if(rep == 0){
+							std::cout << "'Oui' ou 'Non'" << std::endl;
+							rep = 3;
+						}
+						else{
+							rep = 3;
+						}
+					}
 				}
 				else if(rep == 4){
-					std::cout << "Femme" << std::endl;
+					while(rep == 4){
+
+						std::cout << "Etes-vous sur de vouloir créer une femme? : " << std::endl;
+						std::cin >> reponseUtilisateur;
+						rep = commandManager->analyse(reponseUtilisateur);
+						if(rep == 1){
+							chara->setSexe("Femme");
+							std::cout << "Le personnage est desormais une Femme" << std::endl;
+						}
+						else if(rep == 2){
+							rep = -1;
+						}
+						else if(rep == 0){
+							std::cout << "'Oui' ou 'Non'" << std::endl;
+							rep = 4;
+						}
+						else{
+							rep = 4;
+						}
+					}
 				}
 			}
+		}
+	}//while
 
+	rep = -1;
+	//Choix de la race
+	while(rep == -1){
+		std::cout << "Voulez-vous choisir la race de votre pesonnage ou en avoir un aleatoire? : ";
+		std::cin >> reponseUtilisateur;
+		rep = commandManager->analyse(reponseUtilisateur);
+		if(rep == 0){ // help
+			std::cout << "aleatoire : attribue une race aléatoire." << std::endl;
+			std::cout << "personnaliser : vous laisse le choix de la race" << std::endl;
+			rep = -1;
+		}
+		else if(rep == 5){//Aléatoire
+			chara->getRace()->createRandomRace();
+			chara->applyMinStat();
+			std::cout << "Vous êtes un " << chara->getRace()->getFrenchRaceName() << std::endl;
+		}
+		else if(rep == 6){
+			rep = -1;
+			while(rep == -1){
+				std::cout << "Quel est la race de votre personnage? : " << std::endl;
+				std::cin >> reponseUtilisateur;
+				rep = commandManager->analyse(reponseUtilisateur);
+	
+				if(rep == -1){
+				}
+				else if(rep == 0){
+					std::cout << "Voici les races disponibles : " << std::endl;
+					std::cout << "Humain : Incipide, possède des stats moyens partout." << std::endl;
+					std::cout << "Orc : Fort et resistant mais idiot et déraisoné." << std::endl;
+					std::cout << "Elfe : Agile et beaux mais pas très fort ni résistant" << std::endl;
+					std::cout << "Nain : Très résistant assez fort mais pas très sages ni beaux" << std::endl;
+					rep = -1;
+				}
+				else if(rep == 7){//Elfe
+					while(rep == 7){
+						std::cout << "Etes-vous sur de vouloir créer un Elfe?" << std::endl;
+						std::cin >> reponseUtilisateur;
+						rep = commandManager->analyse(reponseUtilisateur);
+						if(rep == 1){
+							chara->getRace()->createElf();
+							std::cout << "Votre personnage est un Elfe" << std::endl;
+							std::cout << rep << std::endl;
+						}
+						else if(rep == 2){
+							rep = -1;
+						}
+						else if(rep == 0){
+							std::cout << "'Oui' ou 'Non'" << std::endl;
+							rep = 7;
+						}
+						else{
+							rep = 7;
+						}
+					}
+				}
+				else if(rep == 8){//Humain
+					while(rep == 8){
+						std::cout << "Etes-vous sur de vouloir créer un Humain? (ils sont vraiment"
+						<<	" moyen partout aucun interet quoi! Enfin bon je veux pas vous influencer"
+						<<	" vous faites comme vous voulez. Même si je dis que c'est un mauvais choix)"
+						<< std::endl;
+						std::cin >> reponseUtilisateur;
+						rep = commandManager->analyse(reponseUtilisateur);
+						if(rep == 1){
+							chara->getRace()->createHuman();
+							std::cout << "Votre personnage est un Humain (tant pis)" << std::endl;
+							std::cout << rep << std::endl;
+						}
+						else if(rep == 2){
+							rep = -1;
+						}
+						else if(rep == 0){
+							std::cout << "'Oui' ou 'Non'" << std::endl;
+							rep = 8;
+						}
+						else{
+							rep = 8;
+						}
+					}
+				}
+				else if(rep == 9){//Orc
+					while(rep == 9){
+						std::cout << "Etes-vous sur de vouloir créer un Orc?" << std::endl;
+						std::cin >> reponseUtilisateur;
+						rep = commandManager->analyse(reponseUtilisateur);
+						if(rep == 1){
+							chara->getRace()->createOrc();
+							std::cout << "Votre personnage est un Orc" << std::endl;
+							std::cout << rep << std::endl;
+						}
+						else if(rep == 2){
+							rep = -1;
+						}
+						else if(rep == 0){
+							std::cout << "'Oui' ou 'Non'" << std::endl;
+							rep = 9;
+						}
+						else{
+							rep = 9;
+						}
+					}
+				}
+				else if(rep == 10){//Nain
+					while(rep == 10){
+						std::cout << "Etes-vous sur de vouloir créer un Nain?" << std::endl;
+						std::cin >> reponseUtilisateur;
+						rep = commandManager->analyse(reponseUtilisateur);
+						if(rep == 1){
+							chara->getRace()->createDwarf();
+							std::cout << "Votre personnage est un Nain" << std::endl;
+							std::cout << rep << std::endl;
+						}
+						else if(rep == 2){
+							rep = -1;
+						}
+						else if(rep == 0){
+							std::cout << "'Oui' ou 'Non'" << std::endl;
+							rep = 10;
+						}
+						else{
+							rep = 10;
+						}
+					}
+				}
+			}
 		}
 	}
 	return chara;
