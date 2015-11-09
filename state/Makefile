@@ -10,7 +10,7 @@ CXXFLAGS=-std=c++0x -Ofast -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unu
 LFLAGS=$(IDIRFLAG)
 
 # Directories
-SRCDIR=.
+SRCDIR=../state ../Observer
 OBJDIR=.
 BINDIR=.
 

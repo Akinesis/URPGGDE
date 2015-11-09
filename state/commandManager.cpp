@@ -3,11 +3,16 @@
 #include "stateStart.hpp"
 #include "stateCreation.hpp"
 #include "statePlay.hpp"
+#include "stateJoin.hpp"
+#include "stateHost.hpp"
 
-CommandManager::CommandManager(): inGame(false), stateStart(new StateStart(this)),
+CommandManager::CommandManager(Connexion* conect): inGame(false), stateStart(new StateStart(this)),
 									stateCreate(new StateCreate(this)),
 									statePlay(new StatePlay(this)),
-									currentState(stateStart) {
+									stateJoin(new StateJoin(this)),
+									stateHost(new StateHost(this)),
+									currentState(stateStart),
+									connexion(conect) {
 
 }
 
@@ -18,6 +23,7 @@ CommandManager::~CommandManager(){
 int CommandManager::analyse(std::string commande){
 	//passage de la comamnde en minuscule, au cas oû.
 	std::transform(commande.begin(), commande.end(), commande.begin(), ::tolower);
+	std::regex r("[0-9]*");
 
 	//début de l'analyse.
 	if(commande == "help"){
@@ -65,7 +71,15 @@ int CommandManager::analyse(std::string commande){
 		return currentState->custom();
 	}else if(commande == "canard"){
 		return currentState->what();
-	}else{
+	}else if(std::regex_match (commande,r)){
+		if(StateCreate* v = dynamic_cast<StateCreate*>(currentState)) {
+   			// old was safely casted to NewType
+ 	  		return 17;
+ 	  		delete v;
+		}else{
+			throwError();
+		}
+	}else{	
 		currentState->error();
 		return -1;
 	}
@@ -93,6 +107,22 @@ State* CommandManager::getStatePlay(){
 	return statePlay;
 }
 
+State* CommandManager::getStateJoin(){
+	return stateJoin;
+}
+
+State* CommandManager::getStateHost(){
+	return stateHost;
+}
+
 void CommandManager::setState(State* etat){
 	currentState = etat;
+}
+
+void CommandManager::createConnexionJoin(){
+
+}
+
+void CommandManager::createConnexionHost(){
+
 }
