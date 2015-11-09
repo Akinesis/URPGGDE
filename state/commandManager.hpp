@@ -2,6 +2,7 @@
 #define	COMMANDMANAGER
 #include <string>
 #include <algorithm>
+#include <regex>
 #include "../Observer/connexion.hpp"
 
 class State;
@@ -42,7 +43,6 @@ class CommandManager{
 		State* getStateCreate();
 		State* getStatePlay();
 		State* getStateJoin();
-		State* getStateHost();
 		State* getStateHost();
 
 		void createConnexionHost();

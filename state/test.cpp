@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
 #include "commandManager.hpp"
+#include "../Observer/connexion.hpp"
 
 int main(){
-	CommandManager comm = CommandManager();
+	CommandManager comm = CommandManager(new Connexion());
 
 	std::string rep;
 
