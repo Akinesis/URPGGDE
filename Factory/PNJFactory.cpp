@@ -77,7 +77,7 @@ Character* PNJFactory::createAllRandom(){
 	chara->setRandomLastName();
 	std::cout << "Votre Nom de Famille est " << chara->getLastName() << std::endl;
 
-	//Random des attributions des points de compétences
+	//Random d'attributions des points de compétences
 	randomSkillPoints(chara);
 
 	//Random de la classe
@@ -322,8 +322,308 @@ Character* PNJFactory::createPersonalize(){
 			}
 		}
 	}
+	rep = -1;
+	//Choix du prénom
+	while(rep == -1){
+		std::cout << "Voulez-vous choisir votre prénom ou en obtenir un aléatoire? : " << std::endl;
+		std::cin << reponseUtilisateur;
+		rep = commandManager->analyse(reponseUtilisateur);
+		if(rep == 5){
+			chara->setRandomName();
+			std::cout << "Votre prenom est : " << chara->getName() << endl;
+		}
+		else if(rep == 6){
+			std::cout << "Entrez votre prenom : " << std::endl;
+			std::cin << reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+			chara->setName(reponseUtilisateur);
+		}
+		else if(rep == 0){
+			std::cout << "Aleatoire : attribue un nom aléatoire" << std::endl;
+			std::cout << "personnaliser : vous laisse entrer le prenom de votre personnage" << std::endl;
+			rep = -1;
+		}
+	}
+	rep = -1;
+	//Choix du nom de famille
+	while(rep == -1){
+		std::cout << "Voulez-vous choisir votre nom de famille ou en obtenir un aléatoire? : " << std::endl;
+		std::cin << reponseUtilisateur;
+		rep = commandManager->analyse(reponseUtilisateur);
+		if(rep == 5){
+			chara->setRandomLastName();
+			std::cout << "Votre nomde famille est : " << chara->getLastName() << endl;
+		}
+		else if(rep == 6){
+			std::cout << "Entrez votre nom de famille : " << std::endl;
+			std::cin << reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+			chara->setLastName(reponseUtilisateur);
+		}
+		else if(rep == 0){
+			std::cout << "Aleatoire : attribue un nom de famille aléatoire" << std::endl;
+			std::cout << "personnaliser : vous laisse entrer le nom de famille de votre personnage" << std::endl;
+			rep = -1;
+		}
+	}
+	rep = -1;
+
+	//Attribution des points de compétences
+	int pts = 12;
+	std::cout << "Attribution des points de compétences : " << std::endl;
+	std::cout << "Vous disposez de 12 points à répartir dans 6 stats" << std::endl;
+	std::cout << "Vous êtes un : " << chara->getRace()->getFrenchRaceName() << std::endl;
+	while(rep == -1){
+
+		//Attribution Force
+			rep = 0;
+		while(rep == 0){
+			std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeStrengthMin() << " points en Force" << std::endl;
+			std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeStrengthMax() << " points" << std::endl;
+			std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
+			std::cin << reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+			if(rep == 17){ //Un nombre à été entré
+				std::stoi(reponseUtilisateur);
+				if(reponseUtilisateur <= 4){
+					chara->setStrength(chara->getStrength()+reponseUtilisateur);
+					pts -= reponseUtilisateur;
+					std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
+					rep = 1;
+				}
+				else if(reponseUtilisateur > 4){
+					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+					rep = 0;
+				}
+			}
+			else if(rep == -1){
+				std::cout << "Veuillez entrer un nombre svp." std::endl;
+				rep = 0;
+			}
+			else{
+				std::cout << "Erreur entrez un chiffre entre 0 et 4." << std::endl;
+				rep = 0;
+			}
+		}
+		rep = 0;
+		//Attribution Constitution
+		while(rep == 0){
+			std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeConstitutionMin() << " points en Constitution" << std::endl;
+			std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeConstitutionMax() << " points" << std::endl;
+			std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
+			std::cin << reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+			if(rep == 17){ //Un nombre à été entré
+				std::stoi(reponseUtilisateur);
+				if(reponseUtilisateur <= 4){
+					chara->setConstitution(chara->getConstitution()+reponseUtilisateur);
+					pts -= reponseUtilisateur;
+					std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
+					rep = 1;
+				}
+				else if(reponseUtilisateur > 4){
+					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+					rep = 0;
+				}
+			}
+			else if(rep == -1){
+				std::cout << "Veuillez entrer un nombre svp." std::endl;
+				rep = 0;
+			}
+			else{
+				std::cout << "Erreur entrez un chiffre entre 0 et 4." << std::endl;
+				rep = 0;
+			}
+		}
+		rep = 0;
+		//Attribution Dexterité
+		while(rep == 0){
+			std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeDexterityMin() << " points en Dexterite" << std::endl;
+			std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeDexterityMax() << " points" << std::endl;
+			std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
+			std::cin << reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+			if(rep == 17){ //Un nombre à été entré
+				std::stoi(reponseUtilisateur);
+				if(rep == 17 && reponseUtilisateur <= 4){
+					chara->setDexterity(chara->getDexterity()+reponseUtilisateur);
+					pts -= reponseUtilisateur;
+					std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
+					rep = 1;
+				}
+				else if(rep == 17 && reponseUtilisateur > 4){
+					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+					rep = 0;
+				}
+			}
+			else if(rep == -1){
+				std::cout << "Veuillez entrer un nombre svp." std::endl;
+				rep = 0;
+			}
+			else{
+				std::cout << "Erreur entrez un chiffre entre 0 et 4." << std::endl;
+				rep = 0;
+			}
+		}
+		rep = 0;
+		//Attribution Intelligence
+		while(rep == 0){
+			if(pts == 0){
+				rep = 1;
+			}
+			else{
+				std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeIntelligenceMin() << " points en Intelligence" << std::endl;
+				std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeIntelligenceMax() << " points" << std::endl;
+				std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
+				std::cin << reponseUtilisateur;
+				rep = commandManager->analyse(reponseUtilisateur);
+				if(rep == 17){ //Un nombre à été entré
+					std::stoi(reponseUtilisateur);
+					if(reponseUtilisateur <= 4 && reponseUtilisateur <= pts){
+						chara->setIntelligence(chara->getIntelligence()+reponseUtilisateur);
+						pts -= reponseUtilisateur;
+						std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
+						rep = 1;
+					}
+					else if(reponseUtilisateur > 4){
+						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+						rep = 0;
+					}
+					else if(reponseUtilisateur > pts){
+						std::cout << "Vous ne disposez plus que de " << pts << " points a repartir." << std::endl;
+						rep = 0;
+					}
+				}
+				else if(rep == -1){
+					std::cout << "Veuillez entrer un nombre svp." std::endl;
+					rep = 0;
+				}
+				else{
+					std::cout << "Erreur entrez un chiffre entre 0 et 4." << std::endl;
+					rep = 0;
+				}
+			}
+		}
+		rep = 0;
+		//Attribution Sagesse
+		while(rep == 0){
+			if(pts == 0){
+				rep = 1;
+			}
+			else{
+				std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeWisdomMin() << " points en Sagesse" << std::endl;
+				std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeWisdomMax() << " points" << std::endl;
+				std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
+				std::cin << reponseUtilisateur;
+				rep = commandManager->analyse(reponseUtilisateur);
+				if(rep == 17){ //Un nombre à été entré
+					std::stoi(reponseUtilisateur);
+					if(rep == 17 && reponseUtilisateur <= 4 && reponseUtilisateur <= pts){
+						chara->setWisdom(chara->getWisdom()+reponseUtilisateur);
+						pts -= reponseUtilisateur;
+						std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
+						rep = 1;
+					}
+					else if(rep == 17 && reponseUtilisateur > 4){
+						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+						rep = 0;
+					}
+					else if(reponseUtilisateur > pts){
+						std::cout << "Vous ne disposez plus que de " << pts << " points a repartir." << std::endl;
+						rep = 0;
+					}
+				}
+				else if(rep == -1){
+					std::cout << "Veuillez entrer un nombre svp." std::endl;
+					rep = 0;
+				}
+				else{
+					std::cout << "Erreur entrez un chiffre entre 0 et 4." << std::endl;
+					rep = 0;
+				}
+			}
+		}
+		rep = 0;
+		//Attribution Charisme
+		while(rep == 0){
+			if(pts == 0){
+				rep = 1;
+			}
+			else{
+				std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeCharismaMin() << " points en Charisme" << std::endl;
+				std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeCharismaMax() << " points" << std::endl;
+				std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
+				std::cin << reponseUtilisateur;
+				rep = commandManager->analyse(reponseUtilisateur);
+				if(rep == 17){ //Un nombre à été entré
+					std::stoi(reponseUtilisateur);
+					if(reponseUtilisateur <= 4 && reponseUtilisateur <= pts){
+						chara->setCharisma(chara->getCharisma()+reponseUtilisateur);
+						pts -= reponseUtilisateur;
+						std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
+						rep = 1;
+					}
+					else if(reponseUtilisateur > 4){
+						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+						rep = 0;
+					}
+					else if(reponseUtilisateur > pts){
+						std::cout << "Vous ne disposez plus que de " << pts << " points a repartir." << std::endl;
+						rep = 0;
+					}
+				}
+				else if(rep == -1){
+					std::cout << "Veuillez entrer un nombre svp." std::endl;
+					rep = 0;
+				}
+				else{
+					std::cout << "Erreur entrez un chiffre entre 0 et 4." << std::endl;
+					rep = 0;
+				}
+			}
+		}
+		if(pts > 0){
+			rep = -1;
+		}
+	}
+	rep = -1;
+	//Attribution Classe
+	while(rep == -1){
+		std::cout << "Voulez-vous choisir la classe de votre pesonnage ou en avoir un aleatoire? : ";
+		std::cin >> reponseUtilisateur;
+		rep = commandManager->analyse(reponseUtilisateur);
+		if(rep == 0){ // help
+			std::cout << "aleatoire : attribue une classe aléatoire." << std::endl;
+			std::cout << "personnaliser : vous laisse le choix de la classe" << std::endl;
+			rep = -1;
+		}
+		else if(rep == 5){//Aléatoire
+			chara->getClasse()->createRandomClass();
+			chara->applyModifications();
+			std::cout << "Vous êtes un " << chara->getClasse()->getClassName() << std::endl;
+		}
+		else if(rep == 6){//Personnalisé
+			std::cout << "Quelle est la classe de votre personnage? : " << std::endl;
+			std::cin >> reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+			if(rep == 0){//Help
+				std::cout << "Voici la liste des classes : " << std::endl;
+				std::cout << "Guerrier : Fort et resistant" << std::endl;
+				std::cout << "Mage : Lanceur de sort Intelligent" << std::endl;
+				std::cout << "Pretre"
+			}
+		}
+	}
+
+
 	return chara;
 }
+
+
+
+
+
+
 
 Character* PNJFactory::createCharacterSaved(){
 	chara = new PNJ();

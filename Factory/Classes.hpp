@@ -33,6 +33,7 @@ class Classes{
 		void createMage();
 		void createHunter();
 		void createThief();
+		void createPriest();
 
 		void createRandomClass();
 

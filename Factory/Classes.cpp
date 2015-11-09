@@ -62,9 +62,19 @@ void Classes::createThief(){
 	modifCharisma = 1;
 }
 
+void Classes::createPriest(){
+	className = "Pretre";
+	modifStrength = -2;
+	modifConstitution = -1;
+	modifDexterity = 0;
+	modifIntelligence = 1;
+	modifWisdom = 3;
+	modifCharisma = 0;
+}
+
 void Classes::createRandomClass(){
 	std::srand((unsigned int)std::time(0));
-	int rdmVar = (std::rand() % 5) + 1;
+	int rdmVar = (std::rand() % 6) + 1;
 
 	if(rdmVar == 1){
 		createPaladin();
@@ -78,8 +88,11 @@ void Classes::createRandomClass(){
 	else if(rdmVar == 4){
 		createHunter();
 	}
-	else{
+	else if(rdmVar == 5{
 		createThief();
+	}
+	else{
+		createPriest();
 	}
 }
 
