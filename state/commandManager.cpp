@@ -3,11 +3,16 @@
 #include "stateStart.hpp"
 #include "stateCreation.hpp"
 #include "statePlay.hpp"
+#include "stateJoin.hpp"
+#include "stateHost.hpp"
 
-CommandManager::CommandManager(): inGame(false), stateStart(new StateStart(this)),
+CommandManager::CommandManager(Connexion* conect): inGame(false), stateStart(new StateStart(this)),
 									stateCreate(new StateCreate(this)),
 									statePlay(new StatePlay(this)),
-									currentState(stateStart) {
+									stateJoin(new StateJoin(this)),
+									stateHost(new StateHost(this)),
+									currentState(stateStart),
+									connexion(conect) {
 
 }
 
@@ -93,6 +98,22 @@ State* CommandManager::getStatePlay(){
 	return statePlay;
 }
 
+State* CommandManager::getStateJoin(){
+	return stateJoin;
+}
+
+State* CommandManager::getStateHost(){
+	return stateHost;
+}
+
 void CommandManager::setState(State* etat){
 	currentState = etat;
+}
+
+void CommandManager::createConnexionJoin(){
+
+}
+
+void CommandManager::createConnexionHost(){
+	
 }

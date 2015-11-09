@@ -19,7 +19,7 @@ int StatePlay::join(){
 	std::cout << "Vous serrez donc joueur." << std::endl;
 
 
-	manager->setState(manager->getStateStart());
+	manager->setState(manager->getStateJoin());
 	return 1;
 }
 
@@ -27,7 +27,7 @@ int StatePlay::host(){
 	std::cout << "C'est donc vous qui serrez GM, bravo !" << std::endl;
 
 
-	manager->setState(manager->getStateStart());
+	manager->setState(manager->getStateHost());
 	return 1;
 }
 
