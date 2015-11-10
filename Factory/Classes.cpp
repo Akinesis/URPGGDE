@@ -88,7 +88,7 @@ void Classes::createRandomClass(){
 	else if(rdmVar == 4){
 		createHunter();
 	}
-	else if(rdmVar == 5{
+	else if(rdmVar == 5){
 		createThief();
 	}
 	else{

@@ -89,7 +89,7 @@ Character* PNJFactory::createAllRandom(){
 	ApplySkillPoints(chara);
 
 	//Création fichier texte
-	std::string mySave = "../Saves/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
+	std::string mySave = "Saves/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
 	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
 	if(save){
@@ -326,16 +326,15 @@ Character* PNJFactory::createPersonalize(){
 	//Choix du prénom
 	while(rep == -1){
 		std::cout << "Voulez-vous choisir votre prénom ou en obtenir un aléatoire? : " << std::endl;
-		std::cin << reponseUtilisateur;
+		std::cin >> reponseUtilisateur;
 		rep = commandManager->analyse(reponseUtilisateur);
-		if(rep == 5){
+		if(rep == 5){//Aleatoire
 			chara->setRandomName();
-			std::cout << "Votre prenom est : " << chara->getName() << endl;
+			std::cout << "Votre prénom est " << chara->getName() << std::endl;
 		}
-		else if(rep == 6){
+		else if(rep == 6){//Personnaliser
 			std::cout << "Entrez votre prenom : " << std::endl;
-			std::cin << reponseUtilisateur;
-			rep = commandManager->analyse(reponseUtilisateur);
+			std::cin >> reponseUtilisateur;
 			chara->setName(reponseUtilisateur);
 		}
 		else if(rep == 0){
@@ -348,16 +347,15 @@ Character* PNJFactory::createPersonalize(){
 	//Choix du nom de famille
 	while(rep == -1){
 		std::cout << "Voulez-vous choisir votre nom de famille ou en obtenir un aléatoire? : " << std::endl;
-		std::cin << reponseUtilisateur;
+		std::cin >> reponseUtilisateur;
 		rep = commandManager->analyse(reponseUtilisateur);
 		if(rep == 5){
 			chara->setRandomLastName();
-			std::cout << "Votre nomde famille est : " << chara->getLastName() << endl;
+			std::cout << "Votre nomde famille est : " << chara->getLastName() << std::endl;
 		}
 		else if(rep == 6){
 			std::cout << "Entrez votre nom de famille : " << std::endl;
-			std::cin << reponseUtilisateur;
-			rep = commandManager->analyse(reponseUtilisateur);
+			std::cin >> reponseUtilisateur;
 			chara->setLastName(reponseUtilisateur);
 		}
 		else if(rep == 0){
@@ -381,23 +379,23 @@ Character* PNJFactory::createPersonalize(){
 			std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeStrengthMin() << " points en Force" << std::endl;
 			std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeStrengthMax() << " points" << std::endl;
 			std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
-			std::cin << reponseUtilisateur;
+			std::cin >> reponseUtilisateur;
 			rep = commandManager->analyse(reponseUtilisateur);
 			if(rep == 17){ //Un nombre à été entré
-				std::stoi(reponseUtilisateur);
-				if(reponseUtilisateur <= 4){
-					chara->setStrength(chara->getStrength()+reponseUtilisateur);
-					pts -= reponseUtilisateur;
+				int ru  = std::stoi(reponseUtilisateur);
+				if(ru <= 4){
+					chara->setStrength(chara->getStrength()+ru);
+					pts -= ru;
 					std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
 					rep = 1;
 				}
-				else if(reponseUtilisateur > 4){
-					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+				else if(ru > 4){
+					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << std::endl;
 					rep = 0;
 				}
 			}
 			else if(rep == -1){
-				std::cout << "Veuillez entrer un nombre svp." std::endl;
+				std::cout << "Veuillez entrer un nombre svp." << std::endl;
 				rep = 0;
 			}
 			else{
@@ -411,23 +409,23 @@ Character* PNJFactory::createPersonalize(){
 			std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeConstitutionMin() << " points en Constitution" << std::endl;
 			std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeConstitutionMax() << " points" << std::endl;
 			std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
-			std::cin << reponseUtilisateur;
+			std::cin >> reponseUtilisateur;
 			rep = commandManager->analyse(reponseUtilisateur);
 			if(rep == 17){ //Un nombre à été entré
-				std::stoi(reponseUtilisateur);
-				if(reponseUtilisateur <= 4){
-					chara->setConstitution(chara->getConstitution()+reponseUtilisateur);
-					pts -= reponseUtilisateur;
+				int ru  = std::stoi(reponseUtilisateur);
+				if(ru <= 4){
+					chara->setConstitution(chara->getConstitution()+ru);
+					pts -= ru;
 					std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
 					rep = 1;
 				}
-				else if(reponseUtilisateur > 4){
-					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+				else if(ru > 4){
+					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << std::endl;
 					rep = 0;
 				}
 			}
 			else if(rep == -1){
-				std::cout << "Veuillez entrer un nombre svp." std::endl;
+				std::cout << "Veuillez entrer un nombre svp." << std::endl;
 				rep = 0;
 			}
 			else{
@@ -441,23 +439,23 @@ Character* PNJFactory::createPersonalize(){
 			std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeDexterityMin() << " points en Dexterite" << std::endl;
 			std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeDexterityMax() << " points" << std::endl;
 			std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
-			std::cin << reponseUtilisateur;
+			std::cin >> reponseUtilisateur;
 			rep = commandManager->analyse(reponseUtilisateur);
 			if(rep == 17){ //Un nombre à été entré
-				std::stoi(reponseUtilisateur);
-				if(rep == 17 && reponseUtilisateur <= 4){
-					chara->setDexterity(chara->getDexterity()+reponseUtilisateur);
-					pts -= reponseUtilisateur;
+				int ru  = std::stoi(reponseUtilisateur);
+				if(rep == 17 && ru <= 4){
+					chara->setDexterity(chara->getDexterity()+ru);
+					pts -= ru;
 					std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
 					rep = 1;
 				}
-				else if(rep == 17 && reponseUtilisateur > 4){
-					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+				else if(rep == 17 && ru > 4){
+					std::cout << "Impossible de répartir plus de 4 points dans une compétence." << std::endl;
 					rep = 0;
 				}
 			}
 			else if(rep == -1){
-				std::cout << "Veuillez entrer un nombre svp." std::endl;
+				std::cout << "Veuillez entrer un nombre svp." << std::endl;
 				rep = 0;
 			}
 			else{
@@ -475,27 +473,27 @@ Character* PNJFactory::createPersonalize(){
 				std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeIntelligenceMin() << " points en Intelligence" << std::endl;
 				std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeIntelligenceMax() << " points" << std::endl;
 				std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
-				std::cin << reponseUtilisateur;
+				std::cin >> reponseUtilisateur;
 				rep = commandManager->analyse(reponseUtilisateur);
 				if(rep == 17){ //Un nombre à été entré
-					std::stoi(reponseUtilisateur);
-					if(reponseUtilisateur <= 4 && reponseUtilisateur <= pts){
-						chara->setIntelligence(chara->getIntelligence()+reponseUtilisateur);
-						pts -= reponseUtilisateur;
+					int ru  = std::stoi(reponseUtilisateur);
+					if(ru <= 4 && ru <= pts){
+						chara->setIntelligence(chara->getIntelligence()+ru);
+						pts -= ru;
 						std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
 						rep = 1;
 					}
-					else if(reponseUtilisateur > 4){
-						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+					else if(ru > 4){
+						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << std::endl;
 						rep = 0;
 					}
-					else if(reponseUtilisateur > pts){
+					else if(ru > pts){
 						std::cout << "Vous ne disposez plus que de " << pts << " points a repartir." << std::endl;
 						rep = 0;
 					}
 				}
 				else if(rep == -1){
-					std::cout << "Veuillez entrer un nombre svp." std::endl;
+					std::cout << "Veuillez entrer un nombre svp." << std::endl;
 					rep = 0;
 				}
 				else{
@@ -514,27 +512,27 @@ Character* PNJFactory::createPersonalize(){
 				std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeWisdomMin() << " points en Sagesse" << std::endl;
 				std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeWisdomMax() << " points" << std::endl;
 				std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
-				std::cin << reponseUtilisateur;
+				std::cin >> reponseUtilisateur;
 				rep = commandManager->analyse(reponseUtilisateur);
 				if(rep == 17){ //Un nombre à été entré
-					std::stoi(reponseUtilisateur);
-					if(rep == 17 && reponseUtilisateur <= 4 && reponseUtilisateur <= pts){
-						chara->setWisdom(chara->getWisdom()+reponseUtilisateur);
-						pts -= reponseUtilisateur;
+					int ru  = std::stoi(reponseUtilisateur);
+					if(rep == 17 && ru <= 4 && ru <= pts){
+						chara->setWisdom(chara->getWisdom()+ru);
+						pts -= ru;
 						std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
 						rep = 1;
 					}
-					else if(rep == 17 && reponseUtilisateur > 4){
-						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+					else if(rep == 17 && ru > 4){
+						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << std::endl;
 						rep = 0;
 					}
-					else if(reponseUtilisateur > pts){
+					else if(ru > pts){
 						std::cout << "Vous ne disposez plus que de " << pts << " points a repartir." << std::endl;
 						rep = 0;
 					}
 				}
 				else if(rep == -1){
-					std::cout << "Veuillez entrer un nombre svp." std::endl;
+					std::cout << "Veuillez entrer un nombre svp." << std::endl;
 					rep = 0;
 				}
 				else{
@@ -553,27 +551,27 @@ Character* PNJFactory::createPersonalize(){
 				std:: cout << "Vous possedez de base de " << chara->getRace()->getRangeCharismaMin() << " points en Charisme" << std::endl;
 				std::cout << "Vous pouvez monter au maximum jusqu'a " << chara->getRace()->getRangeCharismaMax() << " points" << std::endl;
 				std::cout << "Combien de points voulez-vous y attribuer? : " << std::endl;
-				std::cin << reponseUtilisateur;
+				std::cin >> reponseUtilisateur;
 				rep = commandManager->analyse(reponseUtilisateur);
 				if(rep == 17){ //Un nombre à été entré
-					std::stoi(reponseUtilisateur);
-					if(reponseUtilisateur <= 4 && reponseUtilisateur <= pts){
-						chara->setCharisma(chara->getCharisma()+reponseUtilisateur);
-						pts -= reponseUtilisateur;
+					 int ru  = std::stoi(reponseUtilisateur);
+					if(ru <= 4 && ru <= pts){
+						chara->setCharisma(chara->getCharisma()+ru);
+						pts -= ru;
 						std::cout << "Il vous reste " << pts << " points à répartir." << std::endl;
 						rep = 1;
 					}
-					else if(reponseUtilisateur > 4){
-						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << endl;
+					else if(ru > 4){
+						std::cout << "Impossible de répartir plus de 4 points dans une compétence." << std::endl;
 						rep = 0;
 					}
-					else if(reponseUtilisateur > pts){
+					else if(ru > pts){
 						std::cout << "Vous ne disposez plus que de " << pts << " points a repartir." << std::endl;
 						rep = 0;
 					}
 				}
 				else if(rep == -1){
-					std::cout << "Veuillez entrer un nombre svp." std::endl;
+					std::cout << "Veuillez entrer un nombre svp." << std::endl;
 					rep = 0;
 				}
 				else{
@@ -603,19 +601,109 @@ Character* PNJFactory::createPersonalize(){
 			std::cout << "Vous êtes un " << chara->getClasse()->getClassName() << std::endl;
 		}
 		else if(rep == 6){//Personnalisé
-			std::cout << "Quelle est la classe de votre personnage? : " << std::endl;
-			std::cin >> reponseUtilisateur;
-			rep = commandManager->analyse(reponseUtilisateur);
-			if(rep == 0){//Help
-				std::cout << "Voici la liste des classes : " << std::endl;
-				std::cout << "Guerrier : Fort et resistant" << std::endl;
-				std::cout << "Mage : Lanceur de sort Intelligent" << std::endl;
-				std::cout << "Pretre"
+			while(rep == 6){
+				std::cout << "Quelle est la classe de votre personnage? : " << std::endl;
+				std::cin >> reponseUtilisateur;
+				rep = commandManager->analyse(reponseUtilisateur);
+				if(rep == 0){//Help
+					std::cout << "Voici la liste des classes : " << std::endl;
+					std::cout << "Guerrier : Fort et resistant" << std::endl;
+					std::cout << "Mage : Lanceur de sort Intelligent" << std::endl;
+					std::cout << "Pretre : Soigne grace à la magie, très Sage" << std::endl;
+					std::cout << "Ranger : Agile et connait la nature" << std::endl;
+					std::cout << "Roublard : Voleur Agile et sournois" << std::endl;
+					rep = 6;
+				}
+				else if(rep == 11){
+					std::cout << "Etes-vous sur de vouloir un guerrier? : " << std::endl;
+					std::cin >> reponseUtilisateur;
+					rep = commandManager->analyse(reponseUtilisateur);
+					if(rep == 1){
+						chara->getClasse()->createWarrior();
+					}
+					else{
+						rep = 6;
+					}
+				}
+				else if(rep == 12){
+					std::cout << "Etes-vous sur de vouloir un mage? : " << std::endl;
+					std::cin >> reponseUtilisateur;
+					rep = commandManager->analyse(reponseUtilisateur);
+					if(rep == 1){
+						chara->getClasse()->createMage();
+					}
+					else{
+						rep = 6;
+					}
+				}
+				else if(rep == 13){
+					std::cout << "Etes-vous sur de vouloir un pretre? : " << std::endl;
+					std::cin >> reponseUtilisateur;
+					rep = commandManager->analyse(reponseUtilisateur);
+					if(rep == 1){
+						chara->getClasse()->createPriest();
+					}
+					else{
+						rep = 6;
+					}
+				}
+				else if(rep == 14){
+					std::cout << "Etes-vous sur de vouloir un paladin? : " << std::endl;
+					std::cin >> reponseUtilisateur;
+					rep = commandManager->analyse(reponseUtilisateur);
+					if(rep == 1){
+						chara->getClasse()->createPaladin();
+					}
+					else{
+						rep = 0;
+					}
+				}
+				else if(rep == 15){
+					std::cout << "Etes-vous sur de vouloir un ranger? : " << std::endl;
+					std::cin >> reponseUtilisateur;
+					rep = commandManager->analyse(reponseUtilisateur);
+					if(rep == 1){
+						chara->getClasse()->createHunter();
+					}
+					else{
+						rep = 0;
+					}
+				}
+				else if(rep == 16){
+					std::cout << "Etes-vous sur de vouloir un Roublard? : " << std::endl;
+					std::cin >> reponseUtilisateur;
+					rep = commandManager->analyse(reponseUtilisateur);
+					if(rep == 1){
+						chara->getClasse()->createThief();
+					}
+					else{
+						rep = 0;
+					}
+				}
 			}
 		}
 	}
+	ApplySkillPoints(chara);
 
+	//creation fichier save
+	std::string mySave = "Saves/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
+	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
+	if(save){
+		save << "Prenom: " << chara->getName() << "	Nom : " << chara->getLastName() << std::endl;
+		save << "Sexe : " << chara->getSexe() << "	Race : " << chara->getRace()->getRaceName() << std::endl;
+		save << "Classe : " << chara->getClasse()->getClassName() << std::endl;
+		save << std::endl;
+		save << "Points de vie :  " << chara->getCurrentLifePoints() << " / " << chara->getLifePoints() << std::endl;
+		save << "Points de mana : " << chara->getCurrentManaPoints() << " / " << chara->getManaPoints() << std::endl;
+		save << std::endl;
+		save << "Force : 		" << chara->getStrength() << std::endl;
+		save << "Constitution : " << chara->getConstitution() << std::endl;
+		save << "Dexterite : 	" << chara->getDexterity() << std::endl;
+		save << "Intelligence : " << chara->getIntelligence() << std::endl;
+		save << "Sagesse : 		" << chara->getWisdom() << std::endl;
+		save << "Charisme :		" << chara->getCharisma() << std::endl;
+	}
 	return chara;
 }
 

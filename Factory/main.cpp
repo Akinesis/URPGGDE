@@ -19,10 +19,11 @@
 #include <dirent.h>
 
 int main(){
-	
 	Factory* fact = new PNJFactory();
 	fact->createPersonalize();
-	
+
+
+
 	// Lecture dossier
 	/*
 	DIR* rep = NULL;
