@@ -37,7 +37,7 @@ class CommandManager{
 		~CommandManager();
 		int analyse(std::string commande);
 		void setState(State* etat);
-		void throwError();
+		int throwError();
 		State* getCurrentState();
 		State* getStateStart();
 		State* getStateCreate();

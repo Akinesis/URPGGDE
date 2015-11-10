@@ -156,6 +156,7 @@ int State::what(){
 	return 0;
 }
 
-void State::error(){
+int State::error(){
 	std::cout << "Commande invalide désoler !"<< std::endl;
+	return -1;
 }

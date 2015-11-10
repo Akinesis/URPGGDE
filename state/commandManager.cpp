@@ -72,12 +72,12 @@ int CommandManager::analyse(std::string commande){
 	}else if(commande == "canard"){
 		return currentState->what();
 	}else if(std::regex_match (commande,r)){
-		if(StateCreate* v = dynamic_cast<StateCreate*>(currentState)) {
+		if(StateCreate* v = dynamic_cast<StateCreate*>(currentState)){
    			// old was safely casted to NewType
  	  		return 17;
  	  		delete v;
 		}else{
-			throwError();
+			return throwError();
 		}
 	}else{	
 		currentState->error();
@@ -87,8 +87,8 @@ int CommandManager::analyse(std::string commande){
 	return 0;
 }
 
-void CommandManager::throwError(){
-	currentState->error();
+int CommandManager::throwError(){
+	return currentState->error();
 }
 
 State* CommandManager::getCurrentState(){

@@ -41,7 +41,7 @@ class State{
 		virtual int rogue();
 
 		virtual int what();
-		virtual void error();
+		virtual int error();
 
 };
 

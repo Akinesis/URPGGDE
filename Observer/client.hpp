@@ -1,0 +1,1 @@
+virtual update() = 0;

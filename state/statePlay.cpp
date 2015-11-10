@@ -20,7 +20,7 @@ int StatePlay::join(){
 
 
 	manager->setState(manager->getStateJoin());
-	return 1;
+	return 0;
 }
 
 int StatePlay::host(){
@@ -28,7 +28,7 @@ int StatePlay::host(){
 
 
 	manager->setState(manager->getStateHost());
-	return 1;
+	return 0;
 }
 
 int StatePlay::exit(){
