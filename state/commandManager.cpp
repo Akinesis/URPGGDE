@@ -77,6 +77,10 @@ int CommandManager::analyse(std::string commande){
 		return currentState->rogue();
 	}else if(commande == "personnaliser"){
 		return currentState->custom();
+	}else if(commande == "joueur"){
+		return currentState->join();
+	}else if(commande == "hote"){
+		return currentState->host();
 	}else if(commande == "canard"){
 		return currentState->what();
 	}else if(is_number(commande)){
@@ -130,11 +134,11 @@ void CommandManager::setState(State* etat){
 
 //Fonction pour l'observer
 void CommandManager::createConnexionJoin(){
-
+	connexion->initClient();
 }
 
 void CommandManager::createConnexionHost(){
-
+	connexion->initServer();
 }
 
 bool CommandManager::is_number(const std::string& s){

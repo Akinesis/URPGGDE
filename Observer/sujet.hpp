@@ -1,16 +1,13 @@
 #ifndef SUBJECT
 #define SUBJECT
-
-class Observer;
+#include "client.hpp"
 
 class Subject{
 
 	public:
-		Subject();
-		virtual ~Subject();
-		virtual void addObserver(Observer o) = 0;
-		virtual void removeobserver(Observer o) = 0;
-		virtual void notifyObserver() =0;
+		virtual void addClient(Client c) = 0;
+		virtual void removeClient(Client c) = 0;
+		virtual void notifyClient() =0;
 
 
 };
