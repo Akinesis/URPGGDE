@@ -16,6 +16,15 @@ CommandManager::CommandManager(Connexion* conect): inGame(false), stateStart(new
 
 }
 
+CommandManager::CommandManager(): inGame(false), stateStart(new StateStart(this)),
+									stateCreate(new StateCreate(this)),
+									statePlay(new StatePlay(this)),
+									stateJoin(new StateJoin(this)),
+									stateHost(new StateHost(this)),
+									currentState(stateStart) {
+
+}
+
 CommandManager::~CommandManager(){
 
 }
@@ -23,7 +32,6 @@ CommandManager::~CommandManager(){
 int CommandManager::analyse(std::string commande){
 	//passage de la comamnde en minuscule, au cas oû.
 	std::transform(commande.begin(), commande.end(), commande.begin(), ::tolower);
-	std::regex r("[0-9]*");
 
 	//début de l'analyse.
 	if(commande == "help"){
@@ -71,7 +79,7 @@ int CommandManager::analyse(std::string commande){
 		return currentState->custom();
 	}else if(commande == "canard"){
 		return currentState->what();
-	}else if(std::regex_match (commande,r)){
+	}else if(is_number(commande)){
 		if(StateCreate* v = dynamic_cast<StateCreate*>(currentState)){
    			// old was safely casted to NewType
  	  		return 17;
@@ -119,10 +127,17 @@ void CommandManager::setState(State* etat){
 	currentState = etat;
 }
 
+
+//Fonction pour l'observer
 void CommandManager::createConnexionJoin(){
 
 }
 
 void CommandManager::createConnexionHost(){
 
+}
+
+bool CommandManager::is_number(const std::string& s){
+    return !s.empty() && std::find_if(s.begin(), 
+        s.end(), [](char c) { return !std::isdigit(c); }) == s.end();
 }

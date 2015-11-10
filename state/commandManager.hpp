@@ -2,7 +2,6 @@
 #define	COMMANDMANAGER
 #include <string>
 #include <algorithm>
-#include <regex>
 #include "../Observer/connexion.hpp"
 
 class State;
@@ -33,6 +32,7 @@ class CommandManager{
 		Connexion *connexion;
 
 	public:
+		CommandManager();
 		CommandManager(Connexion* conect);
 		~CommandManager();
 		int analyse(std::string commande);
@@ -47,6 +47,8 @@ class CommandManager{
 
 		void createConnexionHost();
 		void createConnexionJoin();
+
+		bool is_number(const std::string& s);
 	
 
 };
