@@ -715,7 +715,79 @@ Character* PNJFactory::createPersonalize(){
 
 Character* PNJFactory::createCharacterSaved(){
 	chara = new PNJ();
+	std::string reponseUtilisateur;
+	std::string fileName;
 	std::cout << "Quel personnage voulez-vous charger?" << std::endl;
+	DIR* rep = NULL;
+	struct dirent* fichierLu = NULL;
+	rep = opendir("Saves/");
+
+	if(rep == NULL){
+		std::cout << "Erreur repertoire inaccessible." << std::endl;
+		exit(1);
+	}
+	int i = 1;
+	int j = 1;
+	std::cout << "Liste des sauvegardes : " << std::endl;
+	while((fichierLu = readdir(rep)) != NULL){
+		if(i > 2){
+			std::cout << j << " : " << fichierLu->d_name << std::endl;
+			++j
+		}
+		++i;
+	}
+	i = 1;
+	j = 1;
+	std::cin >> reponseUtilisateur;
+
+	while((fichierLu = readdir(rep)) != NULL){ 
+		if(i > 2){
+			if(j == std::stoi(reponseUtilisateur)){
+				fileName(fichierLu->d_name);
+			}
+			++j;
+		}
+		++i;
+	}
+	std::string cast = "Save/" + fileName;
+	char* raceFile = (char*)cast.c_str();
+	std::ifstream file(raceFile, std::ios::in);
+	std::string chaine;
+	if(file){
+		//Recupération du prénom et du nom de famille
+		file >> chaine;
+		file >> chaine;
+		chara->setName(chaine);
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setLastName(chaine);
+		//Récupération du sexe et de la race
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setSexe(chaine);
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->getRace()->setRaceName(chaine);
+		if(chaine == "Human"){
+			chara->setFrenchRaceName("Humain");
+		}
+		if(chaine == "Elf"){
+			chara->setFrenchRaceName("Elfe");
+		}
+		if(chaine == "Orc"){
+			chara->setFrenchRaceName("Orc");
+		}
+		if(chaine == "Dwarf"){
+			chara->setFrenchRaceName("Nain");
+		}
+
+
+	}
+
+
 	return chara;
 }
 

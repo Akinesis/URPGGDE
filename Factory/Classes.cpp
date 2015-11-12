@@ -126,3 +126,7 @@ int Classes::getModifCharisma(){
 std::string Classes::getClassName(){
 	return className;
 }
+
+void Classes::setClassName(std::string n){
+	className = n;
+}

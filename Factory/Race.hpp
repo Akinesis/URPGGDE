@@ -47,7 +47,7 @@ class Race{
 		void createDwarf();
 
 		std::string getRaceName();
-		void setRace(std::string);
+		void setRaceName(std::string);
 		std::string getFrenchRaceName();
 		void setFrenchRaceName(std::string);
 

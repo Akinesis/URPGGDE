@@ -101,7 +101,7 @@ std::string Race::getRaceName(){
 	return raceName;
 }
 
-void Race::setRace(std::string ra){
+void Race::setRaceName(std::string ra){
 	raceName = ra;
 }
 

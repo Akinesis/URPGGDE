@@ -45,6 +45,7 @@ class Classes{
 		int getModifWisdom();
 		int getModifCharisma();
 		std::string getClassName();
+		void setClassName(std::string);
 
 
 };
