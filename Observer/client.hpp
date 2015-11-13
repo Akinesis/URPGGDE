@@ -15,9 +15,13 @@
 
 class Client{
 	private:
-		int sockfd, portno; 			//le socket du serveur et le port de connexion
-		struct sockaddr_in serv_addr;   //l'addresse du serveur
-    	struct hostent *server;			//nécéssaire à la création du serveur
+		int sockfd, portno; 				//Le socket du serveur et le port de connexion
+		struct sockaddr_in serv_addr;   	//L'addresse du serveur
+    	struct hostent *server;				//Nécéssaire à la création du serveur
+
+    	pthread_t threadSend, threadReceive;//Les thread pour l'envoi et la reception de méssages
+    	void *receiveThreading( void *ptr );//La fonction thread de réception
+    	bool haveMessageToSend;
 	public:
 		Client();
 		~Client();
