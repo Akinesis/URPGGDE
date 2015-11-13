@@ -18,8 +18,9 @@ class PNJFactory : public Factory{
 		virtual ~PNJFactory();
 
 		Character* createAllRandom();
-		Character* createPersonalize();
+		Character* createPersonnalize();
 		Character* createCharacterSaved();
+		Character* createCharacter();
 
 		void randomSex(Character*);
 		void randomSkillPoints(Character*);

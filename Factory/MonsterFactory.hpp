@@ -16,8 +16,10 @@ class MonsterFactory : public Factory{
 		virtual ~MonsterFactory();
 
 		Character* createAllRandom();
-		Character* createPersonalize();
+		Character* createPersonnalize();
 		Character* createCharacterSaved();
+
+		Character* createCharacter();
 
 		//Getters Setters
 		Character* getCharacter();

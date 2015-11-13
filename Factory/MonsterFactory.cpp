@@ -130,7 +130,7 @@ Character* MonsterFactory::createAllRandom(){
 	return chara;
 }//fin
 
-Character* MonsterFactory::createPersonalize(){
+Character* MonsterFactory::createPersonnalize(){
 	//chara = new Monster();
 
 	return chara;
@@ -139,6 +139,10 @@ Character* MonsterFactory::createPersonalize(){
 Character* MonsterFactory::createCharacterSaved(){
 	//chara = new Monster();
 
+	return chara;
+}
+
+Character* MonsterFactory::createCharacter(){
 	return chara;
 }
 

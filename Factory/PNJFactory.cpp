@@ -110,13 +110,10 @@ Character* PNJFactory::createAllRandom(){
 	return chara;
 }
 
-Character* PNJFactory::createPersonalize(){
+Character* PNJFactory::createPersonnalize(){
 	chara = new PNJ();
 	std::string reponseUtilisateur;
 	int rep = -1;
-	////////////////////////////////////////////////////////////////
-	commandManager->setState(commandManager->getStateCreate());
-	////////////////////////////////////////////////////////////////
 
 	// Choix du sexe
 	while(rep == -1){
@@ -193,6 +190,10 @@ Character* PNJFactory::createPersonalize(){
 				}
 			}
 		}
+		else{
+			std::cout << "Commande invalide!" << std::endl;
+			rep = -1;
+		}
 	}//while
 
 	rep = -1;
@@ -201,6 +202,7 @@ Character* PNJFactory::createPersonalize(){
 		std::cout << "Voulez-vous choisir la race de votre pesonnage ou en avoir un aleatoire? : ";
 		std::cin >> reponseUtilisateur;
 		rep = commandManager->analyse(reponseUtilisateur);
+		std::cout << rep << std::endl;
 		if(rep == 0){ // help
 			std::cout << "aleatoire : attribue une race aléatoire." << std::endl;
 			std::cout << "personnaliser : vous laisse le choix de la race" << std::endl;
@@ -321,6 +323,10 @@ Character* PNJFactory::createPersonalize(){
 				}
 			}
 		}
+		else{
+			std::cout << "Commande invalide!" << std::endl;
+			rep = -1;
+		}
 	}
 	rep = -1;
 	//Choix du prénom
@@ -342,6 +348,10 @@ Character* PNJFactory::createPersonalize(){
 			std::cout << "personnaliser : vous laisse entrer le prenom de votre personnage" << std::endl;
 			rep = -1;
 		}
+		else{
+			std::cout << "Commande invalide!" << std::endl;
+			rep = -1;
+		}
 	}
 	rep = -1;
 	//Choix du nom de famille
@@ -361,6 +371,10 @@ Character* PNJFactory::createPersonalize(){
 		else if(rep == 0){
 			std::cout << "Aleatoire : attribue un nom de famille aléatoire" << std::endl;
 			std::cout << "personnaliser : vous laisse entrer le nom de famille de votre personnage" << std::endl;
+			rep = -1;
+		}
+		else{
+			std::cout << "Commande invalide!" << std::endl;
 			rep = -1;
 		}
 	}
@@ -680,6 +694,10 @@ Character* PNJFactory::createPersonalize(){
 						rep = 0;
 					}
 				}
+				else{
+				std::cout << "Commande invalide!" << std::endl;
+				rep = -1;
+				}	
 			}
 		}
 	}
@@ -714,6 +732,11 @@ Character* PNJFactory::createPersonalize(){
 
 
 Character* PNJFactory::createCharacterSaved(){
+
+	////////////////////////////////////////////////////////////////
+	commandManager->setState(commandManager->getStateCreate());
+	////////////////////////////////////////////////////////////////
+
 	chara = new PNJ();
 	std::string reponseUtilisateur;
 	std::string fileName;
@@ -732,7 +755,7 @@ Character* PNJFactory::createCharacterSaved(){
 	while((fichierLu = readdir(rep)) != NULL){
 		if(i > 2){
 			std::cout << j << " : " << fichierLu->d_name << std::endl;
-			++j
+			++j;
 		}
 		++i;
 	}
@@ -743,7 +766,7 @@ Character* PNJFactory::createCharacterSaved(){
 	while((fichierLu = readdir(rep)) != NULL){ 
 		if(i > 2){
 			if(j == std::stoi(reponseUtilisateur)){
-				fileName(fichierLu->d_name);
+				fileName = std::string(fichierLu->d_name);
 			}
 			++j;
 		}
@@ -772,25 +795,102 @@ Character* PNJFactory::createCharacterSaved(){
 		file >> chaine;
 		chara->getRace()->setRaceName(chaine);
 		if(chaine == "Human"){
-			chara->setFrenchRaceName("Humain");
+			chara->getRace()->setFrenchRaceName("Humain");
 		}
 		if(chaine == "Elf"){
-			chara->setFrenchRaceName("Elfe");
+			chara->getRace()->setFrenchRaceName("Elfe");
 		}
 		if(chaine == "Orc"){
-			chara->setFrenchRaceName("Orc");
+			chara->getRace()->setFrenchRaceName("Orc");
 		}
 		if(chaine == "Dwarf"){
-			chara->setFrenchRaceName("Nain");
+			chara->getRace()->setFrenchRaceName("Nain");
 		}
-
-
+		//Récupération de la classe de la vie et du mana
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->getClasse()->setClassName(chaine);
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setCurrentLifePoints(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		chara->setLifePoints(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setCurrentManaPoints(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		chara->setManaPoint(std::stoi(chaine));
+		//Récupération des stats 
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setStrength(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setConstitution(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setDexterity(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setIntelligence(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setWisdom(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		file >> chaine;
+		chara->setCharisma(std::stoi(chaine));
 	}
 
 
 	return chara;
 }
 
+Character* PNJFactory::createCharacter(){
+
+	////////////////////////////////////////////////////////////////
+	commandManager->setState(commandManager->getStateCreate());
+	////////////////////////////////////////////////////////////////
+
+	std::string reponseUtilisateur;
+	int rep = -1;
+	while(rep == -1){
+		std::cout << "Voulez-vous créer un personnage personnalisé ou un personnage aléatoire? : " << std::endl;
+		std::cin >> reponseUtilisateur;
+		rep = commandManager->analyse(reponseUtilisateur);
+		std::cout << rep << std::endl;
+		if(rep == 5){// aléatoire
+			return createAllRandom();
+		}
+		else if(rep == 6){
+			return createPersonnalize();
+		}
+		else if(rep == 0){
+			std::cout << "aleatoire : attribue un personnage aléatoire." << std::endl;
+			std::cout << "personnaliser : vous laisse la création du personnage." << std::endl;
+			rep = -1;
+		}
+		else{
+			std::cout << "Commande invalide!" << std::endl;
+			rep = -1;
+		}
+	}
+	return createAllRandom();
+}
 
 void PNJFactory::setCharacter(Character* charac){
 	chara = charac;
