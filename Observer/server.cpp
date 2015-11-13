@@ -27,13 +27,17 @@ void Server::notifyClient(){
 
 void Server::init(){
 
+	struct sockaddr_in cli_addr;
+    socklen_t clilen;
+    clilen = sizeof(cli_addr);
+
 	std::string rep;
 	std::cout << "Quel port voulez vous utilisé ?\nLes port valide vont de 1 à 65535." << std::endl;
 	std::cin >> rep;
 
-	char* plop = (char*)rep.c_str();
+	//char* plop = (char*)rep.c_str();
 
-	portno = atoi(plop);
+	portno = atoi(rep);
 
 	if(portno <= 0 || portno > 65535){
 		portno = 2020;
@@ -62,6 +66,18 @@ void Server::init(){
           perror("ERROR on binding");
     std::cout << "socket crée !" <<std::endl;
 
+
+    /*
+    	création des troi threads : écoute, send et receive
+    */
+
+
+    //à thread normalement
+    //listen(sockfd,5);
+    //newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
+    //if( newsockfd < 0){
+	//	perror("ERROR on accept");
+	//}
 
 }
 
