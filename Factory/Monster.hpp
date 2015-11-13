@@ -19,12 +19,18 @@ class Monster : public Character{
 		std::string performAttack();
 		std::string defend();
 
+
 		// Getters Setters
 		int getDommagesDe();
 		int getDommagesAdditionnels();
 		void setDommagesDe(int);
 		void setDommagesAdditionnels(int);
 
+		//Getter Setters de Character non utilisé
+		void setRandomName();
+		void setRandomLastName();
+		void setLastName(std::string);
+		std::string getLastName();
 };
 
 

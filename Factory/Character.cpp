@@ -132,5 +132,11 @@ void Character::setDefense(int def){
 int Character::getDefense(){
 	return defense;
 }
+void Character::setProtection(int p){
+	protection = p;
+}
+int Character::getProtection(){
+	return protection;
+}
 //GETTERS SETTERS END
 ///////////////////////////////////////////////////////

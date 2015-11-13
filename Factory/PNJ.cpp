@@ -105,4 +105,8 @@ void PNJ::setRandomLastName(){
 	}
 }
 
-// Getters Setters END
+// Getters Setters de Monster
+int PNJ::getDommagesDe(){return 1;}
+void PNJ::setDommagesDe(int i){i=i;}
+int PNJ::getDommagesAdditionnels(){return 1;}
+void PNJ::setDommagesAdditionnels(int){}

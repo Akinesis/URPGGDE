@@ -25,6 +25,12 @@ class PNJ : public Character {
 		void setLastName(std::string);
 		void setRandomName();
 		void setRandomLastName();
+
+		//Getters Setters pour Monster
+		int getDommagesDe();
+		void setDommagesDe(int);
+		int getDommagesAdditionnels();
+		void setDommagesAdditionnels(int);
 };
 
 

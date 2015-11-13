@@ -5,8 +5,8 @@ MonsterFactory::MonsterFactory() {}
 MonsterFactory::~MonsterFactory() {}
 
 Character* MonsterFactory::createAllRandom(){
-	//chara = new Monster();
-	/*
+	chara = new Monster();
+	
 	const int nbCategory = 3;
 	const int passToH = 9;
 	const int tailleH = 5;
@@ -126,7 +126,7 @@ Character* MonsterFactory::createAllRandom(){
 		}//if
 	}//else
 
-	*/
+	
 	return chara;
 }//fin
 

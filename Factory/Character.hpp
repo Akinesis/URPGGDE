@@ -89,7 +89,16 @@ class Character {
 		int getAttack();
 		void setDefense(int);
 		int getDefense();
+
+		void setProtection(int);
+		int getProtection();
 	// Getters Setters END
+
+	// Getters Setters pour Monster
+		virtual int getDommagesDe()=0;
+		virtual void setDommagesDe(int)=0;
+		virtual int getDommagesAdditionnels()=0;
+		virtual void setDommagesAdditionnels(int)=0;
 
 };
 

@@ -52,3 +52,10 @@ void Monster::setDommagesDe(int dd){
 void Monster::setDommagesAdditionnels(int da){
 	dommagesAdditionnels = da;
 }
+
+
+
+void Monster::setRandomName(){}
+void Monster::setRandomLastName(){}
+void Monster::setLastName(std::string a){a = a;}
+std::string Monster::getLastName(){std::string a = "a"; return a;}

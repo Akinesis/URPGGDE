@@ -761,8 +761,8 @@ Character* PNJFactory::createCharacterSaved(){
 	}
 	i = 1;
 	j = 1;
+	rep = opendir("Saves/");
 	std::cin >> reponseUtilisateur;
-
 	while((fichierLu = readdir(rep)) != NULL){ 
 		if(i > 2){
 			if(j == std::stoi(reponseUtilisateur)){
@@ -772,7 +772,7 @@ Character* PNJFactory::createCharacterSaved(){
 		}
 		++i;
 	}
-	std::string cast = "Save/" + fileName;
+	std::string cast = "Saves/" + fileName;
 	char* raceFile = (char*)cast.c_str();
 	std::ifstream file(raceFile, std::ios::in);
 	std::string chaine;
@@ -854,6 +854,9 @@ Character* PNJFactory::createCharacterSaved(){
 		file >> chaine;
 		file >> chaine;
 		chara->setCharisma(std::stoi(chaine));
+	}
+	else{
+		std::cout << "Impossible d'ouvrir le fichier" << std::endl;
 	}
 
 

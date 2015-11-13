@@ -5,6 +5,7 @@
 #include "Inventory.hpp"
 #include "Factory.hpp"
 #include "PNJFactory.hpp"
+#include "MonsterFactory.hpp"
 #include "../state/commandManager.hpp"
 
 #include <ctime>
@@ -21,10 +22,8 @@
 int main(){
 	using namespace std;
 
-	Factory* fact = new PNJFactory();
-	Character* chara = fact->createCharacterSaved();
-	cout <<chara->getName() << endl;;
-
+	Factory* fact = new MonsterFactory();
+	//Character* chara = fact->createCharacterSaved();
 	//Character* chara = fact->createCharacter();
 
 
