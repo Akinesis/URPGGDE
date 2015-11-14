@@ -18,8 +18,10 @@ class MonsterFactory : public Factory{
 		Character* createAllRandom();
 		Character* createPersonnalize();
 		Character* createCharacterSaved();
-
 		Character* createCharacter();
+
+		void createBestiaryMonster(Character*);
+		void createPersonnalizeMonster(Character*);
 
 		//Getters Setters
 		Character* getCharacter();

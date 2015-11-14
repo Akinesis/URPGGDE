@@ -9,7 +9,7 @@ Character* MonsterFactory::createAllRandom(){
 	
 	const int nbCategory = 3;
 	const int passToH = 9;
-	const int tailleH = 5;
+	const int tailleH = 4;
 	const int tailleB = 5;
 	const int tailleF = 5;
 
@@ -131,7 +131,57 @@ Character* MonsterFactory::createAllRandom(){
 }//fin
 
 Character* MonsterFactory::createPersonnalize(){
-	//chara = new Monster();
+	chara = new Monster();
+
+	std::string = reponseUtilisateur;
+	int rep = -1;
+
+	while(rep == -1){
+		std::cout << "Voulez-vous : " << std::endl;
+		std::cout << "1 : créer un monstre à partir du bestiaire." << std::endl;
+		std::cout << "2 : créer un monstre entierement personnalisé." << std::endl;
+		std::cin >> reponseUtilisateur;
+		if(reponseUtilisateur == "1"){
+			std::cout << "Etes-vous sur de vouloir sélectionner un monstre du bestiaire? : " << std::endl;
+			std::cin >> reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+			if(rep == 1){
+				createBestiaryMonster(chara);
+			}
+			else if(rep == 2){
+				rep = -1;
+			}
+			else if(rep == 0){
+				std::cout << "Oui : vous fait sélectionner un monstre du bestiaire." << std::endl;
+				std::cout << "Non : vous fait revenir à la selection." << std::endl;
+				rep = -1;
+			}
+			else{
+				std::cout << "Commande invalide!" << std::endl;
+				rep = -1;
+			}
+		}
+		else if(reponseUtilisateur == "2"){
+			std::cout << "Etes-vous sur de vouloir créer un monstre entièrement personnalisé? : " << std::cout;
+			std::cin >> reponseUtilisateur;
+			rep == commandManager->analyse(reponseUtilisateur);
+			if(rep == 1){
+				createPersonnalizeMonster(chara);
+			}
+			else if(rep == 2){
+				rep = -1;
+			}
+			else if(rep == 0){
+				std::cout << "Oui : lance la création de monstre." << std::endl;
+				std::cout << "Non : vous fait revenir à la selection." << std::endl;
+				rep = -1;
+			}
+			else{
+				std::cout << "Commande invalide!" << std::endl;
+				rep = -1;
+			}
+		}
+	}
 
 	return chara;
 }
@@ -139,12 +189,85 @@ Character* MonsterFactory::createPersonnalize(){
 Character* MonsterFactory::createCharacterSaved(){
 	//chara = new Monster();
 
+	////////////////////////////////////////////////////////////////
+	commandManager->setState(commandManager->getStateCreate());
+	////////////////////////////////////////////////////////////////
+
 	return chara;
 }
 
 Character* MonsterFactory::createCharacter(){
 	return chara;
 }
+
+void MonsterFactory::createBestiaryMonster(Character* chara){
+	const int nbCategory = 3;
+	const int passToH = 9;
+	const int tailleH = 4;
+	const int tailleB = 5;
+	const int tailleF = 5;
+
+	std::string = reponseUtilisateur;
+	std::string fileName;
+	int rep = -1;
+
+	std::ifstream bestiaryFile("../NameGenerator/Bestiary.txt", std::ios::in);
+	
+	while(rep == -1){
+		std::cout << "Vous voulez un monstre de quel type? : " << std::endl;
+		if(bestiaryFile){
+			std::string chaine;
+			for(int i = 0; i < passToH -1; ++i){
+				bestiaryFile >> chaine;
+			}
+			std::cout << "1 : " <<  chaine << std::endl;
+			for(int i = 0; i < tailleH; ++i){
+				bestiaryFile >> chaine;
+			}
+			std::cout << "2 : " << chaine << std::endl;
+			for(int i = 0; i < tailleB; ++i){
+				bestiaryFile >> chaine;
+			}
+		}
+
+		std::cin >> reponseUtilisateur;
+
+		if(reponseUtilisateur == "1"){
+			rep = 1;
+			while(rep == 1){
+				std::cout << "Voici la liste des Humanoïdes :" << std::endl;
+				if(bestiaryFile){
+					std::string chaine;
+					for(int i = 0; i < passToH ; ++i){
+						bestiaryFile >> chaine;
+					}
+					int cpt = 1;
+					for(int j = 0; j < tailleH ;  ++j){
+						bestiaryFile >> chaine;
+						std::cout << cpt << " : " << chaine << std::endl;
+						++cpt;
+					}
+				}
+
+				std::cin >> reponseUtilisateur;
+
+				
+			}
+		}	
+		else if(reponseUtilisateur == "2"){
+
+		}
+		else if(reponseUtilisateur == "3"){
+
+		}
+		else{
+			std::cout << "Commande invalide!" << std::endl;
+			rep = -1;
+		}
+	}//While
+
+}
+
 
 Character* MonsterFactory::getCharacter(){
 	return chara;
