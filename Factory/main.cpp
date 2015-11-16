@@ -23,7 +23,7 @@ int main(){
 	using namespace std;
 
 	Factory* fact = new MonsterFactory();
-	//Character* chara = fact->createCharacterSaved();
+	Character* chara = fact->createPersonnalize();
 	//Character* chara = fact->createCharacter();
 
 
