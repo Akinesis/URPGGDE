@@ -4,10 +4,10 @@ EXEC=test
 # Compiler
 IDIR=.
 IDIRFLAG=$(foreach idir, $(IDIR), -I$(idir))
-CXXFLAGS=-std=c++11 -Ofast -Wl, -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unused-parameter $(IDIRFLAG)
+CXXFLAGS=-std=c++11 -Ofast -Wl,--no-as-needed -pthread -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unused-parameter $(IDIRFLAG)
 
 # Linker
-LFLAGS=$(IDIRFLAG)
+LFLAGS=$(IDIRFLAG) -pthread
 
 # Directories
 SRCDIR=../state ../Observer

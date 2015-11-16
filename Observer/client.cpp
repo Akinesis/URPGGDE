@@ -1,14 +1,16 @@
 #include "client.hpp"
 
-Client::Client(){
-    haveMessageToSend = false;
-    clientHaveQuit = false;
+Client::Client(){   
 }
 
 Client::~Client(){
 }
 
 void Client::init(){
+
+    haveMessageToSend = false;
+    clientHaveQuit = false;
+
 	std::string rep;
     std::cout << "Avant de vous connecter, soyez sur que le MJ à crée un serveur !" << std::endl;
 	std::cout << "Sur quel port voulez vous vous connecter ?\nLes ports valide vont de 1 à 65535.\nDemandez à votre MJ pour connaitre le port" << std::endl;
@@ -62,12 +64,9 @@ void Client::init(){
     */
 
     //création du thread d'écoute
-    threadReceive = std::thread(&Client::receiveThreading, this);
+    threadReceive = new std::thread(&Client::receiveThreading, this);
     //création du thread d'envoi
-    threadSend = std::thread(&Client::sendThreading, this);
-
-    threadReceive.join();
-    threadSend.join();
+    threadSend = new std::thread(&Client::sendThreading, this, this);
     
 }
 
@@ -78,19 +77,22 @@ void Client::receiveThreading(){
     }
 }
 
-void Client::sendThreading(){
+void Client::sendThreading(Client *cli){
     std::cout << "Thread écriture crée !" << std::endl;
     while(!clientHaveQuit){
-        if(haveMessageToSend){
-           send(); 
+        if(cli->getMessageToSend()){
+            std::cout << "Méssage à envoyer" << std::endl;
+            send(cli->getMessage());
+            cli->setHaveMessageToSend(false);
         }
     }
 }
 
-void Client::send(){
+void Client::send(std::string mess){
     int n;
     //transformation du méssage à envoyé en char*
-    char* sendMess = (char*)message.c_str();
+    char* sendMess = (char*)mess.c_str();
+    std::cout << "envoi du méssage" << std::endl;
 
     //envoi du méssage
     n = write(sockfd,sendMess,strlen(sendMess));
@@ -109,10 +111,21 @@ void Client::receive(){
 
 }
 
-void Client::setHavemessageToSend(bool b){
+void Client::setHaveMessageToSend(bool b){
+    std::cout << "true" << std::endl;
     haveMessageToSend = b;
 }
 
 void Client::setMessage(std::string mes){
+    std::cout << mes << std::endl;
     message = mes;
+}
+
+bool Client::getMessageToSend(){
+    std::cout << ""; //A NE PAS SUPPRIMER
+    return haveMessageToSend;
+}
+
+std::string Client::getMessage(){
+    return message;
 }
