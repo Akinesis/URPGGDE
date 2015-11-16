@@ -89,7 +89,7 @@ Character* PNJFactory::createAllRandom(){
 	ApplySkillPoints(chara);
 
 	//Création fichier texte
-	std::string mySave = "Saves/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
+	std::string mySave = "Saves/PNJ/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
 	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
 	if(save){
@@ -704,7 +704,7 @@ Character* PNJFactory::createPersonnalize(){
 	ApplySkillPoints(chara);
 
 	//creation fichier save
-	std::string mySave = "Saves/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
+	std::string mySave = "Saves/PNJ/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
 	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
 	if(save){
@@ -743,7 +743,7 @@ Character* PNJFactory::createCharacterSaved(){
 	std::cout << "Quel personnage voulez-vous charger?" << std::endl;
 	DIR* rep = NULL;
 	struct dirent* fichierLu = NULL;
-	rep = opendir("Saves/");
+	rep = opendir("Saves/PNJ/");
 
 	if(rep == NULL){
 		std::cout << "Erreur repertoire inaccessible." << std::endl;
@@ -761,7 +761,7 @@ Character* PNJFactory::createCharacterSaved(){
 	}
 	i = 1;
 	j = 1;
-	rep = opendir("Saves/");
+	rep = opendir("Saves/PNJ/");
 	std::cin >> reponseUtilisateur;
 	while((fichierLu = readdir(rep)) != NULL){ 
 		if(i > 2){
@@ -772,7 +772,7 @@ Character* PNJFactory::createCharacterSaved(){
 		}
 		++i;
 	}
-	std::string cast = "Saves/" + fileName;
+	std::string cast = "Saves/PNJ/" + fileName;
 	char* raceFile = (char*)cast.c_str();
 	std::ifstream file(raceFile, std::ios::in);
 	std::string chaine;

@@ -133,7 +133,7 @@ Character* MonsterFactory::createAllRandom(){
 Character* MonsterFactory::createPersonnalize(){
 	chara = new Monster();
 
-	std::string = reponseUtilisateur;
+	std::string reponseUtilisateur;
 	int rep = -1;
 
 	while(rep == -1){
@@ -164,7 +164,7 @@ Character* MonsterFactory::createPersonnalize(){
 		else if(reponseUtilisateur == "2"){
 			std::cout << "Etes-vous sur de vouloir créer un monstre entièrement personnalisé? : " << std::cout;
 			std::cin >> reponseUtilisateur;
-			rep == commandManager->analyse(reponseUtilisateur);
+			rep = commandManager->analyse(reponseUtilisateur);
 			if(rep == 1){
 				createPersonnalizeMonster(chara);
 			}
@@ -201,13 +201,12 @@ Character* MonsterFactory::createCharacter(){
 }
 
 void MonsterFactory::createBestiaryMonster(Character* chara){
-	const int nbCategory = 3;
 	const int passToH = 9;
 	const int tailleH = 4;
 	const int tailleB = 5;
 	const int tailleF = 5;
 
-	std::string = reponseUtilisateur;
+	std::string reponseUtilisateur;
 	std::string fileName;
 	int rep = -1;
 
@@ -222,19 +221,23 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 			}
 			std::cout << "1 : " <<  chaine << std::endl;
 			for(int i = 0; i < tailleH; ++i){
-				bestiaryFile >> chaine;
+				for(int j = 0; j < 7; ++i){
+					bestiaryFile >> chaine;	
+				}
 			}
 			std::cout << "2 : " << chaine << std::endl;
 			for(int i = 0; i < tailleB; ++i){
-				bestiaryFile >> chaine;
+				for(int j = 0 ; j < 7; ++j){
+					bestiaryFile >> chaine;
+				}
 			}
 		}
 
 		std::cin >> reponseUtilisateur;
 
 		if(reponseUtilisateur == "1"){
-			rep = 1;
-			while(rep == 1){
+			rep = -1;
+			while(rep == -1){
 				std::cout << "Voici la liste des Humanoïdes :" << std::endl;
 				if(bestiaryFile){
 					std::string chaine;
@@ -242,8 +245,10 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 						bestiaryFile >> chaine;
 					}
 					int cpt = 1;
-					for(int j = 0; j < tailleH ;  ++j){
-						bestiaryFile >> chaine;
+					for(int i = 0; i < tailleH ;  ++i){
+						for(int j = 0; j < 7; ++j){
+							bestiaryFile >> chaine;
+						}
 						std::cout << cpt << " : " << chaine << std::endl;
 						++cpt;
 					}
@@ -251,21 +256,563 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 
 				std::cin >> reponseUtilisateur;
 
-				
+				if(reponseUtilisateur == "1"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+				}
+				else if(reponseUtilisateur == "2"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+				}
+				else if(reponseUtilisateur == "3"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+				}
+				else if(reponseUtilisateur == "4"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+				}
+				else{
+					std::cout << "Commande invalide!" << std::endl;
+					rep = -1;
+				}
+			}
+		}
+
+			
+		else if(reponseUtilisateur == "2"){
+			rep = -1;
+			while(rep != -1){
+				std::cout << "Voici la liste des Bêtes : " << std::endl;
+				if(bestiaryFile){
+					std::string chaine;
+					for(int i = 0; i < passToH ; ++i){
+						bestiaryFile >> chaine;
+					}
+					int cpt = 1;
+					for(int i = 0; i < tailleH +1;  ++i){
+						for(int j = 0; j < 7; ++j){
+							bestiaryFile >> chaine;
+						}
+					}
+					for(int i = 0 ; i < tailleB; ++i){
+						for(int j = 0; j < 7; ++j){
+							bestiaryFile >> chaine;
+						}
+							std::cout << cpt << " : " << chaine << std::endl;
+							++cpt;
+					}
+
+					std::cin >> reponseUtilisateur;
+
+					if(reponseUtilisateur == "1"){
+						if(bestiaryFile){
+							std::string chaine;
+							for(int i = 0; i < passToH; ++i){
+								bestiaryFile >> chaine;
+							}
+							for(int i = 0; i < tailleH;  ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+							
+							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+							chara->setCurrentLifePoints(std::stoi(chaine));
+							chara->setLifePoints(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setAttack(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDefense(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setProtection(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesDe(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesAdditionnels(std::stoi(chaine));
+						}
+					}
+					else if(reponseUtilisateur == "2"){
+						if(bestiaryFile){
+							std::string chaine;
+							for(int i = 0; i < passToH; ++i){
+								bestiaryFile >> chaine;
+							}
+							for(int i = 0; i < tailleH;  ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+							
+							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+							chara->setCurrentLifePoints(std::stoi(chaine));
+							chara->setLifePoints(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setAttack(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDefense(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setProtection(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesDe(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesAdditionnels(std::stoi(chaine));
+						}
+					}
+					else if(reponseUtilisateur == "3"){
+						if(bestiaryFile){
+							std::string chaine;
+							for(int i = 0; i < passToH; ++i){
+								bestiaryFile >> chaine;
+							}
+							for(int i = 0; i < tailleH;  ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+							
+							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+							chara->setCurrentLifePoints(std::stoi(chaine));
+							chara->setLifePoints(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setAttack(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDefense(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setProtection(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesDe(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesAdditionnels(std::stoi(chaine));
+						}
+					}
+					else if(reponseUtilisateur == "4"){
+						if(bestiaryFile){
+							std::string chaine;
+							for(int i = 0; i < passToH; ++i){
+								bestiaryFile >> chaine;
+							}
+							for(int i = 0; i < tailleH;  ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+
+							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+							chara->setCurrentLifePoints(std::stoi(chaine));
+							chara->setLifePoints(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setAttack(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDefense(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setProtection(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesDe(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesAdditionnels(std::stoi(chaine));
+						}
+					}
+					else if(reponseUtilisateur == "5"){
+						if(bestiaryFile){
+							std::string chaine;
+							for(int i = 0; i < passToH; ++i){
+								bestiaryFile >> chaine;
+							}
+							for(int i = 0; i < tailleH;  ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+
+							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+								for(int j = 0; j < 7; ++j){
+									bestiaryFile >> chaine;
+								}
+							}
+							bestiaryFile >> chaine;
+							chara->setCurrentLifePoints(std::stoi(chaine));
+							chara->setLifePoints(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setAttack(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDefense(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setProtection(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesDe(std::stoi(chaine));
+							bestiaryFile >> chaine;
+							chara->setDommagesAdditionnels(std::stoi(chaine));
+						}
+						else{
+							std::cout << "Commande invalide!" << std::endl;
+							rep = -1;
+						}
+					}
+				}
 			}
 		}	
-		else if(reponseUtilisateur == "2"){
 
-		}
 		else if(reponseUtilisateur == "3"){
+			rep = -1;
+			while(rep == -1){
+				std::cout << "Voici la liste des Fantastiques : " <<std::endl;
+				if(bestiaryFile){
+					std::string chaine;
+					for(int i = 0; i < passToH ; ++i){
+						bestiaryFile >> chaine;
+					}
+					int cpt = 1;
+					for(int i = 0; i < tailleH;  ++i){
+						for(int j = 0; j < 7; ++j){
+							bestiaryFile >> chaine;
+						}
+					}
+					bestiaryFile >> chaine;
 
+					for(int i = 0; i < tailleB; ++i){
+						for(int j = 0; j < 7; ++j){
+							bestiaryFile >> chaine;
+						}
+					}
+					bestiaryFile >> chaine;
+
+					for(int i = 0 ; i < tailleF; ++i){
+						for(int j = 0; j < 7; ++j){
+							bestiaryFile >> chaine;
+						}
+						std::cout << cpt << " : " << chaine << std::endl;
+						++cpt;
+					}
+				}
+
+				std::cin >> reponseUtilisateur;
+
+				if(reponseUtilisateur == "1"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+
+						for(int i = 0; i < tailleB; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+				}
+				else if(reponseUtilisateur == "2"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < tailleB; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+				}
+				else if(reponseUtilisateur == "3"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < tailleB; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+				}
+				else if(reponseUtilisateur == "4"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+
+						for(int i = 0; i < tailleB; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+				}
+				else if(reponseUtilisateur == "5"){
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+
+						for(int i = 0; i < tailleB; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+					else{
+						std::cout << "Commande invalide!" << std::endl;
+						rep = -1;
+					}
+				}
+			}
 		}
 		else{
 			std::cout << "Commande invalide!" << std::endl;
 			rep = -1;
 		}
 	}//While
-
 }
 
 
