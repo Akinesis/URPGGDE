@@ -9,8 +9,8 @@
 #include <netinet/in.h>
 #include <netdb.h> 
 #include <string>
+#include <thread>
 #include <iostream>
-#include <pthread.h>
 #include <time.h>
 
 class Client{
@@ -19,16 +19,21 @@ class Client{
 		struct sockaddr_in serv_addr;   	//L'addresse du serveur
     	struct hostent *server;				//Nécéssaire à la création du serveur
 
-    	pthread_t threadSend, threadReceive;//Les thread pour l'envoi et la reception de méssages
-    	void *receiveThreading( void *ptr );//La fonction thread de réception
-    	bool haveMessageToSend;
+    	std::thread threadSend, threadReceive;//Les thread pour l'envoi et la reception de méssages
+    	bool haveMessageToSend, clientHaveQuit;
+    	std::string message;	//Le méssage à envoyer
+    	void receiveThreading();//La fonction thread de réception
+    	void sendThreading();	//La fonction thread d'envoi
 	public:
 		Client();
 		~Client();
-		void send(std::string message);
+		void send();
 		void receive();
 
 		void init();
+
+		void setHavemessageToSend(bool b);
+		void setMessage(std::string mes);
 
 };
 

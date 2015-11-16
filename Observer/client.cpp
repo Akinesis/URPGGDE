@@ -1,13 +1,11 @@
 #include "client.hpp"
 
 Client::Client(){
-
-
+    haveMessageToSend = false;
+    clientHaveQuit = false;
 }
 
 Client::~Client(){
-
-
 }
 
 void Client::init(){
@@ -18,7 +16,7 @@ void Client::init(){
 
 	//char* plop = (char*)rep.c_str(); //transformation en char* de la réponse
 
-	portno = atoi(rep);
+	portno = stoi(rep);
 
 	if(portno <= 0 || portno > 65535){
 		portno = 2020;
@@ -36,7 +34,7 @@ void Client::init(){
 	std::cout << "Quel est l'addresse du serveur?\n" << std::endl;
 	std::cin >> rep;
 
-	plop = (char*)rep.c_str();
+	char* plop = (char*)rep.c_str();
 
     //récupération addresse serveur
     server = gethostbyname(plop);
@@ -62,26 +60,59 @@ void Client::init(){
     /*
         Création des deux threads : send et receive
     */
-    int  iretSend, iretReceive;//Les variables de contrôle de créaion de thread
 
-    //création du thread d'écoute et vérification de son bon fonctionement
-    iretReceive = pthread_create( &threadReceive, NULL, receiveThreading, voidCast);
-    if(iretReceive){
-        fprintf(stderr,"Error - pthread_create() return code: %d\n",iretReceive);
-        exit(EXIT_FAILURE);
+    //création du thread d'écoute
+    threadReceive = std::thread(&Client::receiveThreading, this);
+    //création du thread d'envoi
+    threadSend = std::thread(&Client::sendThreading, this);
+
+    threadReceive.join();
+    threadSend.join();
+    
+}
+
+void Client::receiveThreading(){
+    std::cout << "Thread écoute crée !" << std::endl;
+    while(!clientHaveQuit){
+        receive();
     }
 }
 
-void * Client::receiveThreading( void *ptr ){
- 
+void Client::sendThreading(){
+    std::cout << "Thread écriture crée !" << std::endl;
+    while(!clientHaveQuit){
+        if(haveMessageToSend){
+           send(); 
+        }
+    }
 }
 
-void Client::send(std::string message){
+void Client::send(){
+    int n;
+    //transformation du méssage à envoyé en char*
+    char* sendMess = (char*)message.c_str();
 
+    //envoi du méssage
+    n = write(sockfd,sendMess,strlen(sendMess));
+    if (n < 0) 
+        perror("ERROR writing to socket");
 
 }
 
 void Client::receive(){
+    int n;
+    char buffer [256];
+    bzero(buffer,256);
+    n = read(sockfd,buffer,255);
+    if (n < 0) perror("ERROR reading from socket");
+    std::cout << buffer;
 
+}
 
+void Client::setHavemessageToSend(bool b){
+    haveMessageToSend = b;
+}
+
+void Client::setMessage(std::string mes){
+    message = mes;
 }

@@ -5,8 +5,8 @@
 class Subject{
 
 	public:
-		virtual void addClient(Client c) = 0;
-		virtual void removeClient(Client c) = 0;
+		virtual void addClient(int c) = 0;
+		virtual void removeClient(int c) = 0;
 		virtual void notifyClient() =0;
 
 

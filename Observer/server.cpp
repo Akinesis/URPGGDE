@@ -11,17 +11,18 @@ Server::~Server(){
 
 }
 
-void Server::addClient(Client c){
+void Server::addClient(int c){
 	clients.push_back(c);
 }
 
-void Server::removeClient(Client c){
+void Server::removeClient(int c){
 
 }
 
 void Server::notifyClient(){
-	 for (Client &cli : clients) {
-	 	cli.send("hello");
+	 for (int &cli : clients) {
+	 	//cli.send("hello");
+        std::cout << cli << std::endl;
 	 }
 }
 
@@ -37,7 +38,7 @@ void Server::init(){
 
 	//char* plop = (char*)rep.c_str();
 
-	portno = atoi(rep);
+	portno = stoi(rep);
 
 	if(portno <= 0 || portno > 65535){
 		portno = 2020;

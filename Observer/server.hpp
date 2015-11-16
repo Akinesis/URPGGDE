@@ -18,13 +18,13 @@ class Server : public Subject{
 
 	private:
 		int sockfd, newsockfd, portno; //le initial et celui du server ainsi que le port
-		std::vector<Client> clients;   //la liste des clients
+		std::vector<int> clients;   //la liste des clients
 		struct sockaddr_in serv_addr;  //l'addresse du serveur
 	public:
 		Server();
 		virtual ~Server();
-		void addClient(Client c);
-		void removeClient(Client c);
+		void addClient(int c);
+		void removeClient(int c);
 		void notifyClient();
 
 		void init();
