@@ -20,6 +20,7 @@ int StatePlay::join(){
 
 
 	manager->setState(manager->getStateJoin());
+	manager->analyse("joueur"); //à modifier !!!
 	return 0;
 }
 
@@ -28,6 +29,7 @@ int StatePlay::host(){
 
 
 	manager->setState(manager->getStateHost());
+	manager->analyse("joueur"); //à modifier !!!
 	return 0;
 }
 

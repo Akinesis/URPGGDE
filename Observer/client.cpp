@@ -1,6 +1,6 @@
 #include "client.hpp"
 
-Client::Client(){   
+Client::Client() : userName(""){   
 }
 
 Client::~Client(){
@@ -10,6 +10,9 @@ void Client::init(){
 
     haveMessageToSend = false;
     clientHaveQuit = false;
+
+    std::cout << "Username ?" << std::endl;
+    std::cin >> userName;
 
 	std::string rep;
     std::cout << "Avant de vous connecter, soyez sur que le MJ à crée un serveur !" << std::endl;
@@ -91,6 +94,7 @@ void Client::sendThreading(Client *cli){
 void Client::send(std::string mess){
     int n;
     //transformation du méssage à envoyé en char*
+    mess = userName + " dit : " +mess;
     char* sendMess = (char*)mess.c_str();
     std::cout << "envoi du méssage" << std::endl;
 
@@ -107,17 +111,17 @@ void Client::receive(){
     bzero(buffer,256);
     n = read(sockfd,buffer,255);
     if (n < 0) perror("ERROR reading from socket");
-    std::cout << buffer;
+    if(buffer[0] != 0){
+        std::cout << buffer << std::endl;
+    }
 
 }
 
 void Client::setHaveMessageToSend(bool b){
-    std::cout << "true" << std::endl;
     haveMessageToSend = b;
 }
 
 void Client::setMessage(std::string mes){
-    std::cout << mes << std::endl;
     message = mes;
 }
 
@@ -128,4 +132,8 @@ bool Client::getMessageToSend(){
 
 std::string Client::getMessage(){
     return message;
+}
+
+void Client::setUserName(std::string name){
+    userName = name;
 }

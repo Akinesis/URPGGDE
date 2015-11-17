@@ -21,7 +21,7 @@ class Connexion{
 		std::string getUserName();
 
 		void clientHaveMessageToSend(std::string mes);
-		void serverHaveMessageToSend(std::string mes);
+		void hostHaveMessageToSend(std::string mes);
 
 };
 

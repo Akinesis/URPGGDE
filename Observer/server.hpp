@@ -13,31 +13,42 @@
 #include <vector>
 #include <thread>
 
-class Server : public Subject{
+class Server{
 
 	private:
+		std::string userName, message;	//le userName et le méssage à envoyé
 		int sockfd, newsockfd, portno; 	//Le socket initial et celui du server ainsi que le port
-		std::vector<int> clients;   	//la liste des clients
+		std::vector<int> *clients;   	//la liste des clients
 		struct sockaddr_in serv_addr;  	//L'addresse du serveur
 
 
-		std::thread threadConnect;
-		std::vector<std::thread> threadsReceive;
+		std::thread threadConnect, threadSend;
+		std::vector<std::thread> *threadsReceive;
 		bool haveMessageToSend, hostHaveQuit;
 		//fonction de thread
-		void connectThreading();
+		void connectThreading(std::vector<int> *cli, std::vector<std::thread> *threads);
 		void receiveThreading(int pos);
+		void sendThreading(Server *serv);
 		void receive(int cliSockfr);
+
+		void send(char* mess, int exep); //Fonction de notification
 
 	public:
 		Server();
 		virtual ~Server();
-		void addClient(int c);
-		void removeClient(int c);
-		void notifyClient();
 
 		void init();
-		void send(char* mess);
+
+		void setHaveMessageToSend(bool b);
+		void setMessage(std::string mes);
+		bool getMessageToSend();
+		std::string getMessage();
+		std::vector<int>* getClients();
+		std::string getUserName();
+
+		void send(char* mess);          //Fonction de communication
+
+		void setUserName(std::string name);
 };
 
 #endif

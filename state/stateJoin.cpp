@@ -19,7 +19,7 @@ int StateJoin::join(){
 
 	while(1){
 		std::cout << "Attente du méssage" << std::endl;
-		std::cin >> rep;
+		std::getline (std::cin,rep);
 		manager->clientSend(rep);
 	}
 

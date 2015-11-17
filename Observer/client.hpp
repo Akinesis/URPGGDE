@@ -15,6 +15,9 @@
 
 class Client{
 	private:
+
+		std::string userName;
+
 		int sockfd, portno; 				//Le socket du serveur et le port de connexion
 		struct sockaddr_in serv_addr;   	//L'addresse du serveur
     	struct hostent *server;				//Nécéssaire à la création du serveur
@@ -37,6 +40,8 @@ class Client{
 
 		bool getMessageToSend();
 		std::string getMessage();
+
+		void setUserName(std::string name);
 
 };
 

@@ -28,6 +28,8 @@ void Connexion::clientHaveMessageToSend(std::string mes){
 	client.setMessage(mes);
 }
 
-void Connexion::serverHaveMessageToSend(std::string mes){
-
+void Connexion::hostHaveMessageToSend(std::string mes){
+	mes = server.getUserName() + " dit : " + mes;
+	char* ret = (char*)mes.c_str();
+	server.send(ret);
 }

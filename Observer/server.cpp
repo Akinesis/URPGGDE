@@ -9,25 +9,16 @@ Server::~Server(){
 
 }
 
-void Server::addClient(int c){
-	clients.push_back(c);
-}
-
-void Server::removeClient(int c){
-
-}
-
-void Server::notifyClient(){
-	 for (int &cli : clients) {
-	 	//cli.send("hello");
-        std::cout << cli << std::endl;
-	 }
-}
-
 void Server::init(){
 
     haveMessageToSend = false;
     hostHaveQuit = false;
+
+    std::cout << "Username ?" << std::endl;
+    std::cin >> userName;
+
+    clients = new std::vector<int>();
+    threadsReceive = new std::vector<std::thread>;
 
 	std::string rep;
 	std::cout << "Quel port voulez vous utilisé ?\nLes port valide vont de 1 à 65535." << std::endl;
@@ -70,60 +61,94 @@ void Server::init(){
     */
 
     //création du thread de connexion
-    threadConnect = std::thread(&Server::connectThreading, this);
+    threadConnect = std::thread(&Server::connectThreading, this, clients, threadsReceive);
 
 }
 
-void Server::connectThreading(){
+void Server::connectThreading(std::vector<int> *cli, std::vector<std::thread> *threads){
     std::cout << "pré listen" <<std::endl;
     listen(sockfd,5);            //autorisation à passer en mode écoute
     struct sockaddr_in cli_addr; //création du client
     socklen_t clilen;
     clilen = sizeof(cli_addr);
-    std::cout << "début de boucle" <<std::endl;
     while(!hostHaveQuit){
-        std::cout << "attente" <<std::endl;
-        clients.push_back(accept(sockfd, 
+        cli->push_back(accept(sockfd, 
                  (struct sockaddr *) &cli_addr, 
                  &clilen));
-        if (clients.back() < 0){
+        if (cli->back() < 0){
             perror("ERROR on accept");
         }else{
             //un client est connecter
             //création d'un thread d'écoute pour le nouveau client
-
-            threadsReceive.push_back(std::thread(&Server::receiveThreading, this, clients.size()-1));
+            threads->push_back(std::thread(&Server::receiveThreading, this, cli->back()));
         }
     }
 }
 
-void Server::receiveThreading(int pos){
+void Server::receiveThreading(int sock){
     std::cout << "Thread écoute crée !" << std::endl;
     while(!hostHaveQuit){
-        std::cout << "méssage recu" << std::endl;
-        receive(clients.at(pos));
+        receive(sock);
     }
 }
 
-void Server::receive(int cliSockfr){
+void Server::receive(int cliSockRe){
     int n;
     char buffer [256];
     bzero(buffer,256);
-    n = read(cliSockfr,buffer,255);
+    n = read(cliSockRe,buffer,255);
     if (n < 0) perror("ERROR reading from socket");
-    std::cout << buffer << std::endl;
-    send(buffer);
+    if(buffer[0] != 0){ //n'écrire que si il y à un méssage
+        std::cout << buffer << std::endl;
+        send(buffer, cliSockRe);
+    }
 }
 
 void Server::send(char* mess){
-
     int n;
-    std::cout << "envoi du méssage" << std::endl;
-
     //envoi du méssage
-    for(int cli : clients){
-        n = write(cli,mess,strlen(mess));
+    for(int i =0; i<clients->size(); ++i){
+        n = write(clients->at(i),mess,strlen(mess));
         if (n < 0) 
             perror("ERROR writing to socket");
     }
+}
+
+void Server::send(char* mess, int exep){
+    int n;
+    //envoi du méssage
+    for(int i =0; i<clients->size(); ++i){
+        if(clients->at(i) != exep){
+            n = write(clients->at(i),mess,strlen(mess));
+            if (n < 0) 
+                perror("ERROR writing to socket");
+        }
+    }
+}
+
+void Server::setUserName(std::string name){
+    userName = name;
+}
+
+bool Server::getMessageToSend(){
+    return haveMessageToSend;
+}
+
+void Server::setHaveMessageToSend(bool b){
+    haveMessageToSend = b;
+}
+
+void Server::setMessage(std::string mes){
+    message = mes;
+}
+
+std::string Server::getMessage(){
+    return message;
+}
+
+std::vector<int>* Server::getClients(){
+    return clients;
+}
+std::string Server::getUserName(){
+    return userName;
 }
