@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <stdio.h>
+#include <dirent.h>
 
 #include "Factory.hpp"
 #include "Monster.hpp"

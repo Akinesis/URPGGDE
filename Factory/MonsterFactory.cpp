@@ -187,16 +187,107 @@ Character* MonsterFactory::createPersonnalize(){
 }
 
 Character* MonsterFactory::createCharacterSaved(){
-	//chara = new Monster();
+	chara = new Monster();
 
-	////////////////////////////////////////////////////////////////
-	commandManager->setState(commandManager->getStateCreate());
-	////////////////////////////////////////////////////////////////
+	std::string reponseUtilisateur;
+	std::string fileName;
+	std::cout << "Quel personnage voulez-vous charger?" << std::endl;
+	DIR* rep = NULL;
+	struct dirent* fichierLu = NULL;
+	rep = opendir("Saves/Monster/");
+
+	if(rep == NULL){
+		std::cout << "Erreur repertoire inaccessible." << std::endl;
+		exit(1);
+	}
+	int i = 1;
+	int j = 1;
+	std::cout << "Liste des sauvegardes : " << std::endl;
+	while((fichierLu = readdir(rep)) != NULL){
+		if(i > 2){
+			std::cout << j << " : " << fichierLu->d_name << std::endl;
+			++j;
+		}
+		++i;
+	}
+	i = 1;
+	j = 1;
+	rep = opendir("Saves/Monster/");
+	std::cin >> reponseUtilisateur;
+	while((fichierLu = readdir(rep)) != NULL){ 
+		if(i > 2){
+			if(j == std::stoi(reponseUtilisateur)){
+				fileName = std::string(fichierLu->d_name);
+			}
+			++j;
+		}
+		++i;
+	}
+	std::string cast = "Saves/PNJ/" + fileName;
+	char* raceFile = (char*)cast.c_str();
+	std::ifstream file(raceFile, std::ios::in);
+	std::string chaine;
+	if(file){
+		//Récupération du nom
+		file >> chaine;
+		file >> chaine;
+		chara->setName(chaine);
+		file >> chaine;
+		file >> chaine;
+		chara->setCurrentLifePoints(std::stoi(chaine));
+		file >> chaine;
+		chara->setLifePoints(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		chara->setAttack(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		chara->setDefense(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		chara->setProtection(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		chara->setDommagesDe(std::stoi(chaine));
+		file >> chaine;
+		file >> chaine;
+		chara->setDommagesAdditionnels(std::stoi(chaine));
+	}
 
 	return chara;
 }
 
 Character* MonsterFactory::createCharacter(){
+
+	////////////////////////////////////////////////////////////////
+	commandManager->setState(commandManager->getStateCreate());
+	////////////////////////////////////////////////////////////////
+
+	std::string reponseUtilisateur;
+	int rep = -1;
+
+	while(rep == -1){	
+		std::cout << "Voulez-vous un monstre créer aléatoirement ou un monstre personnalisé?" << std::endl;
+		std::cin >> reponseUtilisateur;
+		rep = commandManager->analyse(reponseUtilisateur);
+
+		if(rep == 0){
+			std::cout << "Aléatoire : choisis un monstre aléatoirement dans le bestaire." << std::endl;
+			std::cout << "Personnaliser : vous fait choisir un monstre du bestiaire ou vous en fait créer un vous même." << std::endl;
+			rep = -1;
+		}
+		else if(rep == 5){
+			createAllRandom();
+		}
+		else if(rep == 6){
+			createPersonnalize();
+		}
+		else if(rep == -1){}
+		else{
+			std::cout << "Commande invalide!" << std::endl;
+			rep = -1;
+		}
+	}
 	return chara;
 }
 
@@ -208,7 +299,7 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 		std::cout << "Quel est le nom de votre monstre" << std::endl;
 		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
-		std::cout << "Etes-vous sur de vouloir appeller votre monstre : " << reponseUtilisateur << std::endl;
+		std::cout << "Etes-vous sur de vouloir appeller votre monstre : " << memoireReponseUtilisateur << std::endl;
 		std::cin >> reponseUtilisateur;
 		rep = commandManager->analyse(reponseUtilisateur);
 
@@ -236,7 +327,7 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 		std::cout << "Quel est l'attaque de votre monstre" << std::endl;
 		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
-		std::cout << "Etes-vous sur de vouloir donner une attaque de : " << reponseUtilisateur << " a votre monstre?" << std::endl;
+		std::cout << "Etes-vous sur de vouloir donner une attaque de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
 		std::cin >> reponseUtilisateur;
 		rep = commandManager->analyse(reponseUtilisateur);
 
@@ -264,7 +355,7 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 		std::cout << "Quel est la défense de votre monstre" << std::endl;
 		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
-		std::cout << "Etes-vous sur de vouloir donner une défense de : " << reponseUtilisateur << " a votre monstre?" << std::endl;
+		std::cout << "Etes-vous sur de vouloir donner une défense de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
 		std::cin >> reponseUtilisateur;
 		rep = commandManager->analyse(reponseUtilisateur);
 
@@ -293,7 +384,7 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
 
-		std::cout << "Etes-vous sur de vouloir donner une protection de : " << reponseUtilisateur << " a votre monstre?" << std::endl;
+		std::cout << "Etes-vous sur de vouloir donner une protection de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
 		std::cin >> reponseUtilisateur;
 		rep = commandManager->analyse(reponseUtilisateur);
 
@@ -334,8 +425,9 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 			rep = -1;
 
 		}
+		rep = 0;
 		while(rep == 0){
-			std::cout << "Etes-vous sur de vouloir utiliser un dé : " << reponseUtilisateur << " pour votre monstre?" << std::endl;
+			std::cout << "Etes-vous sur de vouloir utiliser un dé : " << memoireReponseUtilisateur << " pour votre monstre?" << std::endl;
 			std::cin >> reponseUtilisateur;
 			rep = commandManager->analyse(reponseUtilisateur);
 
@@ -358,8 +450,8 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 				rep = -1;
 			}
 		}
-		rep = -1;
 	}
+	rep = -1;
 	//Choix dégats additionnels
 	while(rep == -1){
 		std::cout << "Quel sont les dégats supplémentaires appliqués au dé utilisés par votre monstre votre monstre" << std::endl;
@@ -378,8 +470,9 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 			rep = -1;
 
 		}
+		rep = 0;
 		while(rep == 0){
-			std::cout << "Etes-vous sur de vouloir ajouter : " << reponseUtilisateur << " de dégats pour votre monstre?" << std::endl;
+			std::cout << "Etes-vous sur de vouloir ajouter : " << memoireReponseUtilisateur << " de dégats pour votre monstre?" << std::endl;
 			std::cin >> reponseUtilisateur;
 			rep = commandManager->analyse(reponseUtilisateur);
 
@@ -401,7 +494,20 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 				rep = -1;
 			}
 		}
-		rep = -1;
+	}
+
+	std::string mySave = "Saves/Monster/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
+	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
+
+	if(save){
+		save << "Nom: " << chara->getName() << std::endl;
+		save << "Points de vie:  " << chara->getCurrentLifePoints() << " / " << chara->getLifePoints() << std::endl;
+		save << std::endl;
+		save << "Attaque: " << chara->getAttack() << std::endl;
+		save << "Defense: " << chara->getDefense() << std::endl;
+		save << "Protection: " << chara->getProtection() << std::endl;
+		save << "Dé: " << chara->getDommagesDe() << std::endl;
+		save << "Dommages additionnels: " << chara->getDommagesAdditionnels() << std::endl;
 	}
 }
 
@@ -415,9 +521,9 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 	std::string fileName;
 	int rep = -1;
 
-	std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
 	
 	while(rep == -1){
+		std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
 		std::cout << "Vous voulez un monstre de quel type? : " << std::endl;
 		if(bestiaryFile){
 			std::string chaine;
@@ -593,12 +699,11 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 					rep = -1;
 				}
 			}
-		}
-
-			
+		}	
 		else if(reponseUtilisateur == "2"){
 			rep = -1;
-			while(rep != -1){
+			while(rep == -1){
+				std::cout << "aga" << std::endl;
 				std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
 				std::cout << "Voici la liste des Bêtes : " << std::endl;
 				if(bestiaryFile){
@@ -607,200 +712,208 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 						bestiaryFile >> chaine;
 					}
 					int cpt = 1;
-					for(int i = 0; i < tailleH +1;  ++i){
+					for(int i = 0; i < tailleH;  ++i){
 						for(int j = 0; j < 7; ++j){
 							bestiaryFile >> chaine;
 						}
 					}
-					for(int i = 0 ; i < tailleB; ++i){
-						for(int j = 0; j < 7; ++j){
-							bestiaryFile >> chaine;
-						}
+					bestiaryFile >> chaine;
+
+
+					for(int i = 0 ; i < tailleB -1; ++i){
 							std::cout << cpt << " : " << chaine << std::endl;
 							++cpt;
+						for(int j = 0; j < 7; ++j){
+							bestiaryFile >> chaine;
+						}
 					}
+				}
+				std::cin >> reponseUtilisateur;
 
-					std::cin >> reponseUtilisateur;
+				if(reponseUtilisateur == "1"){
+					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
+					std::cout << "gou" << std::endl;;
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						chara->setName(chaine);
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+					rep = 1;
+				}
+				else if(reponseUtilisateur == "2"){
+					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						chara->setName(chaine);
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+					rep = 1;
+				}
+				else if(reponseUtilisateur == "3"){
+					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
+						
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						chara->setName(chaine);
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
+					}
+					rep = 1;
+				}
+				else if(reponseUtilisateur == "4"){
+					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
+							bestiaryFile >> chaine;
+						}
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
+								bestiaryFile >> chaine;
+							}
+						}
+						bestiaryFile >> chaine;
 
-					if(reponseUtilisateur == "1"){
-						std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
-						if(bestiaryFile){
-							std::string chaine;
-							for(int i = 0; i < passToH; ++i){
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
 								bestiaryFile >> chaine;
 							}
-							for(int i = 0; i < tailleH;  ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							bestiaryFile >> chaine;
-							
-							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							chara->setName(chaine);
-							bestiaryFile >> chaine;
-							chara->setCurrentLifePoints(std::stoi(chaine));
-							chara->setLifePoints(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setAttack(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDefense(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setProtection(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesDe(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesAdditionnels(std::stoi(chaine));
 						}
+						chara->setName(chaine);
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
 					}
-					else if(reponseUtilisateur == "2"){
-						std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
-						if(bestiaryFile){
-							std::string chaine;
-							for(int i = 0; i < passToH; ++i){
-								bestiaryFile >> chaine;
-							}
-							for(int i = 0; i < tailleH;  ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
+					rep = 1;
+				}
+				else if(reponseUtilisateur == "5"){
+					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
+					if(bestiaryFile){
+						std::string chaine;
+						for(int i = 0; i < passToH; ++i){
 							bestiaryFile >> chaine;
-							
-							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							chara->setName(chaine);
-							bestiaryFile >> chaine;
-							chara->setCurrentLifePoints(std::stoi(chaine));
-							chara->setLifePoints(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setAttack(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDefense(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setProtection(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesDe(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesAdditionnels(std::stoi(chaine));
 						}
-					}
-					else if(reponseUtilisateur == "3"){
-						std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
-						if(bestiaryFile){
-							std::string chaine;
-							for(int i = 0; i < passToH; ++i){
+						for(int i = 0; i < tailleH;  ++i){
+							for(int j = 0; j < 7; ++j){
 								bestiaryFile >> chaine;
 							}
-							for(int i = 0; i < tailleH;  ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							bestiaryFile >> chaine;
-							
-							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							chara->setName(chaine);
-							bestiaryFile >> chaine;
-							chara->setCurrentLifePoints(std::stoi(chaine));
-							chara->setLifePoints(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setAttack(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDefense(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setProtection(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesDe(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesAdditionnels(std::stoi(chaine));
 						}
-					}
-					else if(reponseUtilisateur == "4"){
-						std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
-						if(bestiaryFile){
-							std::string chaine;
-							for(int i = 0; i < passToH; ++i){
-								bestiaryFile >> chaine;
-							}
-							for(int i = 0; i < tailleH;  ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							bestiaryFile >> chaine;
+						bestiaryFile >> chaine;
 
-							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							chara->setName(chaine);
-							bestiaryFile >> chaine;
-							chara->setCurrentLifePoints(std::stoi(chaine));
-							chara->setLifePoints(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setAttack(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDefense(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setProtection(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesDe(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesAdditionnels(std::stoi(chaine));
-						}
-					}
-					else if(reponseUtilisateur == "5"){
-						std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
-						if(bestiaryFile){
-							std::string chaine;
-							for(int i = 0; i < passToH; ++i){
+						for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
+							for(int j = 0; j < 7; ++j){
 								bestiaryFile >> chaine;
 							}
-							for(int i = 0; i < tailleH;  ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							bestiaryFile >> chaine;
-
-							for(int i = 0; i < std::stoi(reponseUtilisateur) -1; ++i){
-								for(int j = 0; j < 7; ++j){
-									bestiaryFile >> chaine;
-								}
-							}
-							chara->setName(chaine);
-							bestiaryFile >> chaine;
-							chara->setCurrentLifePoints(std::stoi(chaine));
-							chara->setLifePoints(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setAttack(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDefense(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setProtection(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesDe(std::stoi(chaine));
-							bestiaryFile >> chaine;
-							chara->setDommagesAdditionnels(std::stoi(chaine));
 						}
-						else{
-							std::cout << "Commande invalide!" << std::endl;
-							rep = -1;
-						}
+						chara->setName(chaine);
+						bestiaryFile >> chaine;
+						chara->setCurrentLifePoints(std::stoi(chaine));
+						chara->setLifePoints(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setAttack(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDefense(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setProtection(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesDe(std::stoi(chaine));
+						bestiaryFile >> chaine;
+						chara->setDommagesAdditionnels(std::stoi(chaine));
 					}
+					rep = 1;
+				}
+				else{
+					std::cout << "Commande invalide!" << std::endl;
+					rep = -1;
 				}
 			}
 		}	
@@ -831,11 +944,11 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 					bestiaryFile >> chaine;
 
 					for(int i = 0 ; i < tailleF; ++i){
+						std::cout << cpt << " : " << chaine << std::endl;
+						++cpt;
 						for(int j = 0; j < 7; ++j){
 							bestiaryFile >> chaine;
 						}
-						std::cout << cpt << " : " << chaine << std::endl;
-						++cpt;
 					}
 				}
 
@@ -882,6 +995,7 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 						bestiaryFile >> chaine;
 						chara->setDommagesAdditionnels(std::stoi(chaine));
 					}
+					rep = 1;
 				}
 				else if(reponseUtilisateur == "2"){
 					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
@@ -924,6 +1038,7 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 						bestiaryFile >> chaine;
 						chara->setDommagesAdditionnels(std::stoi(chaine));
 					}
+					rep = 1;
 				}
 				else if(reponseUtilisateur == "3"){
 					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
@@ -966,6 +1081,7 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 						bestiaryFile >> chaine;
 						chara->setDommagesAdditionnels(std::stoi(chaine));
 					}
+					rep = 1;
 				}
 				else if(reponseUtilisateur == "4"){
 					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
@@ -1008,6 +1124,7 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 						bestiaryFile >> chaine;
 						chara->setDommagesAdditionnels(std::stoi(chaine));
 					}
+					rep = 1;
 				}
 				else if(reponseUtilisateur == "5"){
 					std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
@@ -1050,10 +1167,11 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 						bestiaryFile >> chaine;
 						chara->setDommagesAdditionnels(std::stoi(chaine));
 					}
-					else{
-						std::cout << "Commande invalide!" << std::endl;
-						rep = -1;
-					}
+					rep = 1;
+				}
+				else{
+					std::cout << "Commande invalide!" << std::endl;
+					rep = -1;
 				}
 			}
 		}
@@ -1062,7 +1180,22 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 			rep = -1;
 		}
 	}//While
+
+	std::string mySave = "Saves/Monster/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
+	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
+
+	if(save){
+		save << "Nom: " << chara->getName() << std::endl;
+		save << "Points de vie:  " << chara->getCurrentLifePoints() << " / " << chara->getLifePoints() << std::endl;
+		save << std::endl;
+		save << "Attaque: " << chara->getAttack() << std::endl;
+		save << "Defense: " << chara->getDefense() << std::endl;
+		save << "Protection: " << chara->getProtection() << std::endl;
+		save << "Dé: " << chara->getDommagesDe() << std::endl;
+		save << "Dommages additionnels: " << chara->getDommagesAdditionnels() << std::endl;
+	}
 }
+
 
 
 Character* MonsterFactory::getCharacter(){
