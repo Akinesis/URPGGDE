@@ -50,6 +50,7 @@ class CommandManager{
 
 		void clientSend(std::string mes);
 		void hostSend(std::string mes);
+		bool getIsServer();
 
 		bool is_number(const std::string& s);
 	

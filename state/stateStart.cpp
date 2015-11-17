@@ -1,6 +1,17 @@
 #include "stateStart.hpp"
 
 StateStart::StateStart(CommandManager* commandManager) : State(commandManager){	
+std::cout << std::endl;
+std::cout << "Welcome to : " <<std::endl;
+std::cout << "          _______  _______  _______  _______     ______   _______"<< std::endl;
+std::cout << "|\\     /|(  ____ )(  ____ )(  ____ \\(  ____ \\   (  __  \\ (  ____ \\ "<< std::endl;
+std::cout << "| )   ( || (    )|| (    )|| (    \\/| (    \\/ _ | (  \\  )| (    \\/ "<< std::endl;
+std::cout << "| |   | || (____)|| (____)|| |      | |      (_)| |   ) || (__    "<< std::endl;
+std::cout << "| |   | ||     __)|  _____)| | ____ | | ____    | |   | ||  __)   "<< std::endl;
+std::cout << "| |   | || (\\ (   | (      | | \\_  )| | \\_  ) _ | |   ) || (      "<< std::endl;
+std::cout << "| (___) || ) \\ \\__| )      | (___) || (___) |(_)| (__/  )| (____/\\"<< std::endl;
+std::cout << "(_______)|/   \\__/|/       (_______)(_______)   (______/ (_______/"<< std::endl;
+std::cout << "Ultimate RolePlaying Game Generator : Deluxe Edition " <<std::endl;                                                               
 
 }
 

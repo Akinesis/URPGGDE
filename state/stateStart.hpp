@@ -2,6 +2,7 @@
 #define	STATESTART
 #include "state.hpp"
 #include "commandManager.hpp"
+#include <iostream>
 
 class StateStart : public State{
 	

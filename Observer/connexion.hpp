@@ -10,6 +10,7 @@ class Connexion{
 		Server server;
 		Client client;
 		std::string userName;
+		bool isServer;
 	public:
 		Connexion();
 		~Connexion();
@@ -22,6 +23,8 @@ class Connexion{
 
 		void clientHaveMessageToSend(std::string mes);
 		void hostHaveMessageToSend(std::string mes);
+
+		bool getIsServer();
 
 };
 

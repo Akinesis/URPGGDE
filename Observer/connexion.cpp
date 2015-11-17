@@ -33,3 +33,7 @@ void Connexion::hostHaveMessageToSend(std::string mes){
 	char* ret = (char*)mes.c_str();
 	server.send(ret);
 }
+
+bool Connexion::getIsServer(){
+	return isServer;
+}
