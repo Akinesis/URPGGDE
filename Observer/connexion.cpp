@@ -1,6 +1,6 @@
 #include "connexion.hpp"
 
-Connexion::Connexion() : server(Server()){
+Connexion::Connexion(){
 }
 
 Connexion::~Connexion(){}
@@ -23,11 +23,11 @@ std::string Connexion::getUserName(){
 	return userName;
 }
 
-void clientHaveMessageToSend(std::string mes){
-	//client.setHaveMessageToSend(true);
-	//client.setMessage(mes);
+void Connexion::clientHaveMessageToSend(std::string mes){
+	client.setHaveMessageToSend(true);
+	client.setMessage(mes);
 }
 
-void serverHaveMessageToSend(std::string mes){
+void Connexion::serverHaveMessageToSend(std::string mes){
 
 }

@@ -48,6 +48,8 @@ class CommandManager{
 		void createConnexionHost();
 		void createConnexionJoin();
 
+		void clientSend(std::string mes);
+
 		bool is_number(const std::string& s);
 	
 

@@ -1,5 +1,6 @@
 #ifndef STATEJOIN
 #define STATEJOIN
+#include <iostream>
 #include "state.hpp"
 #include "commandManager.hpp"
 

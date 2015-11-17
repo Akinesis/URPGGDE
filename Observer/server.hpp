@@ -10,16 +10,25 @@
 #include <netinet/in.h>
 #include <string>
 #include <iostream>
-#include <pthread.h>
-#include <time.h>
 #include <vector>
+#include <thread>
 
 class Server : public Subject{
 
 	private:
-		int sockfd, newsockfd, portno; //le initial et celui du server ainsi que le port
-		std::vector<int> clients;   //la liste des clients
-		struct sockaddr_in serv_addr;  //l'addresse du serveur
+		int sockfd, newsockfd, portno; 	//Le socket initial et celui du server ainsi que le port
+		std::vector<int> clients;   	//la liste des clients
+		struct sockaddr_in serv_addr;  	//L'addresse du serveur
+
+
+		std::thread threadConnect;
+		std::vector<std::thread> threadsReceive;
+		bool haveMessageToSend, hostHaveQuit;
+		//fonction de thread
+		void connectThreading();
+		void receiveThreading(int pos);
+		void receive(int cliSockfr);
+
 	public:
 		Server();
 		virtual ~Server();
@@ -28,8 +37,7 @@ class Server : public Subject{
 		void notifyClient();
 
 		void init();
-		void send(std::string message);
-		void receive();
+		void send(char* mess);
 };
 
 #endif
