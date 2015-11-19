@@ -1,0 +1,8 @@
+Nom: Wyverne
+Points de vie:  12 / 12
+
+Attaque: 12
+Defense: 12
+Protection: 3
+Dé: 8
+Dommages additionnels: 2

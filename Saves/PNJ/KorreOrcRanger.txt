@@ -1,0 +1,13 @@
+Prenom: Korre	Nom : bénit
+Sexe : Female	Race : Orc
+Classe : Ranger
+
+Points de vie :  30 / 30
+Points de mana : 24 / 24
+
+Force : 		13
+Constitution : 10
+Dexterite : 	11
+Intelligence : 6
+Sagesse : 		10
+Charisme :		9

@@ -1,0 +1,8 @@
+Nom: Bob
+Points de vie:  0 / 0
+
+Attaque: 10
+Defense: 10
+Protection: 10
+Dé: 6
+Dommages additionnels: -1

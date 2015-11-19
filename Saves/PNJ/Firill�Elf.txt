@@ -1,0 +1,13 @@
+Prenom: Firillë	Nom : Atwaën
+Sexe : Female	Race : Elf
+Classe : 
+
+Points de vie :  12 / 12
+Points de mana : 0 / 0
+
+Force : 		4
+Constitution : 4
+Dexterite : 	4
+Intelligence : 0
+Sagesse : 		0
+Charisme :		0
