@@ -84,7 +84,6 @@ void Client::sendThreading(Client *cli){
     std::cout << "Thread écriture crée !" << std::endl;
     while(!clientHaveQuit){
         if(cli->getMessageToSend()){
-            std::cout << "Méssage à envoyer" << std::endl;
             send(cli->getMessage());
             cli->setHaveMessageToSend(false);
         }
@@ -96,7 +95,6 @@ void Client::send(std::string mess){
     //transformation du méssage à envoyé en char*
     mess = userName + " dit : " +mess;
     char* sendMess = (char*)mess.c_str();
-    std::cout << "envoi du méssage" << std::endl;
 
     //envoi du méssage
     n = write(sockfd,sendMess,strlen(sendMess));
@@ -112,6 +110,7 @@ void Client::receive(){
     n = read(sockfd,buffer,255);
     if (n < 0) perror("ERROR reading from socket");
     if(buffer[0] != 0){
+        std::cout << std::string(200,'\b');
         std::cout << buffer << std::endl;
     }
 

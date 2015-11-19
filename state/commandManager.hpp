@@ -10,6 +10,7 @@ class StateCreate;
 class StatePlay;
 class StateJoin;
 class StateHost;
+class StateGame;
 
 /*Liste des commandes possible :
 help, oui, non, personnage, monstre, boss, création, jouer, hote
@@ -28,6 +29,7 @@ class CommandManager{
 		State *statePlay;
 		State *stateJoin;
 		State *stateHost;
+		State *stateGame;
 		State *currentState;
 		Connexion *connexion;
 
@@ -36,6 +38,8 @@ class CommandManager{
 		CommandManager(Connexion* conect);
 		~CommandManager();
 		int analyse(std::string commande);
+		int analyseGametext(std::string ligne);
+
 		void setState(State* etat);
 		int throwError();
 		State* getCurrentState();
@@ -44,6 +48,7 @@ class CommandManager{
 		State* getStatePlay();
 		State* getStateJoin();
 		State* getStateHost();
+		State* getStateGame();
 
 		void createConnexionHost();
 		void createConnexionJoin();

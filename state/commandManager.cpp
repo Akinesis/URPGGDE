@@ -5,12 +5,14 @@
 #include "statePlay.hpp"
 #include "stateJoin.hpp"
 #include "stateHost.hpp"
+#include "stateGame.hpp"
 
 CommandManager::CommandManager(Connexion* conect): inGame(false), stateStart(new StateStart(this)),
 									stateCreate(new StateCreate(this)),
 									statePlay(new StatePlay(this)),
 									stateJoin(new StateJoin(this)),
 									stateHost(new StateHost(this)),
+									stateGame(new StateGame(this)),
 									currentState(stateStart),
 									connexion(conect) {
 
@@ -21,6 +23,7 @@ CommandManager::CommandManager(): inGame(false), stateStart(new StateStart(this)
 									statePlay(new StatePlay(this)),
 									stateJoin(new StateJoin(this)),
 									stateHost(new StateHost(this)),
+									stateGame(new StateGame(this)),
 									currentState(stateStart) {
 
 }
@@ -99,6 +102,18 @@ int CommandManager::analyse(std::string commande){
 	return 0;
 }
 
+int CommandManager::analyseGametext(std::string ligne){
+	if(ligne.length() > 0){
+		if(ligne.at(0)=='/'){
+			ligne.erase(ligne.begin());
+			return analyse(ligne);
+		}else{
+			return 20;
+		}
+	}
+	return -1;
+}
+
 int CommandManager::throwError(){
 	return currentState->error();
 }
@@ -125,6 +140,10 @@ State* CommandManager::getStateJoin(){
 
 State* CommandManager::getStateHost(){
 	return stateHost;
+}
+
+State* CommandManager::getStateGame(){
+	return stateGame;
 }
 
 void CommandManager::setState(State* etat){

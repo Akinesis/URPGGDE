@@ -12,16 +12,7 @@ void StateJoin::help(){}
 
 int StateJoin::join(){
 	manager->createConnexionJoin();
-
-	std::string rep;
-
-	std::cout << "entrée dans la boucle" << std::endl;
-
-	while(1){
-		std::cout << "Attente du méssage" << std::endl;
-		std::getline (std::cin,rep);
-		manager->clientSend(rep);
-	}
-
+	manager->setState(manager->getStateGame());
+	manager->analyse("joueur");
 	return 0;
 }

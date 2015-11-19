@@ -6,10 +6,12 @@ Connexion::Connexion(){
 Connexion::~Connexion(){}
 
 void Connexion::initServer(){
+	isServer = true;
 	server.init();
 }
 
 void Connexion::initClient(){
+	isServer = false;
 	client.init();
 }
 
@@ -24,8 +26,8 @@ std::string Connexion::getUserName(){
 }
 
 void Connexion::clientHaveMessageToSend(std::string mes){
-	client.setHaveMessageToSend(true);
 	client.setMessage(mes);
+	client.setHaveMessageToSend(true);
 }
 
 void Connexion::hostHaveMessageToSend(std::string mes){

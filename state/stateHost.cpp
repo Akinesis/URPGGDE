@@ -12,12 +12,7 @@ void StateHost::help(){}
 
 int StateHost::join(){
 	manager->createConnexionHost();
-	std::string rep;
-
-	while(1){
-		std::cout << "Attente du méssage" << std::endl;
-		std::getline (std::cin,rep);
-		manager->hostSend(rep);
-	}
+	manager->setState(manager->getStateGame());
+	manager->analyse("joueur");
 	return 0;
 }

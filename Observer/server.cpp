@@ -99,6 +99,7 @@ void Server::receive(int cliSockRe){
     n = read(cliSockRe,buffer,255);
     if (n < 0) perror("ERROR reading from socket");
     if(buffer[0] != 0){ //n'écrire que si il y à un méssage
+        std::cout << std::string(200,'\b');
         std::cout << buffer << std::endl;
         send(buffer, cliSockRe);
     }
