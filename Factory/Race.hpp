@@ -1,10 +1,3 @@
-/*
- * Race.hpp
- *
- *  Created on: 1 oct. 2015
- *      Author: Xavier
- */
-
 #ifndef RACE_HPP_
 #define RACE_HPP_
 

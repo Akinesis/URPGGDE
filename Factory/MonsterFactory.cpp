@@ -126,6 +126,20 @@ Character* MonsterFactory::createAllRandom(){
 		}//if
 	}//else
 
+	std::string mySave = "Saves/Monster/" + chara->getName() + std::to_string(config->getNumberMonsterSaves() + ".txt";
+	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
+
+	if(save){
+		save << "Nom: " << chara->getName() << std::endl;
+		save << "Points de vie:  " << chara->getCurrentLifePoints() << " / " << chara->getLifePoints() << std::endl;
+		save << std::endl;
+		save << "Attaque: " << chara->getAttack() << std::endl;
+		save << "Defense: " << chara->getDefense() << std::endl;
+		save << "Protection: " << chara->getProtection() << std::endl;
+		save << "Dé: " << chara->getDommagesDe() << std::endl;
+		save << "Dommages additionnels: " << chara->getDommagesAdditionnels() << std::endl;
+	}
+
 	
 	return chara;
 }//fin
@@ -162,7 +176,7 @@ Character* MonsterFactory::createPersonnalize(){
 			}
 		}
 		else if(reponseUtilisateur == "2"){
-			std::cout << "Etes-vous sur de vouloir créer un monstre entièrement personnalisé? : " << std::cout;
+			std::cout << "Etes-vous sur de vouloir créer un monstre entièrement personnalisé? : " << std::endl;
 			std::cin >> reponseUtilisateur;
 			rep = commandManager->analyse(reponseUtilisateur);
 			if(rep == 1){
@@ -293,11 +307,11 @@ Character* MonsterFactory::createCharacter(){
 
 void MonsterFactory::createPersonnalizeMonster(Character* chara){
 	std::string reponseUtilisateur;
+	std::string memoireReponseUtilisateur;
 	int rep = -1;
 	//Choix du nom
 	while(rep == -1){	
 		std::cout << "Quel est le nom de votre monstre" << std::endl;
-		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
 		std::cout << "Etes-vous sur de vouloir appeller votre monstre : " << memoireReponseUtilisateur << std::endl;
 		std::cin >> reponseUtilisateur;
@@ -322,110 +336,172 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 		}
 	}
 	rep = -1;
+	//Attribution des points de vie.
+	while(rep == -1){
+		std::cout << "Combien de points de vie a votre monstre" << std::endl;
+		std::cin >> memoireReponseUtilisateur;
+
+		if(commandManager->is_number(memoireReponseUtilisateur) == true){
+			rep = 0;
+		}
+		else{
+			std::cout << "Veuillez entrer un nombre." << std::endl;
+			rep = -1;
+		}
+
+		while(rep == 0){
+			std::cout << "Etes-vous sur de vouloir que votre monstre ait : " << memoireReponseUtilisateur << " points de vie?" << std::endl;
+			std::cin >> reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+
+			if(rep == 1){
+				std::cout << "Votre monstre a désormais : " << memoireReponseUtilisateur << "Points de vie." << std::endl;
+				chara->setLifePoints(std::stoi(memoireReponseUtilisateur));
+				chara->setCurrentLifePoints(std::stoi(memoireReponseUtilisateur));
+			}
+			else if(rep == 2){
+				rep = -1;
+			}
+			else if(rep == -1){}
+			else if(rep == 0){
+				std::cout << "Oui : accepter." << std::endl;
+				std::cout << "Non : refuser." << std::endl;
+				rep = -1;
+			}
+			else{
+				std::cout << "Commande invalide!" << std::endl;
+				rep = -1;
+			}
+		}
+	}
+	rep = -1;
 	//Attribution de l'attaque
 	while(rep == -1){
 		std::cout << "Quel est l'attaque de votre monstre" << std::endl;
-		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
-		std::cout << "Etes-vous sur de vouloir donner une attaque de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
-		std::cin >> reponseUtilisateur;
-		rep = commandManager->analyse(reponseUtilisateur);
 
-		if(rep == 1){
-			std::cout << "L'attaque de votre monstre est desormais de : " << memoireReponseUtilisateur << std::endl;
-			chara->setAttack(std::stoi(memoireReponseUtilisateur));
-		}
-		else if(rep == 2){
-			rep = -1;
-		}
-		else if(rep == -1){}
-		else if(rep == 0){
-			std::cout << "Oui : accepter." << std::endl;
-			std::cout << "Non : refuser." << std::endl;
-			rep = -1;
+		if(commandManager->is_number(memoireReponseUtilisateur) == true){
+			rep = 0;
 		}
 		else{
-			std::cout << "Commande invalide!" << std::endl;
+			std::cout << "Veuillez entrer un nombre." << std::endl;
 			rep = -1;
+		}
+
+		while(rep == 0){
+			std::cout << "Etes-vous sur de vouloir donner une attaque de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
+			std::cin >> reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+
+			if(rep == 1){
+				std::cout << "L'attaque de votre monstre est desormais de : " << memoireReponseUtilisateur << std::endl;
+				chara->setAttack(std::stoi(memoireReponseUtilisateur));
+			}
+			else if(rep == 2){
+				rep = -1;
+			}
+			else if(rep == -1){}
+			else if(rep == 0){
+				std::cout << "Oui : accepter." << std::endl;
+				std::cout << "Non : refuser." << std::endl;
+				rep = -1;
+			}
+			else{
+				std::cout << "Commande invalide!" << std::endl;
+				rep = -1;
+			}
 		}
 	}
 	rep = -1;
 	//Choix de la défense
 	while(rep == -1){
 		std::cout << "Quel est la défense de votre monstre" << std::endl;
-		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
-		std::cout << "Etes-vous sur de vouloir donner une défense de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
-		std::cin >> reponseUtilisateur;
-		rep = commandManager->analyse(reponseUtilisateur);
 
-		if(rep == 1){
-			std::cout << "La défense de votre monstre est desormais de : " << memoireReponseUtilisateur << std::endl;
-			chara->setDefense(std::stoi(memoireReponseUtilisateur));
-		}
-		else if(rep == 2){
-			rep = -1;
-		}
-		else if(rep == -1){}
-		else if(rep == 0){
-			std::cout << "Oui : accepter." << std::endl;
-			std::cout << "Non : refuser." << std::endl;
-			rep = -1;
+		if(commandManager->is_number(memoireReponseUtilisateur) == true){
+			rep = 0;
 		}
 		else{
-			std::cout << "Commande invalide!" << std::endl;
+			std::cout << "Veuillez entrer un nombre." << std::endl;
 			rep = -1;
+		}
+
+		while(rep == 0){
+			std::cout << "Etes-vous sur de vouloir donner une défense de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
+			std::cin >> reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+
+			if(rep == 1){
+				std::cout << "La défense de votre monstre est desormais de : " << memoireReponseUtilisateur << std::endl;
+				chara->setDefense(std::stoi(memoireReponseUtilisateur));
+			}
+			else if(rep == 2){
+				rep = -1;
+			}
+			else if(rep == -1){}
+			else if(rep == 0){
+				std::cout << "Oui : accepter." << std::endl;
+				std::cout << "Non : refuser." << std::endl;
+				rep = -1;
+			}
+			else{
+				std::cout << "Commande invalide!" << std::endl;
+				rep = -1;
+			}		
 		}
 	}
 	rep = -1;
 	//Choix de la protection
 	while(rep == -1){
 		std::cout << "Quel est la protection de votre monstre" << std::endl;
-		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
 
-		std::cout << "Etes-vous sur de vouloir donner une protection de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
-		std::cin >> reponseUtilisateur;
-		rep = commandManager->analyse(reponseUtilisateur);
-
-		if(rep == 1){
-			std::cout << "La protection de votre monstre est desormais de : " << memoireReponseUtilisateur << std::endl;
-			chara->setProtection(std::stoi(memoireReponseUtilisateur));
-		}
-		else if(rep == 2){
-			rep = -1;
-		}
-		else if(rep == -1){}
-		else if(rep == 0){
-			std::cout << "Oui : accepter." << std::endl;
-			std::cout << "Non : refuser." << std::endl;
-			rep = -1;
+		if(commandManager->is_number(memoireReponseUtilisateur) == true){
+			rep = 0;
 		}
 		else{
-			std::cout << "Commande invalide!" << std::endl;
+			std::cout << "Veuillez entrer un nombre." << std::endl;
 			rep = -1;
+		}
+
+		while(rep == 0){
+			std::cout << "Etes-vous sur de vouloir donner une protection de : " << memoireReponseUtilisateur << " a votre monstre?" << std::endl;
+			std::cin >> reponseUtilisateur;
+			rep = commandManager->analyse(reponseUtilisateur);
+
+			if(rep == 1){
+				std::cout << "La protection de votre monstre est desormais de : " << memoireReponseUtilisateur << std::endl;
+				chara->setProtection(std::stoi(memoireReponseUtilisateur));
+			}
+			else if(rep == 2){
+				rep = 0;
+			}
+			else if(rep == -1){}
+			else if(rep == 0){
+				std::cout << "Oui : accepter." << std::endl;
+				std::cout << "Non : refuser." << std::endl;
+				rep = -1;
+			}
+			else{
+				std::cout << "Commande invalide!" << std::endl;
+				rep = -1;
+			}
 		}
 	}
 	rep = -1;
 	//Choix du dé
 	while(rep == -1){
 		std::cout << "Quel est le dés utilisés par votre monstre votre monstre" << std::endl;
-		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
 
-		try{
-			int cmd = std::stoi(memoireReponseUtilisateur);
-			if(cmd < 0){
-				std::cout << "Veuillez donner un nombre suppérieur à 0." << std::endl;
-				rep = -1;
-			}
+		if(commandManager->is_number(memoireReponseUtilisateur) == true){
+			rep = 0;
 		}
-		catch(std::invalid_argument){
+		else{
 			std::cout << "Veuillez entrer un nombre." << std::endl;
 			rep = -1;
-
 		}
-		rep = 0;
+
 		while(rep == 0){
 			std::cout << "Etes-vous sur de vouloir utiliser un dé : " << memoireReponseUtilisateur << " pour votre monstre?" << std::endl;
 			std::cin >> reponseUtilisateur;
@@ -455,22 +531,16 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 	//Choix dégats additionnels
 	while(rep == -1){
 		std::cout << "Quel sont les dégats supplémentaires appliqués au dé utilisés par votre monstre votre monstre" << std::endl;
-		std::string memoireReponseUtilisateur;
 		std::cin >> memoireReponseUtilisateur;
 
-		try{
-			int cmd = std::stoi(memoireReponseUtilisateur);
-			if((cmd < 0) && (cmd >= abs(chara->getDommagesDe()))){
-				std::cout << "Veuillez donner un nombre suppérieur au dé utilisé qui est un dé : " << chara->getDommagesDe() << std::endl;
-				rep = -1;
-			}
+		if(commandManager->is_number(memoireReponseUtilisateur) == true){
+			rep = 0;
 		}
-		catch(std::invalid_argument){
+		else{
 			std::cout << "Veuillez entrer un nombre." << std::endl;
 			rep = -1;
-
 		}
-		rep = 0;
+
 		while(rep == 0){
 			std::cout << "Etes-vous sur de vouloir ajouter : " << memoireReponseUtilisateur << " de dégats pour votre monstre?" << std::endl;
 			std::cin >> reponseUtilisateur;
@@ -1181,7 +1251,7 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 		}
 	}//While
 
-	std::string mySave = "Saves/Monster/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
+	std::string mySave = "Saves/Monster/" + chara->getName() + std::to_string(config->getNumberMonsterSaves() + ".txt";
 	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
 	if(save){
