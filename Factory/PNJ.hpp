@@ -20,7 +20,6 @@ class PNJ : public Character {
 		std::string performAttack();
 		std::string defend();
 
-
 		std::string getLastName();
 		void setLastName(std::string);
 		void setRandomName();

@@ -13,11 +13,12 @@
 class Boss : public Character{
 	private:
 		std::string lastName;
-
+		int dommagesDe;
+		int dommagesAdditionnels;
 
 	public:
 		Boss();
-		virtual ~Boss() = 0;
+		virtual ~Boss();
 		std::string performAttack();
 		std::string defend();
 
@@ -25,6 +26,12 @@ class Boss : public Character{
 		void setLastName(std::string);
 		void setRandomName();
 		void setRandomLastName();
+
+		//Getters Setters pour Monster
+		int getDommagesDe();
+		void setDommagesDe(int);
+		int getDommagesAdditionnels();
+		void setDommagesAdditionnels(int);
 };
 
 

@@ -83,4 +83,17 @@ void Boss::setRandomLastName(){
 		name = chaine;
 	}
 }
-// Getters Setters END
+
+
+int Boss::getDommagesDe(){
+	return dommagesDe;
+}
+void Boss::setDommagesDe(int dd){
+	dommagesDe = dd;
+}
+int Boss::getDommagesAdditionnels(){
+	return dommagesAdditionnels;
+}
+void Boss::setDommagesAdditionnels(int da){
+	dommagesAdditionnels = da;
+}

@@ -1,5 +1,5 @@
-#ifndef PNJFACTORY_HPP_
-#define PNJFACTORY_HPP_
+#ifndef BOSSFACTORY_HPP_
+#define BOSSFACTORY_HPP_
 
 #include <ctime>
 #include <cstdlib>
@@ -10,29 +10,25 @@
 #include <dirent.h>
 
 #include "Factory.hpp"
-#include "PNJ.hpp"
+#include "Boss.hpp"
+#include "PNJFactory.hpp"
+#include "MonsterFactory.hpp"
 
-class PNJFactory : public Factory{
+class BossFactory : public Factory{
 	private:
-		void randomSex(Character*);
-		void randomSkillPoints(Character*);
-		
+		PNJFactory* pnjFact;
+		MonsterFactory* monsterFact;
 	public:
-		PNJFactory();
-		virtual ~PNJFactory();
+		BossFactory();
+		virtual ~BossFactory();
 
 		void createAllRandom(Character*);
 		void createPersonnalize(Character*);
 		Character* createCharacterSaved();
 		Character* createCharacter();
 
-		
-		void applySkillPoints(Character*);
-		void save(Character*, std::string, bool);
-
-		// Getters Setters
 		void setCharacter(Character*);
 		Character* getCharacter();
 };
 
-#endif /* PNJFACTORY_HPP_ */
+#endif

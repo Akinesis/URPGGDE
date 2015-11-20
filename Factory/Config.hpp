@@ -14,10 +14,10 @@ class Config{
 	public:
 		Config();
 		~Config();
-		void Initialize();
-		void UpdateMonsterCfg();
-		void UpdatePNJCfg();
-		void UpdateBossCfg();
+		void initialize();
+		void updateMonsterCfg();
+		void updatePNJCfg();
+		void updateBossCfg();
 
 		int getNumberMonsterSaves();
 		int getNumberBossSaves();

@@ -6,6 +6,7 @@
 #include "Factory.hpp"
 #include "PNJFactory.hpp"
 #include "MonsterFactory.hpp"
+#include "BossFactory.hpp"
 #include "../state/commandManager.hpp"
 
 #include <ctime>
@@ -22,32 +23,7 @@
 int main(){
 	using namespace std;
 
-	Factory* fact = new MonsterFactory();
-	Character* chara = fact->createPersonnalize();
-	//Character* chara = fact->createCharacter();
-
-
-	
-	/*
-	std::ifstream bestiaryFile("../NameGenerator/Bestiary.txt", std::ios::in);
-	
-	if(bestiaryFile){
-		std::string chaine;
-		bestiaryFile >> chaine;
-		bestiaryFile >> chaine;
-		bestiaryFile >> chaine;
-		bestiaryFile >> chaine;
-		bestiaryFile >> chaine;
-		bestiaryFile >> chaine;
-		bestiaryFile >> chaine;
-		bestiaryFile >> chaine;
-		bestiaryFile >> chaine;
-
-		for(int i = 0; i < 7 ; ++i){
-			bestiaryFile >> chaine;
-		}
-		std::cout << prout << std::endl;
-	}
-	*/
+	Factory* fact = new BossFactory();
+	Character* chara = fact->createCharacter();
 
 }

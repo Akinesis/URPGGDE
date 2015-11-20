@@ -3,7 +3,7 @@
 Config::Config() {}
 Config::~Config() {}
 
-void Config::Initialize(){
+void Config::initialize(){
 	std::ifstream cfgFile("cfg.ini", std::ios::in);
 	if(cfgFile){
 		std::string chaine;
@@ -22,7 +22,7 @@ void Config::Initialize(){
 	}
 }
 
-void Config::UpdateMonsterCfg(){
+void Config::updateMonsterCfg(){
 	std::string fileName;
 	DIR* rep = NULL;
 	struct dirent* fichierLu = NULL;
@@ -33,19 +33,18 @@ void Config::UpdateMonsterCfg(){
 		exit(1);
 	}
 
-	int i = 0;
-	int j = 0;
+	int i = 1;
+	int j = 1;
 	while((fichierLu = readdir(rep)) != NULL){
 		if(i > 2){
-			std::cout << j << " : " << fichierLu->d_name << std::endl;
 			++j;
 		}
 		++i;
 	}
-	numberMonsterSaves = i;
+	numberMonsterSaves = j;
 }
 
-void Config::UpdatePNJCfg(){
+void Config::updatePNJCfg(){
 	std::string fileName;
 	DIR* rep = NULL;
 	struct dirent* fichierLu = NULL;
@@ -60,7 +59,6 @@ void Config::UpdatePNJCfg(){
 	int j = 0;
 	while((fichierLu = readdir(rep)) != NULL){
 		if(i > 2){
-			std::cout << j << " : " << fichierLu->d_name << std::endl;
 			++j;
 		}
 		++i;
@@ -68,7 +66,7 @@ void Config::UpdatePNJCfg(){
 	numberPNJSaves = i;
 }
 
-void Config::UpdateBossCfg(){
+void Config::updateBossCfg(){
 	std::string fileName;
 	DIR* rep = NULL;
 	struct dirent* fichierLu = NULL;
@@ -83,7 +81,6 @@ void Config::UpdateBossCfg(){
 	int j = 0;
 	while((fichierLu = readdir(rep)) != NULL){
 		if(i > 2){
-			std::cout << j << " : " << fichierLu->d_name << std::endl;
 			++j;
 		}
 		++i;

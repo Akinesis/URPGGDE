@@ -13,17 +13,19 @@
 #include "Monster.hpp"
 
 class MonsterFactory : public Factory{
+	private:
+		void createPersonnalizeMonster(Character*);
+		void createBestiaryMonster(Character*);
 	public:
 		MonsterFactory();
 		virtual ~MonsterFactory();
 
-		Character* createAllRandom();
-		Character* createPersonnalize();
+		void createAllRandom(Character*);
+		void createPersonnalize(Character*);
 		Character* createCharacterSaved();
-		Character* createCharacter();
+		Character* createCharacter();	
 
-		void createBestiaryMonster(Character*);
-		void createPersonnalizeMonster(Character*);
+		void save(Character*, std::string, bool);
 
 		//Getters Setters
 		Character* getCharacter();

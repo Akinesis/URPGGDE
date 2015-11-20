@@ -45,7 +45,7 @@ void PNJFactory::randomSkillPoints(Character* chara){
 	chara->setCharisma(chara->getCharisma()+stat[5]);
 }
 
-void PNJFactory::ApplySkillPoints(Character* chara){
+void PNJFactory::applySkillPoints(Character* chara){
 		chara->setLifePoints(chara->getConstitution() * 3);
 	chara->setManaPoint(((chara->getIntelligence() + chara->getWisdom()) / 2) * 3);
 	chara->setAttack((chara->getStrength() + chara->getDexterity()) / 2);
@@ -58,8 +58,41 @@ void PNJFactory::ApplySkillPoints(Character* chara){
 	std::cout << "Vous avez : " << chara->getDefense() << " points de défense." << std::endl;
 }
 
-Character* PNJFactory::createAllRandom(){
-	chara = new PNJ();
+void PNJFactory::save(Character* chara, std::string path, bool boss){
+	config = new Config();
+	std::string mySave;
+	if(boss == true){
+		config->updateBossCfg();
+		mySave = path + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + std::to_string(config->getNumberBossSaves()) + ".txt";
+
+	}
+	else{
+		config->updatePNJCfg();
+		mySave = path + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + std::to_string(config->getNumberPNJSaves()) + ".txt";
+		
+	}
+	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
+
+	if(save){
+		save << "Prenom: " << chara->getName() << "	Nom : " << chara->getLastName() << std::endl;
+		save << "Sexe : " << chara->getSexe() << "	Race : " << chara->getRace()->getRaceName() << std::endl;
+		save << "Classe : " << chara->getClasse()->getClassName() << std::endl;
+		save << std::endl;
+		save << "Points de vie :  " << chara->getCurrentLifePoints() << " / " << chara->getLifePoints() << std::endl;
+		save << "Points de mana : " << chara->getCurrentManaPoints() << " / " << chara->getManaPoints() << std::endl;
+		save << std::endl;
+		save << "Force : 		" << chara->getStrength() << std::endl;
+		save << "Constitution : " << chara->getConstitution() << std::endl;
+		save << "Dexterite : 	" << chara->getDexterity() << std::endl;
+		save << "Intelligence : " << chara->getIntelligence() << std::endl;
+		save << "Sagesse : 		" << chara->getWisdom() << std::endl;
+		save << "Charisme :		" << chara->getCharisma() << std::endl;
+	}
+	config->updatePNJCfg();
+	config->initialize();
+}
+
+void PNJFactory::createAllRandom(Character* chara){
 	
 	//Random du sexe
 	randomSex(chara);
@@ -86,38 +119,21 @@ Character* PNJFactory::createAllRandom(){
 	std::cout << "Votre classe est " << chara->getClasse()->getClassName() << std::endl;
 
 	//Application des stats à la vie, au mana à l'attaque et à la défense
-	ApplySkillPoints(chara);
-
-	//Création fichier texte
-	std::string mySave = "Saves/PNJ/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
-	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
-
-	if(save){
-		save << "Prenom: " << chara->getName() << "	Nom : " << chara->getLastName() << std::endl;
-		save << "Sexe : " << chara->getSexe() << "	Race : " << chara->getRace()->getRaceName() << std::endl;
-		save << "Classe : " << chara->getClasse()->getClassName() << std::endl;
-		save << std::endl;
-		save << "Points de vie :  " << chara->getCurrentLifePoints() << " / " << chara->getLifePoints() << std::endl;
-		save << "Points de mana : " << chara->getCurrentManaPoints() << " / " << chara->getManaPoints() << std::endl;
-		save << std::endl;
-		save << "Force : 		" << chara->getStrength() << std::endl;
-		save << "Constitution : " << chara->getConstitution() << std::endl;
-		save << "Dexterite : 	" << chara->getDexterity() << std::endl;
-		save << "Intelligence : " << chara->getIntelligence() << std::endl;
-		save << "Sagesse : 		" << chara->getWisdom() << std::endl;
-		save << "Charisme :		" << chara->getCharisma() << std::endl;
-	}
-	return chara;
+	applySkillPoints(chara);
 }
 
-Character* PNJFactory::createPersonnalize(){
-	chara = new PNJ();
+void PNJFactory::createPersonnalize(Character* chara){
+
+	////////////////////////////////////////////////////////////////
+	commandManager->setState(commandManager->getStateCreate());
+	////////////////////////////////////////////////////////////////
+
 	std::string reponseUtilisateur;
 	int rep = -1;
 
 	// Choix du sexe
 	while(rep == -1){
-		std::cout << "Voulez-vous choisir le sexe de votre pesonnage ou en avoir un aleatoire? : ";
+		std::cout << "Voulez-vous choisir le sexe de votre pesonnage ou en avoir un aleatoire? : " << std::endl;
 		std::cin >> reponseUtilisateur;
 		rep = commandManager->analyse(reponseUtilisateur);
 		std::cout << rep << std::endl;
@@ -701,28 +717,8 @@ Character* PNJFactory::createPersonnalize(){
 			}
 		}
 	}
-	ApplySkillPoints(chara);
+	applySkillPoints(chara);
 
-	//creation fichier save
-	std::string mySave = "Saves/PNJ/" + chara->getName() + chara->getRace()->getRaceName() + chara->getClasse()->getClassName() + ".txt";
-	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
-
-	if(save){
-		save << "Prenom: " << chara->getName() << "	Nom : " << chara->getLastName() << std::endl;
-		save << "Sexe : " << chara->getSexe() << "	Race : " << chara->getRace()->getRaceName() << std::endl;
-		save << "Classe : " << chara->getClasse()->getClassName() << std::endl;
-		save << std::endl;
-		save << "Points de vie :  " << chara->getCurrentLifePoints() << " / " << chara->getLifePoints() << std::endl;
-		save << "Points de mana : " << chara->getCurrentManaPoints() << " / " << chara->getManaPoints() << std::endl;
-		save << std::endl;
-		save << "Force : 		" << chara->getStrength() << std::endl;
-		save << "Constitution : " << chara->getConstitution() << std::endl;
-		save << "Dexterite : 	" << chara->getDexterity() << std::endl;
-		save << "Intelligence : " << chara->getIntelligence() << std::endl;
-		save << "Sagesse : 		" << chara->getWisdom() << std::endl;
-		save << "Charisme :		" << chara->getCharisma() << std::endl;
-	}
-	return chara;
 }
 
 
@@ -864,11 +860,9 @@ Character* PNJFactory::createCharacterSaved(){
 }
 
 Character* PNJFactory::createCharacter(){
-
-	////////////////////////////////////////////////////////////////
-	commandManager->setState(commandManager->getStateCreate());
-	////////////////////////////////////////////////////////////////
-
+	chara = new PNJ();
+	config = new Config();
+	config->initialize();
 	std::string reponseUtilisateur;
 	int rep = -1;
 	while(rep == -1){
@@ -877,10 +871,10 @@ Character* PNJFactory::createCharacter(){
 		rep = commandManager->analyse(reponseUtilisateur);
 		std::cout << rep << std::endl;
 		if(rep == 5){// aléatoire
-			return createAllRandom();
+			createAllRandom(chara);
 		}
 		else if(rep == 6){
-			return createPersonnalize();
+			createPersonnalize(chara);
 		}
 		else if(rep == 0){
 			std::cout << "aleatoire : attribue un personnage aléatoire." << std::endl;
@@ -892,7 +886,8 @@ Character* PNJFactory::createCharacter(){
 			rep = -1;
 		}
 	}
-	return createAllRandom();
+	save(chara, "Saves/PNJ/", false);
+	return chara;
 }
 
 void PNJFactory::setCharacter(Character* charac){

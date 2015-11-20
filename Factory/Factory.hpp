@@ -24,8 +24,8 @@ class Factory{
 	public:
 		Factory();
 		virtual ~Factory()=0;
-		virtual Character* createAllRandom()=0;
-		virtual Character* createPersonnalize()=0;
+		virtual void createAllRandom(Character*)=0;
+		virtual void createPersonnalize(Character*)=0;
 		virtual Character* createCharacterSaved()=0;
 
 		virtual Character* createCharacter()=0;

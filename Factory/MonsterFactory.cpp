@@ -4,16 +4,13 @@ MonsterFactory::MonsterFactory() {}
 
 MonsterFactory::~MonsterFactory() {}
 
-Character* MonsterFactory::createAllRandom(){
-	chara = new Monster();
-	
+void MonsterFactory::createAllRandom(Character* chara){	
 	const int nbCategory = 3;
 	const int passToH = 9;
 	const int tailleH = 4;
 	const int tailleB = 5;
 	const int tailleF = 5;
-
-	std::ifstream bestiaryFile("../NameGenerator/Bestiary.txt", std::ios::in);
+	std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
 		
 	std::srand(std::time(0));
 	int rdmCategory = (std::rand() % nbCategory) + 1;
@@ -32,6 +29,7 @@ Character* MonsterFactory::createAllRandom(){
 					bestiaryFile >> chaine;
 				}//for
 			}//for
+			
 			//Attribution NOM
 			chara->setName(chaine);
 			//Attribution VIE
@@ -54,18 +52,30 @@ Character* MonsterFactory::createAllRandom(){
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
 		}//if
+		else{
+			std::cout << "Impossible d'acceder au fichier" << std::endl;
+		}
 	}//if
 	else if(rdmCategory == 2){
 		if(bestiaryFile){
+
 			std::string chaine;
-			for(int i = 0; i < (passToH + tailleH +1); ++i){
+			for(int i = 0; i < (passToH); ++i){
 				bestiaryFile >> chaine;
-			}//for
+			}
+			for(int i = 0; i < tailleH; ++i){
+				for(int j = 0; j < 7; ++j){
+					bestiaryFile >> chaine;
+				}
+			}
+			bestiaryFile >> chaine;
 
 			std::srand(std::time(0));
 			int rdmMonster = (std::rand() % tailleB);
 			for(int i = 0; i < rdmMonster; ++i){
-				bestiaryFile >> chaine;
+				for(int j = 0; j < 7; ++j){
+					bestiaryFile >> chaine;
+				}
 			}//for
 			//Attribution NOM
 			chara->setName(chaine);
@@ -89,18 +99,38 @@ Character* MonsterFactory::createAllRandom(){
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
 		}//if
+		else{
+			std::cout << "Impossible d'acceder au fichier" << std::endl;
+		}
 	}//else if
 	else{
 		if(bestiaryFile){
 			std::string chaine;
-			for(int i = 0; i < (passToH + tailleH + tailleB +2); ++i){
+
+			for(int i = 0; i < (passToH); ++i){
 				bestiaryFile >> chaine;
 			}//for
+
+			for(int i = 0; i < tailleH; ++i){
+				for(int j = 0; j < 7; ++j){
+					bestiaryFile >> chaine;
+				}
+			}
+			bestiaryFile >> chaine;
+
+			for(int i = 0; i < tailleB; ++i){
+				for(int j = 0; j < 7; ++j){
+					bestiaryFile >> chaine;
+				}
+			}
+			bestiaryFile >> chaine;
 
 			std::srand(std::time(0));
 			int rdmMonster = (std::rand() % tailleF);
 			for(int i = 0; i < rdmMonster; ++i){
-				bestiaryFile >> chaine;
+				for(int j = 0; j < 7; ++j){
+					bestiaryFile >> chaine;
+				}
 			}//for
 			//Attribution NOM
 			chara->setName(chaine);
@@ -124,28 +154,14 @@ Character* MonsterFactory::createAllRandom(){
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
 		}//if
+		else{
+			std::cout << "Impossible d'acceder au fichier" << std::endl;
+		}
 	}//else
+}
 
-	std::string mySave = "Saves/Monster/" + chara->getName() + std::to_string(config->getNumberMonsterSaves() + ".txt";
-	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
-	if(save){
-		save << "Nom: " << chara->getName() << std::endl;
-		save << "Points de vie:  " << chara->getCurrentLifePoints() << " / " << chara->getLifePoints() << std::endl;
-		save << std::endl;
-		save << "Attaque: " << chara->getAttack() << std::endl;
-		save << "Defense: " << chara->getDefense() << std::endl;
-		save << "Protection: " << chara->getProtection() << std::endl;
-		save << "Dé: " << chara->getDommagesDe() << std::endl;
-		save << "Dommages additionnels: " << chara->getDommagesAdditionnels() << std::endl;
-	}
-
-	
-	return chara;
-}//fin
-
-Character* MonsterFactory::createPersonnalize(){
-	chara = new Monster();
+void MonsterFactory::createPersonnalize(Character* chara){
 
 	std::string reponseUtilisateur;
 	int rep = -1;
@@ -196,8 +212,6 @@ Character* MonsterFactory::createPersonnalize(){
 			}
 		}
 	}
-
-	return chara;
 }
 
 Character* MonsterFactory::createCharacterSaved(){
@@ -276,7 +290,8 @@ Character* MonsterFactory::createCharacter(){
 	////////////////////////////////////////////////////////////////
 	commandManager->setState(commandManager->getStateCreate());
 	////////////////////////////////////////////////////////////////
-
+	chara = new Monster();
+	config = new Config();
 	std::string reponseUtilisateur;
 	int rep = -1;
 
@@ -291,10 +306,10 @@ Character* MonsterFactory::createCharacter(){
 			rep = -1;
 		}
 		else if(rep == 5){
-			createAllRandom();
+			createAllRandom(chara);
 		}
 		else if(rep == 6){
-			createPersonnalize();
+			createPersonnalize(chara);
 		}
 		else if(rep == -1){}
 		else{
@@ -302,6 +317,8 @@ Character* MonsterFactory::createCharacter(){
 			rep = -1;
 		}
 	}
+	std::cout << "Nom Dans CreateCharacter " << chara->getName() << std::endl;
+	save(chara, "Saves/Monster/", false);
 	return chara;
 }
 
@@ -773,7 +790,6 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 		else if(reponseUtilisateur == "2"){
 			rep = -1;
 			while(rep == -1){
-				std::cout << "aga" << std::endl;
 				std::ifstream bestiaryFile("NameGenerator/Bestiary.txt", std::ios::in);
 				std::cout << "Voici la liste des Bêtes : " << std::endl;
 				if(bestiaryFile){
@@ -1136,6 +1152,7 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 								bestiaryFile >> chaine;
 							}
 						}
+						std::cout << "Nom gobelin " << chaine << std::endl;
 						chara->setName(chaine);
 						bestiaryFile >> chaine;
 						chara->setCurrentLifePoints(std::stoi(chaine));
@@ -1249,9 +1266,20 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 			std::cout << "Commande invalide!" << std::endl;
 			rep = -1;
 		}
-	}//While
+	}
+}
 
-	std::string mySave = "Saves/Monster/" + chara->getName() + std::to_string(config->getNumberMonsterSaves() + ".txt";
+void MonsterFactory::save(Character* chara, std::string path, bool boss){
+	config = new Config();
+	std::string mySave;
+	if(boss == true){
+		config->updateBossCfg();
+		mySave = path + chara->getName() + std::to_string(config->getNumberBossSaves()) + ".txt";
+	}
+	else{
+		config->updateMonsterCfg();
+		mySave = path + chara->getName() + std::to_string(config->getNumberMonsterSaves()) + ".txt";
+	}
 	std::ofstream save(mySave.c_str(), std::ios::out | std::ios::trunc);
 
 	if(save){
@@ -1264,8 +1292,10 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 		save << "Dé: " << chara->getDommagesDe() << std::endl;
 		save << "Dommages additionnels: " << chara->getDommagesAdditionnels() << std::endl;
 	}
+	config->updateMonsterCfg();
+	config->updateBossCfg();
+	config->initialize();
 }
-
 
 
 Character* MonsterFactory::getCharacter(){
