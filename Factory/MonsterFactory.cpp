@@ -1,9 +1,37 @@
+/**
+* @file MonsterFactory.cpp
+* @brief Classe fabrique de monstres
+* @author HERAUD Xavier 
+* 
+* Classe qui gère la fabrication de personnages de type monstre.
+*/
 #include "MonsterFactory.hpp"
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 MonsterFactory::MonsterFactory() {}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 MonsterFactory::~MonsterFactory() {}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void MonsterFactory::createAllRandom(Character* chara){	
 	const int nbCategory = 3;
 	const int passToH = 9;
@@ -160,7 +188,13 @@ void MonsterFactory::createAllRandom(Character* chara){
 	}//else
 }
 
-
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void MonsterFactory::createPersonnalize(Character* chara){
 
 	std::string reponseUtilisateur;
@@ -285,6 +319,13 @@ Character* MonsterFactory::createCharacterSaved(){
 	return chara;
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Character* MonsterFactory::createCharacter(){
 
 	////////////////////////////////////////////////////////////////
@@ -1269,6 +1310,13 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 	}
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void MonsterFactory::save(Character* chara, std::string path, bool boss){
 	config = new Config();
 	std::string mySave;

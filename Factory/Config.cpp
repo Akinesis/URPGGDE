@@ -1,8 +1,36 @@
+/**
+* @file Config.cpp
+* @brief Classe de configuraton
+* @author HERAUD Xavier 
+* 
+* Classe qui gère le fichier cfg.ini qui mui-même gère les sauvegardes.
+*/
 #include "Config.hpp"
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Config::Config() {}
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Config::~Config() {}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void Config::initialize(){
 	std::ifstream cfgFile("cfg.ini", std::ios::in);
 	if(cfgFile){
@@ -22,6 +50,13 @@ void Config::initialize(){
 	}
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void Config::updateMonsterCfg(){
 	std::string fileName;
 	DIR* rep = NULL;
@@ -44,6 +79,13 @@ void Config::updateMonsterCfg(){
 	numberMonsterSaves = j;
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void Config::updatePNJCfg(){
 	std::string fileName;
 	DIR* rep = NULL;
@@ -66,6 +108,13 @@ void Config::updatePNJCfg(){
 	numberPNJSaves = i;
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void Config::updateBossCfg(){
 	std::string fileName;
 	DIR* rep = NULL;
@@ -87,6 +136,9 @@ void Config::updateBossCfg(){
 	}
 	numberBossSaves = i;
 }
+
+////////////////////////////////////////////////////////////
+// GETTERS SETTERS
 
 int Config::getNumberMonsterSaves(){
 	return numberMonsterSaves;

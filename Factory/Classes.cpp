@@ -1,16 +1,37 @@
-/*
- * Classes.cpp
- *
- *  Created on: 7 oct. 2015
- *      Author: E139824H
- */
-
+/**
+* @file Classes.cpp
+* @brief Classe de classes
+* @author HERAUD Xavier 
+* 
+* Classes qui gères les classes jouables par les personnages.
+*/
 #include "Classes.hpp"
 
+/**
+* @fn Classes()
+* @brief Constructeur de @class Classes Classes.hpp
+*
+* @param
+* @return
+*/
 Classes::Classes(){}
 
+/**
+* @fn ~Classes()
+* @brief Destructeur de @class Classes Classes.hpp
+*
+* @param
+* @return
+*/
 Classes::~Classes(){}
 
+/**
+* @fn void createPaladin().
+* @brief Attribut aux variables de la @class Classes Classes.hpp les points correspondant à la classe paladin.
+*
+* @param
+* @return
+*/
 void Classes::createPaladin(){
 	className = "Paladin";
 	modifStrength = 1;
@@ -22,6 +43,13 @@ void Classes::createPaladin(){
 
 }
 
+/**
+* @fn void createWarrior().
+* @brief Attribut aux variables de la @class Classes Classes.hpp les points correspondant à la classe guerrier.
+*
+* @param
+* @return
+*/
 void Classes::createWarrior(){
 	className = "Guerrier";
 	modifStrength = 2;
@@ -32,6 +60,13 @@ void Classes::createWarrior(){
 	modifCharisma = 0;
 }
 
+/**
+* @fn void createMage().
+* @brief Attribut aux variables de la @class Classes Classes.hpp les points correspondant à la classe mage.
+*
+* @param
+* @return
+*/
 void Classes::createMage(){
 	className = "Mage";
 	modifStrength = -2;
@@ -42,6 +77,13 @@ void Classes::createMage(){
 	modifCharisma = 0;
 }
 
+/**
+* @fn void createHunter().
+* @brief Attribut aux variables de la @class Classes Classes.hpp les points correspondant à la classe ranger.
+*
+* @param
+* @return
+*/
 void Classes::createHunter(){
 	className = "Ranger";
 	modifStrength = 1;
@@ -52,6 +94,13 @@ void Classes::createHunter(){
 	modifCharisma = 0;
 }
 
+/**
+* @fn void createThief().
+* @brief Attribut aux variables de la @class Classes Classes.hpp les points correspondant à la classe roublard.
+*
+* @param
+* @return
+*/
 void Classes::createThief(){
 	className = "Roublard";
 	modifStrength = 1;
@@ -62,6 +111,13 @@ void Classes::createThief(){
 	modifCharisma = 1;
 }
 
+/**
+* @fn void createPriest().
+* @brief Attribut aux variables de la @class Classes Classes.hpp les points correspondant à la classe prêtre.
+*
+* @param
+* @return
+*/
 void Classes::createPriest(){
 	className = "Pretre";
 	modifStrength = -2;
@@ -72,6 +128,13 @@ void Classes::createPriest(){
 	modifCharisma = 0;
 }
 
+/**
+* @fn void createRandomClass().
+* @brief Attribut aux variables de la @class Classes Classes.hpp les points correspondant à une classe aléatoire.
+*
+* @param
+* @return
+*/
 void Classes::createRandomClass(){
 	std::srand((unsigned int)std::time(0));
 	int rdmVar = (std::rand() % 6) + 1;

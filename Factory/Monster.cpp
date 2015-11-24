@@ -1,13 +1,37 @@
+/**
+* @file Monster.cpp
+* @brief Classe de personnage monstre.
+* @author HERAUD Xavier 
+* 
+* Classe fille de Character qui possèdes les variables et méthodes propres aux monstres.
+*/
 #include "Monster.hpp"
 
-
-// Constructeur destructeurs de la classe Monster
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Monster::Monster(){}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Monster::~Monster(){}
 
-
-// Methodes de la classe Monster
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 std::string Monster::performAttack(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
@@ -23,6 +47,13 @@ std::string Monster::performAttack(){
 	}
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 std::string Monster::defend(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;

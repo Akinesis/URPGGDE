@@ -1,8 +1,28 @@
+/**
+* @file Inventory.cpp
+* @brief Classe de l'inventaire
+* @author HERAUD Xavier 
+* 
+* Classe qui gère l'inventaire du personnage.
+*/
 #include "Inventory.hpp"
 
-
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Inventory::Inventory(){}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Inventory::~Inventory(){}
 
 ////////////////////////////////////////////////////////////////////////////////

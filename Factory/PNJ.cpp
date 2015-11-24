@@ -1,14 +1,41 @@
+/**
+* @file PNJ.cpp
+* @brief Classe de personnage PNJ.
+* @author HERAUD Xavier 
+* 
+* Classe fille de Character qui possèdes les variables et méthodes propres aux PNJs.
+*/
 #include "PNJ.hpp"
 
-// Constructeur Destructeur
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 PNJ::PNJ(){}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 PNJ::~PNJ(){}
 
 
 // Méthodes de la classe PNJ
 ///////////////////////////////////////////////////////////////////////////////
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 std::string PNJ::performAttack(){
 	std::srand((unsigned int)std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
@@ -24,6 +51,13 @@ std::string PNJ::performAttack(){
 	}
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 std::string PNJ::defend(){
 	std::srand((unsigned int)std::time(0));
 	int random_variable = (std::rand() % 20) + 1;

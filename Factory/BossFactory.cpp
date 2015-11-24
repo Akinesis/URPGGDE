@@ -1,8 +1,37 @@
+/**
+* @file BossFactory.cpp
+* @brief Classe fabrique de boss.
+* @author HERAUD Xavier 
+* 
+* Classe qui gère la fabrication de personnages de type boss.
+*/
 #include "BossFactory.hpp"
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 BossFactory::BossFactory(){}
+
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 BossFactory::~BossFactory(){}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void BossFactory::createAllRandom(Character* chara){
 	int rep = -1;
 	std::string reponseUtilisateur;
@@ -44,6 +73,13 @@ void BossFactory::createAllRandom(Character* chara){
 
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void BossFactory::createPersonnalize(Character* chara){
 	std::string reponseUtilisateur;
 	int rep = -1;
@@ -84,6 +120,13 @@ void BossFactory::createPersonnalize(Character* chara){
 	}
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Character* BossFactory::createCharacterSaved(){
 	chara = new Boss();
 
@@ -235,6 +278,13 @@ Character* BossFactory::createCharacterSaved(){
 	return chara;
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Character* BossFactory::createCharacter(){
 
 	////////////////////////////////////////////////////////////////

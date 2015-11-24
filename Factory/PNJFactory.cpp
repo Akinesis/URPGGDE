@@ -1,9 +1,37 @@
+/**
+* @file PNJFactory.cpp
+* @brief Classe fabrique de PNJs.
+* @author HERAUD Xavier 
+* 
+* Classe qui gère la fabrication de personnages de type PNJ.
+*/
 #include "PNJFactory.hpp"
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 PNJFactory::PNJFactory() {}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 PNJFactory::~PNJFactory() {}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void PNJFactory::randomSex(Character* chara){
 	std::srand(std::time(0));
 	int rdmVar = (std::rand() % 2) + 1;
@@ -19,6 +47,13 @@ void PNJFactory::randomSex(Character* chara){
 	}
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void PNJFactory::randomSkillPoints(Character* chara){
 	int competencePoints = 12;
 	int i = 0;
@@ -45,6 +80,13 @@ void PNJFactory::randomSkillPoints(Character* chara){
 	chara->setCharisma(chara->getCharisma()+stat[5]);
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void PNJFactory::applySkillPoints(Character* chara){
 		chara->setLifePoints(chara->getConstitution() * 3);
 	chara->setManaPoint(((chara->getIntelligence() + chara->getWisdom()) / 2) * 3);
@@ -58,6 +100,13 @@ void PNJFactory::applySkillPoints(Character* chara){
 	std::cout << "Vous avez : " << chara->getDefense() << " points de défense." << std::endl;
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void PNJFactory::save(Character* chara, std::string path, bool boss){
 	config = new Config();
 	std::string mySave;
@@ -92,6 +141,13 @@ void PNJFactory::save(Character* chara, std::string path, bool boss){
 	config->initialize();
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void PNJFactory::createAllRandom(Character* chara){
 	
 	//Random du sexe
@@ -122,6 +178,13 @@ void PNJFactory::createAllRandom(Character* chara){
 	applySkillPoints(chara);
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 void PNJFactory::createPersonnalize(Character* chara){
 
 	////////////////////////////////////////////////////////////////
@@ -721,12 +784,13 @@ void PNJFactory::createPersonnalize(Character* chara){
 
 }
 
-
-
-
-
-
-
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Character* PNJFactory::createCharacterSaved(){
 
 	////////////////////////////////////////////////////////////////
@@ -859,6 +923,13 @@ Character* PNJFactory::createCharacterSaved(){
 	return chara;
 }
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Character* PNJFactory::createCharacter(){
 	chara = new PNJ();
 	config = new Config();

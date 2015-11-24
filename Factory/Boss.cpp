@@ -1,9 +1,37 @@
+/**
+* @file Boss.cpp
+* @brief Classe de personnage boss.
+* @author HERAUD Xavier 
+* 
+* Classe fille de Character qui possèdes les variables et méthodes propres aux boss.
+*/
 #include "Boss.hpp"
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Boss::Boss(){}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 Boss::~Boss(){}
 
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 std::string Boss::performAttack(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
@@ -19,7 +47,13 @@ std::string Boss::performAttack(){
 	}
 }
 
-
+/**
+* @fn
+* @brief 
+*
+* @param
+* @return
+*/
 std::string Boss::defend(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
