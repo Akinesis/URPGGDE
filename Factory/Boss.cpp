@@ -8,8 +8,8 @@
 #include "Boss.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn Boss()
+* @brief Constructeur de @class Boss Boss.hpp
 *
 * @param
 * @return
@@ -17,8 +17,8 @@
 Boss::Boss(){}
 
 /**
-* @fn
-* @brief 
+* @fn ~Boss()
+* @brief Destructeur de @class Boss Boss.hpp
 *
 * @param
 * @return
@@ -26,11 +26,11 @@ Boss::Boss(){}
 Boss::~Boss(){}
 
 /**
-* @fn
-* @brief 
+* @fn std::string performAttack()
+* @brief Lance un d20 et compare le résultat à l'attribut attack.
 *
 * @param
-* @return
+* @return std::string indiquant si l'attack est réussi ou non.
 */
 std::string Boss::performAttack(){
 	std::srand(std::time(0));
@@ -48,11 +48,11 @@ std::string Boss::performAttack(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn std::string defend()
+* @brief Lance un d20 et compare le résultat à l'attribut defense.
 *
 * @param
-* @return
+* @return std::string indiquant si l'attaque est réussi ou non.
 */
 std::string Boss::defend(){
 	std::srand(std::time(0));

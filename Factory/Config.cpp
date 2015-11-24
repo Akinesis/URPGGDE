@@ -8,16 +8,16 @@
 #include "Config.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn Config()
+* @brief Constructeur de @class Config Config.hpp
 *
 * @param
 * @return
 */
 Config::Config() {}
 /**
-* @fn
-* @brief 
+* @fn ~Config()
+* @brief Destructeur de @class Config Config.hpp
 *
 * @param
 * @return
@@ -25,8 +25,9 @@ Config::Config() {}
 Config::~Config() {}
 
 /**
-* @fn
-* @brief 
+* @fn void initialize()
+* @brief Affecte aux variables de @class Config Config.cpp le nombre de sauvegardes contenu 
+* dans le dossier ./Saves 
 *
 * @param
 * @return
@@ -51,8 +52,9 @@ void Config::initialize(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void updateMonsterCfg()
+* @brief Comptabilise le nombre de sauvegardes dans le dossier ./Saves/Monster et modifie
+* le fichier de configuration
 *
 * @param
 * @return
@@ -77,11 +79,21 @@ void Config::updateMonsterCfg(){
 		++i;
 	}
 	numberMonsterSaves = j;
+	std::ofstream cfgFile("cfg.ini", std::ios::out | std::ios::trunc);
+	if(cfgFile){
+		std::string chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile << j;
+	}
 }
 
 /**
-* @fn
-* @brief 
+* @fn void updatePNJCfg()
+* @brief Comptabilise le nombre de sauvegardes dans le dossier ./Saves/PNJ et modifie
+* le fichier de configuration
 *
 * @param
 * @return
@@ -105,12 +117,20 @@ void Config::updatePNJCfg(){
 		}
 		++i;
 	}
-	numberPNJSaves = i;
+	numberPNJSaves = j;
+	std::ofstream cfgFile("cfg.ini", std::ios::out | std::ios::trunc);
+	if(cfgFile){
+		std::string chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile << j;
+	}
 }
 
 /**
-* @fn
-* @brief 
+* @fn void updateBossCfg()
+* @brief Comptabilise le nombre de sauvegardes dans le dossier ./Saves/Monster et modifie
+* le fichier de configuration
 *
 * @param
 * @return
@@ -134,7 +154,18 @@ void Config::updateBossCfg(){
 		}
 		++i;
 	}
-	numberBossSaves = i;
+	numberBossSaves = j;
+	std::ofstream cfgFile("cfg.ini", std::ios::out | std::ios::trunc);
+	if(cfgFile){
+		std::string chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile >> chaine;
+		cfgFile << j;
+	}
 }
 
 ////////////////////////////////////////////////////////////

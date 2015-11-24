@@ -8,8 +8,8 @@
 #include "Inventory.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn Inventory()
+* @brief Constructeur de @class Inventory Inventory.hpp
 *
 * @param
 * @return
@@ -17,8 +17,8 @@
 Inventory::Inventory(){}
 
 /**
-* @fn
-* @brief 
+* @fn ~Inventory()
+* @brief Destructeur de @class Inventory Inventory.hpp
 *
 * @param
 * @return

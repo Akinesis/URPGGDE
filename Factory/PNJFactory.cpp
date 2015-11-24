@@ -8,8 +8,8 @@
 #include "PNJFactory.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn PNJFactory()
+* @brief Constructeur de @class PNJFactory PNJFactory.hpp
 *
 * @param
 * @return
@@ -17,8 +17,8 @@
 PNJFactory::PNJFactory() {}
 
 /**
-* @fn
-* @brief 
+* @fn ~PNJFactory()
+* @brief Destructeur de @class PNJFactory PNJFactory.hpp
 *
 * @param
 * @return
@@ -26,10 +26,10 @@ PNJFactory::PNJFactory() {}
 PNJFactory::~PNJFactory() {}
 
 /**
-* @fn
-* @brief 
+* @fn void randomSex(Character* chara)
+* @brief attribut aléatoirement un sexe.
 *
-* @param
+* @param chara Pointeur de type Character
 * @return
 */
 void PNJFactory::randomSex(Character* chara){
@@ -48,10 +48,10 @@ void PNJFactory::randomSex(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void randomSkillPoints(Character* chara)
+* @brief Attribut aléatoirement les points dans les attributs.
 *
-* @param
+* @param chara Pointeur de type Character.
 * @return
 */
 void PNJFactory::randomSkillPoints(Character* chara){
@@ -81,10 +81,10 @@ void PNJFactory::randomSkillPoints(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void applySkillPoints(Character* chara)
+* @brief Utilise les attributs pour calculer la vie le mana l'attack et la défense.
 *
-* @param
+* @param chara Pointeur de type Character
 * @return
 */
 void PNJFactory::applySkillPoints(Character* chara){
@@ -101,10 +101,12 @@ void PNJFactory::applySkillPoints(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void save(Character* chara, std::string path, bool boss)
+* @brief créé une sauvegarde d'un personnage de type monstre.
 *
-* @param
+* @param chara Pointeur de type Character.
+* @param path std::string chemain de dossier de sauvegarde.
+* @param boss booléen, true si c'est un boss, false sinon.
 * @return
 */
 void PNJFactory::save(Character* chara, std::string path, bool boss){
@@ -142,10 +144,10 @@ void PNJFactory::save(Character* chara, std::string path, bool boss){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void createAllRandom(Character* chara)
+* @brief Attribut aléatoirement toutes les variables d'un personnage de type PNJ
 *
-* @param
+* @param chara Pointeur sur un objet de type Character.
 * @return
 */
 void PNJFactory::createAllRandom(Character* chara){
@@ -179,10 +181,11 @@ void PNJFactory::createAllRandom(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void createPersonnalize(Character* chara)
+* @brief Affiche un interface pour que l'utilisateur puisse choisir toutes les variables 
+* d'un personnage de type PNJ
 *
-* @param
+* @param chara Pointeur de type Character
 * @return
 */
 void PNJFactory::createPersonnalize(Character* chara){
@@ -785,11 +788,11 @@ void PNJFactory::createPersonnalize(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn Character* createCharacterSaved()
+* @brief Lit une sauvegarde et créer un personnage de type PNJ.
 *
 * @param
-* @return
+* @return Pointeur de type Character
 */
 Character* PNJFactory::createCharacterSaved(){
 
@@ -924,11 +927,12 @@ Character* PNJFactory::createCharacterSaved(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn Character* createCharacter()
+* @brief Propose à l'utilisateur de choisir entre créer un PNJ personnalisé et
+* un PNJ aléatoire.
 *
 * @param
-* @return
+* @return Pointeur de type Character.
 */
 Character* PNJFactory::createCharacter(){
 	chara = new PNJ();

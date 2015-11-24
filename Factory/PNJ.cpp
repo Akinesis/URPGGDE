@@ -8,8 +8,8 @@
 #include "PNJ.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn PNJ()
+* @brief Constructeur de @class PNJ PNJ.hpp
 *
 * @param
 * @return
@@ -17,8 +17,8 @@
 PNJ::PNJ(){}
 
 /**
-* @fn
-* @brief 
+* @fn ~PNJ()
+* @brief Destructeur de @class PNJ PNJ.hpp
 *
 * @param
 * @return
@@ -30,11 +30,11 @@ PNJ::~PNJ(){}
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
-* @fn
-* @brief 
+* @fn std::string performAttack()
+* @brief Lance un d20 et compare le résultat à l'attribut attack.
 *
 * @param
-* @return
+* @return std::string indiquant si l'attack est réussi ou non.
 */
 std::string PNJ::performAttack(){
 	std::srand((unsigned int)std::time(0));
@@ -52,11 +52,11 @@ std::string PNJ::performAttack(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn std::string defend()
+* @brief Lance un d20 et compare le résultat à l'attribut defense.
 *
 * @param
-* @return
+* @return std::string indiquant si l'attaque est réussi ou non.
 */
 std::string PNJ::defend(){
 	std::srand((unsigned int)std::time(0));

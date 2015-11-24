@@ -8,8 +8,8 @@
 #include "MonsterFactory.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn MonsterFactory()
+* @brief Constructeur de @class MonsterFactory MonsterFactory.hpp
 *
 * @param
 * @return
@@ -17,19 +17,19 @@
 MonsterFactory::MonsterFactory() {}
 
 /**
-* @fn
-* @brief 
+* @fn ~MonsterFactory
+* @brief Destructeur de @class MonsterFactory MonsterFactory.hpp
 *
-* @param
+* @param 
 * @return
 */
 MonsterFactory::~MonsterFactory() {}
 
 /**
-* @fn
-* @brief 
+* @fn void createAllRandom(Character* chara)
+* @brief Attribut aléatoirement toutes les variables d'un personnage de type monstre
 *
-* @param
+* @param chara Pointeur sur un objet de type Character.
 * @return
 */
 void MonsterFactory::createAllRandom(Character* chara){	
@@ -189,10 +189,11 @@ void MonsterFactory::createAllRandom(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void createPersonnalize(Character* chara)
+* @brief Affiche un interface pour que l'utilisateur puisse choisir toutes les variables 
+* d'un personnage de type monstre
 *
-* @param
+* @param chara Pointeur de type Character
 * @return
 */
 void MonsterFactory::createPersonnalize(Character* chara){
@@ -248,6 +249,13 @@ void MonsterFactory::createPersonnalize(Character* chara){
 	}
 }
 
+/**
+* @fn Character* createCharacterSaved()
+* @brief Lit une sauvegarde et créer un personnage de type monstre.
+*
+* @param
+* @return Pointeur de type Character
+*/
 Character* MonsterFactory::createCharacterSaved(){
 	chara = new Monster();
 
@@ -320,11 +328,12 @@ Character* MonsterFactory::createCharacterSaved(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn Character* createCharacter()
+* @brief Propose à l'utilisateur de choisir entre créer un monstre personnalisé et
+* un monstre aléatoire.
 *
 * @param
-* @return
+* @return Pointeur de type Character.
 */
 Character* MonsterFactory::createCharacter(){
 
@@ -363,6 +372,14 @@ Character* MonsterFactory::createCharacter(){
 	return chara;
 }
 
+/**
+* @fn void createPersonnalizeMonster(Character* chara)
+* @brief Propose à l'utilisateur de choisir entre créer un monstre personnalisé et
+* un monstre aléatoire.
+*
+* @param chara Pointeur de type Character
+* @return 
+*/
 void MonsterFactory::createPersonnalizeMonster(Character* chara){
 	std::string reponseUtilisateur;
 	std::string memoireReponseUtilisateur;
@@ -639,6 +656,13 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 	}
 }
 
+/**
+* @fn void createBestiaryMonster(Character* chara)
+* @brief Propose à l'utilisateur de choisir un monstre du bestiaire
+*
+* @param chara Pointeur de type Character
+* @return 
+*/
 void MonsterFactory::createBestiaryMonster(Character* chara){
 	const int passToH = 9;
 	const int tailleH = 4;
@@ -1311,10 +1335,12 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void save(Character* chara, std::string path, bool boss)
+* @brief créé une sauvegarde d'un personnage de type monstre.
 *
-* @param
+* @param chara Pointeur de type Character.
+* @param path std::string chemain de dossier de sauvegarde.
+* @param boss booléen, true si c'est un boss, false sinon.
 * @return
 */
 void MonsterFactory::save(Character* chara, std::string path, bool boss){

@@ -8,8 +8,8 @@
 #include "BossFactory.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn BossFactory()
+* @brief Constructeur de @class BossFactory BossFactory.hpp
 *
 * @param
 * @return
@@ -17,8 +17,8 @@
 BossFactory::BossFactory(){}
 
 /**
-* @fn
-* @brief 
+* @fn ~BossFactory()
+* @brief Destructeur de @class BossFactory BossFactory.hpp
 *
 * @param
 * @return
@@ -26,10 +26,10 @@ BossFactory::BossFactory(){}
 BossFactory::~BossFactory(){}
 
 /**
-* @fn
-* @brief 
+* @fn void createAllRandom(Character* chara)
+* @brief Attribut aléatoirement toutes les variables d'un personnage de type PNJ
 *
-* @param
+* @param chara Pointeur sur un objet de type Character.
 * @return
 */
 void BossFactory::createAllRandom(Character* chara){
@@ -74,10 +74,11 @@ void BossFactory::createAllRandom(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void createPersonnalize(Character* chara)
+* @brief Affiche un interface pour que l'utilisateur puisse choisir toutes les variables 
+* d'un personnage de type PNJ
 *
-* @param
+* @param chara Pointeur de type Character
 * @return
 */
 void BossFactory::createPersonnalize(Character* chara){
@@ -121,11 +122,11 @@ void BossFactory::createPersonnalize(Character* chara){
 }
 
 /**
-* @fn
-* @brief 
+* @fn Character* createCharacterSaved()
+* @brief Lit une sauvegarde et créer un personnage de type PNJ.
 *
 * @param
-* @return
+* @return Pointeur de type Character
 */
 Character* BossFactory::createCharacterSaved(){
 	chara = new Boss();
@@ -279,11 +280,12 @@ Character* BossFactory::createCharacterSaved(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn Character* createCharacter()
+* @brief Propose à l'utilisateur de choisir entre créer un PNJ personnalisé et
+* un PNJ aléatoire.
 *
 * @param
-* @return
+* @return Pointeur de type Character.
 */
 Character* BossFactory::createCharacter(){
 

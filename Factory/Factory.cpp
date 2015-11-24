@@ -8,8 +8,8 @@
 #include "Factory.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn Factory()
+* @brief Constructeur de @class Factory Factory.hpp
 *
 * @param
 * @return
@@ -17,8 +17,8 @@
 Factory::Factory() : commandManager(new CommandManager()){}
 
 /**
-* @fn
-* @brief 
+* @fn ~Factory()
+* @brief Destructeur de @class Factory Factory.hpp
 *
 * @param
 * @return

@@ -8,8 +8,8 @@
 #include "Race.hpp"
 
 /**
-* @fn
-* @brief 
+* @fn Race()
+* @brief Constructeur de @class Race Race.hpp
 *
 * @param
 * @return
@@ -17,8 +17,8 @@
 Race::Race(){}
 
 /**
-* @fn
-* @brief 
+* @fn ~Race()
+* @brief Destructeur de @class Race Race.hpp
 *
 * @param
 * @return
@@ -27,8 +27,9 @@ Race::~Race(){}
 
 
 /**
-* @fn
-* @brief 
+* @fn void createHuman()
+* @brief Attribut aux variables de la @class Race Race.hpp les points
+* min et max correspondant à la race Humain.
 *
 * @param
 * @return
@@ -51,8 +52,9 @@ void Race::createHuman(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void createOrc()
+* @brief Attribut aux variables de la @class Race Race.hpp les points
+* min et max correspondant à la race Orc.
 *
 * @param
 * @return
@@ -75,8 +77,9 @@ void Race::createOrc(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void createElf()
+* @brief Attribut aux variables de la @class Race Race.hpp les points
+* min et max correspondant à la race Elfe.
 *
 * @param
 * @return
@@ -99,8 +102,9 @@ void Race::createElf(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void createDwarf()
+* @brief Attribut aux variables de la @class Race Race.hpp les points
+* min et max correspondant à la race Humain.
 *
 * @param
 * @return
@@ -123,8 +127,9 @@ void Race::createDwarf(){
 }
 
 /**
-* @fn
-* @brief 
+* @fn void createRandomRace()
+* @brief Attribut aux variables de la @class Race Race.hpp les points 
+* min et max correspondant à une race aléatoire.
 *
 * @param
 * @return
