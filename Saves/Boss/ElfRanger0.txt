@@ -1,0 +1,13 @@
+Prenom: 	Nom : 
+Sexe : Male	Race : Elf
+Classe : Ranger
+
+Points de vie :  30 / 30
+Points de mana : 66 / 66
+
+Force : 		14
+Constitution : 10
+Dexterite : 	28
+Intelligence : 18
+Sagesse : 		26
+Charisme :		22

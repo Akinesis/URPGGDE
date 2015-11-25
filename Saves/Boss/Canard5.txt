@@ -1,0 +1,8 @@
+Nom: Canard
+Points de vie:  4 / 4
+
+Attaque: 4
+Defense: 4
+Protection: 0
+Dé: 100
+Dommages additionnels: 200

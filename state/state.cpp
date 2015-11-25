@@ -1,3 +1,11 @@
+/**
+* @file state.cpp
+* @brief Classe abstraite état.
+* @author Vanoni Joachim
+* 
+* Classe abstraite état qui gère les commandes disponibles dans le programme
+* suivant les différents menus.
+*/
 #include "state.hpp"
 #include "commandManager.hpp"
 

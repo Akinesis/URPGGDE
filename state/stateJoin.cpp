@@ -1,3 +1,10 @@
+/**
+* @file 
+* @brief 
+* @author Vanoni Joachim
+* 
+* 
+*/
 #include "stateJoin.hpp"
 
 StateJoin::StateJoin(CommandManager* commandManager) : State(commandManager){	

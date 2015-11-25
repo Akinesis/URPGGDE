@@ -1,0 +1,8 @@
+Nom: Bandit
+Points de vie:  20 / 20
+
+Attaque: 16
+Defense: 16
+Protection: 2
+Dé: 6
+Dommages additionnels: 0

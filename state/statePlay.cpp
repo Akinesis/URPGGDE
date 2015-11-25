@@ -1,3 +1,10 @@
+/**
+* @file 
+* @brief 
+* @author Vanoni Joachim
+* 
+* 
+*/
 #include "statePlay.hpp"
 
 StatePlay::StatePlay(CommandManager* commandManager) : State(commandManager){	

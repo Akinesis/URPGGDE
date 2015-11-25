@@ -1,3 +1,10 @@
+/**
+* @file 
+* @brief 
+* @author Vanoni Joachim
+* 
+* 
+*/
 #include "stateStart.hpp"
 
 StateStart::StateStart(CommandManager* commandManager) : State(commandManager){	

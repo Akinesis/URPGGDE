@@ -1,0 +1,13 @@
+Prenom: 	Nom : 
+Sexe : Male	Race : Human
+Classe : Guerrier
+
+Points de vie :  60 / 60
+Points de mana : 57 / 57
+
+Force : 		22
+Constitution : 20
+Dexterite : 	20
+Intelligence : 14
+Sagesse : 		24
+Charisme :		18

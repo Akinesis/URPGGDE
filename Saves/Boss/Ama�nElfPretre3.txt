@@ -1,0 +1,13 @@
+Prenom: Amaën	Nom : Lothenten
+Sexe : Male	Race : Elf
+Classe : Pretre
+
+Points de vie :  30 / 30
+Points de mana : 81 / 81
+
+Force : 		8
+Constitution : 10
+Dexterite : 	24
+Intelligence : 20
+Sagesse : 		34
+Charisme :		22
