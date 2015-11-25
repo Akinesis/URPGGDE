@@ -19,7 +19,9 @@ std::cout << "| |   | ||     __)|  _____)| | ____ | | ____    | |   | ||  __)   
 std::cout << "| |   | || (\\ (   | (      | | \\_  )| | \\_  ) _ | |   ) || (      "<< std::endl;
 std::cout << "| (___) || ) \\ \\__| )      | (___) || (___) |(_)| (__/  )| (____/\\"<< std::endl;
 std::cout << "(_______)|/   \\__/|/       (_______)(_______)   (______/ (_______/"<< std::endl;
-std::cout << "Ultimate RolePlaying Game Generator : Deluxe Edition " <<std::endl;                                                               
+std::cout << "Ultimate RolePlaying Game Generator : Deluxe Edition " <<std::endl;  
+std::cout << std::endl; 
+std::cout << "Menu principale : tapez help pour de l'aide." <<std::endl;                                                              
 
 }
 

@@ -1,0 +1,13 @@
+Prenom: Runouk	Nom : fortuné
+Sexe : Female	Race : Orc
+Classe : Guerrier
+
+Points de vie :  72 / 72
+Points de mana : 42 / 42
+
+Force : 		28
+Constitution : 24
+Dexterite : 	20
+Intelligence : 8
+Sagesse : 		20
+Charisme :		18

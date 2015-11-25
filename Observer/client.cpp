@@ -1,11 +1,41 @@
+/**
+* @file client.cpp
+* @brief Classe cliente
+* @author VANONI Joachim
+* 
+* Classe de connexion à un serveur, d'envoi et réception de message.
+*/
 #include "client.hpp"
 
+/**
+* @fn Client()
+* @brief Constructeur de @class Client client.cpp
+*
+* @param
+* @return
+*/
 Client::Client() : userName(""){   
 }
 
+/**
+* @fn ~Client()
+* @brief Destructeur de @class Client client.cpp
+*
+* @param
+* @return
+*/
 Client::~Client(){
 }
 
+/**
+* @fn void init()
+* @brief Méthode qui initialise la connexion.
+*
+* Methode qui demande à l'utilisateur son pseudo, le port du serveur ainsi que son adresse
+* puis tente de se connecter. Por finir le thread d'écoute et d'envoie de message sont créés.
+* @param
+* @return
+*/
 void Client::init(){
 
     haveMessageToSend = false;
@@ -16,14 +46,14 @@ void Client::init(){
 
 	std::string rep;
     std::cout << "Avant de vous connecter, soyez sur que le MJ à crée un serveur !" << std::endl;
-	std::cout << "Sur quel port voulez vous vous connecter ?\nLes ports valide vont de 1 à 65535.\nDemandez à votre MJ pour connaitre le port" << std::endl;
+	std::cout << "Sur quel port voulez vous vous connecter ?\nLes ports valide vont de 1000 à 65535.\nDemandez à votre MJ pour connaitre le port" << std::endl;
 	std::cin >> rep;
 
 	//char* plop = (char*)rep.c_str(); //transformation en char* de la réponse
 
 	portno = stoi(rep);
 
-	if(portno <= 0 || portno > 65535){
+	if(portno <= 999 || portno > 65535){
 		portno = 2020;
 		std::cout << "Port invalide, le port par défaut seras utilisé." << std::endl;
 	}
@@ -73,6 +103,13 @@ void Client::init(){
     
 }
 
+/**
+* @fn void receiveThreading()
+* @brief Méthode tampon appelé par le thread de récéption de message.
+*
+* @param
+* @return
+*/
 void Client::receiveThreading(){
     std::cout << "Thread écoute crée !" << std::endl;
     while(!clientHaveQuit){
@@ -80,6 +117,16 @@ void Client::receiveThreading(){
     }
 }
 
+/**
+* @fn void sendThreading(Client *cli)
+* @brief Méthode tampon appelé par le thread d'envoi de message.
+*
+* N'appele la fonction send que si le client a un message à envoyer. Le pointeur
+* vers un client est necessaire pour récuppérer les données du client d'origine et non
+* pas le duplicat créé par les threads.
+* @param cli Pointeur vers le client
+* @return
+*/
 void Client::sendThreading(Client *cli){
     std::cout << "Thread écriture crée !" << std::endl;
     while(!clientHaveQuit){
@@ -90,6 +137,13 @@ void Client::sendThreading(Client *cli){
     }
 }
 
+/**
+* @fn void send
+* @brief Méthode d'envoie de messages.
+*
+* @param mess string contenant le message à envoyer
+* @return
+*/
 void Client::send(std::string mess){
     int n;
     //transformation du méssage à envoyé en char*
@@ -103,6 +157,13 @@ void Client::send(std::string mess){
 
 }
 
+/**
+* @fn void receive()
+* @brief Méthode qui reçois et affiche le message envoyé par le serveur.
+*
+* @param
+* @return
+*/
 void Client::receive(){
     int n;
     char buffer [256];
@@ -116,6 +177,9 @@ void Client::receive(){
 
 }
 
+
+////////////////////////////////////////////////////////////
+// GETTERS SETTERS
 void Client::setHaveMessageToSend(bool b){
     haveMessageToSend = b;
 }
