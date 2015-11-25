@@ -18,7 +18,7 @@ class PNJFactory : public Factory{
 		void randomSkillPoints(Character*);
 		
 	public:
-		PNJFactory();
+		PNJFactory(CommandManager *);
 		virtual ~PNJFactory();
 
 		void createAllRandom(Character*);

@@ -17,7 +17,7 @@ class State{
 		virtual int cancel();
 		virtual int yes();
 		virtual int no();
-		virtual int character();
+		virtual int npc();
 		virtual int monster();
 		virtual int boss();
 		virtual int creation();

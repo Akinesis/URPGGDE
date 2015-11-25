@@ -11,7 +11,7 @@ CXXFLAGS=-std=c++11 -Ofast -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unu
 LFLAGS=$(IDIRFLAG)
 
 # Directories
-SRCDIR=./Factory ./state ./Observer
+SRCDIR=. ./Factory ./state ./Observer
 OBJDIR=./obj
 BINDIR=.
 

@@ -17,7 +17,7 @@ class MonsterFactory : public Factory{
 		void createPersonnalizeMonster(Character*);
 		void createBestiaryMonster(Character*);
 	public:
-		MonsterFactory();
+		MonsterFactory(CommandManager *);
 		virtual ~MonsterFactory();
 
 		void createAllRandom(Character*);

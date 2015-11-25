@@ -19,7 +19,7 @@ class BossFactory : public Factory{
 		PNJFactory* pnjFact;
 		MonsterFactory* monsterFact;
 	public:
-		BossFactory();
+		BossFactory(CommandManager *);
 		virtual ~BossFactory();
 
 		void createAllRandom(Character*);

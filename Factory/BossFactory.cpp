@@ -1,6 +1,6 @@
 #include "BossFactory.hpp"
 
-BossFactory::BossFactory(){}
+BossFactory::BossFactory(CommandManager * man) : Factory(man){}
 BossFactory::~BossFactory(){}
 
 void BossFactory::createAllRandom(Character* chara){
@@ -237,13 +237,10 @@ Character* BossFactory::createCharacterSaved(){
 
 Character* BossFactory::createCharacter(){
 
-	////////////////////////////////////////////////////////////////
-	commandManager->setState(commandManager->getStateCreate());
-	////////////////////////////////////////////////////////////////
 
 	chara = new Boss();
-	pnjFact = new PNJFactory();			//Affiche un nouvel acceuil
-	monsterFact = new MonsterFactory();	//Affiche un nouvel acceuil
+	pnjFact = new PNJFactory(commandManager);			
+	monsterFact = new MonsterFactory(commandManager);
 	config = new Config();
 	std::string reponseUtilisateur;
 	int rep = -1;

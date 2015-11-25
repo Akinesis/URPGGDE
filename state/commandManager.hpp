@@ -1,8 +1,10 @@
 #ifndef COMMANDMANAGER
 #define	COMMANDMANAGER
 #include <string>
+#include <vector>
 #include <algorithm>
 #include "../Observer/connexion.hpp"
+#include "../Factory/Character.hpp"
 
 class State;
 class StateStart;
@@ -12,12 +14,12 @@ class StateJoin;
 class StateHost;
 class StateGame;
 
-/*Liste des commandes possible :
+/*
+Liste des commandes possible :
 help, oui, non, personnage, monstre, boss, création, jouer, hote
 rejoindre, homme, femme, aléatoire, personaliser, attaquer, elfe, orc
 huamin, nain, guerrier, mage, pretre, paladin, chasseur
 roublard, exit,
-
 */
 
 
@@ -32,6 +34,7 @@ class CommandManager{
 		State *stateGame;
 		State *currentState;
 		Connexion *connexion;
+		std::vector<Character*> characters;
 
 	public:
 		CommandManager();

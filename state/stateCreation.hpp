@@ -1,11 +1,19 @@
 #ifndef STATECREATE
 #define	STATECREATE
 #include <string>
+
+#include "../Factory/Factory.hpp"
+#include "../Factory/PNJFactory.hpp"
+#include "../Factory/MonsterFactory.hpp"
+#include "../Factory/BossFactory.hpp"
+
 #include "state.hpp"
 #include "commandManager.hpp"
 
 class StateCreate : public State{
 
+	private:
+		Factory* fact;
 	public:
 		StateCreate(CommandManager* commandManager);
 		~StateCreate();
@@ -25,6 +33,10 @@ class StateCreate : public State{
 		int paladin();
 		int hunter();
 		int rogue();
+		int play();
+		int npc();
+		int monster();
+		int boss();
 
 };
 

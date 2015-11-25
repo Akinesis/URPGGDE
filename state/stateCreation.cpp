@@ -1,6 +1,7 @@
 #include "stateCreation.hpp"
 
-StateCreate::StateCreate(CommandManager* commandManager) : State(commandManager){	
+StateCreate::StateCreate(CommandManager* commandManager) : 	State(commandManager),
+															fact(new PNJFactory(manager)){	
 
 }
 
@@ -8,11 +9,9 @@ StateCreate::~StateCreate(){
 
 }
 
-
-
 void StateCreate::help(){
 	std::cout << "<::::::::::::::::::::::::::::::::::::::::>" << std::endl;
-	std::cout << "Liste des commandes disponible :" << std::endl;
+	std::cout << "Liste des commandes disponibles :" << std::endl;
 	std::cout << "help, oui, non, personnage, monstre, boss"<< std::endl;
 	std::cout << "homme, femme, aleatoire, personaliser, elfe, orc"<< std::endl;
 	std::cout << "humain, nain, guerrier, mage, pretre, paladin"<< std::endl;
@@ -78,6 +77,42 @@ int StateCreate::rogue(){
 	return 16;
 }
 
+int StateCreate::play(){
+
+	std::string rep;
+	int ret = -2;
+
+	while(ret == -2){
+		std::cout << "Quel type de personnage voulez vous crée ?\nPNJ, Boss ou Monstre ?" << std::endl;
+		std::cin >> rep;
+		ret = manager->analyse(rep);
+		if(ret == 42){
+			fact = new PNJFactory(manager);
+		}else if(ret == 43){
+			fact = new MonsterFactory(manager);
+		}else if(ret == 44){
+			fact = new BossFactory(manager);
+		}else{
+			ret = -2;
+		}
+	}
+
+	fact->createCharacter();
+
+	return 0;
+}
+
+int StateCreate::npc(){
+	return 42;
+}
+
+int StateCreate::monster(){
+	return 43;
+}
+
+int StateCreate::boss(){
+	return 44; // != bzh
+}
 
 int StateCreate::exit(){
 	std::cout << "Retours au début du programme ! Êtes vous sure ?" << std::endl;

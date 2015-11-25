@@ -84,6 +84,12 @@ int CommandManager::analyse(std::string commande){
 		return currentState->join();
 	}else if(commande == "hote"){
 		return currentState->host();
+	}else if(commande == "personnage"){
+		return currentState->npc();
+	}else if(commande == "monstre"){
+		return currentState->monster();
+	}else if(commande == "boss"){
+		return currentState->boss();
 	}else if(commande == "canard"){
 		return currentState->what();
 	}else if(is_number(commande)){
@@ -149,7 +155,6 @@ State* CommandManager::getStateGame(){
 void CommandManager::setState(State* etat){
 	currentState = etat;
 }
-
 
 //Fonction pour l'observer
 void CommandManager::createConnexionJoin(){

@@ -1,6 +1,6 @@
 #include "MonsterFactory.hpp"
 
-MonsterFactory::MonsterFactory() {}
+MonsterFactory::MonsterFactory(CommandManager * man) : Factory(man){}
 
 MonsterFactory::~MonsterFactory() {}
 

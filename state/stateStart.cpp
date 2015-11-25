@@ -1,6 +1,7 @@
 #include "stateStart.hpp"
 
 StateStart::StateStart(CommandManager* commandManager) : State(commandManager){	
+
 std::cout << std::endl;
 std::cout << "Welcome to : " <<std::endl;
 std::cout << "          _______  _______  _______  _______     ______   _______"<< std::endl;
@@ -31,6 +32,7 @@ int StateStart::creation(){
 
 
 	manager->setState(manager->getStateCreate());
+	manager->getCurrentState()->play();
 	return 0;
 }
 

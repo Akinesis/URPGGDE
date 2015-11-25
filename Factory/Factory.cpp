@@ -8,7 +8,7 @@
 
 #include "Factory.hpp"
 
-Factory::Factory() : commandManager(new CommandManager()){}
+Factory::Factory(CommandManager* man) : commandManager(man){}
 
 Factory::~Factory(){}
 

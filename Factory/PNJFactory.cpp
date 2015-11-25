@@ -1,6 +1,6 @@
 #include "PNJFactory.hpp"
 
-PNJFactory::PNJFactory() {}
+PNJFactory::PNJFactory(CommandManager* man) : Factory(man){}
 
 PNJFactory::~PNJFactory() {}
 
@@ -60,6 +60,7 @@ void PNJFactory::applySkillPoints(Character* chara){
 
 void PNJFactory::save(Character* chara, std::string path, bool boss){
 	config = new Config();
+	config->initialize();
 	std::string mySave;
 	if(boss == true){
 		config->updateBossCfg();
@@ -89,7 +90,7 @@ void PNJFactory::save(Character* chara, std::string path, bool boss){
 		save << "Charisme :		" << chara->getCharisma() << std::endl;
 	}
 	config->updatePNJCfg();
-	config->initialize();
+	
 }
 
 void PNJFactory::createAllRandom(Character* chara){
@@ -123,10 +124,6 @@ void PNJFactory::createAllRandom(Character* chara){
 }
 
 void PNJFactory::createPersonnalize(Character* chara){
-
-	////////////////////////////////////////////////////////////////
-	commandManager->setState(commandManager->getStateCreate());
-	////////////////////////////////////////////////////////////////
 
 	std::string reponseUtilisateur;
 	int rep = -1;

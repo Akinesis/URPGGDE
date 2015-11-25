@@ -39,7 +39,7 @@ int State::no(){
 	return 2;
 }
 
-int State::character(){
+int State::npc(){
 	std::cout << "Commande invalide désoler !"<< std::endl;
 	return -1;
 }
@@ -148,7 +148,6 @@ int State::rogue(){
 	std::cout << "Commande invalide désoler !"<< std::endl;
 	return -1;
 }
-
 
 int State::what(){
 	std::cout << "やめて ください 先生" << std::endl;

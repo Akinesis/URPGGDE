@@ -22,7 +22,7 @@ class Factory{
 		CommandManager* commandManager;
 		Config* config;
 	public:
-		Factory();
+		Factory(CommandManager*);
 		virtual ~Factory()=0;
 		virtual void createAllRandom(Character*)=0;
 		virtual void createPersonnalize(Character*)=0;

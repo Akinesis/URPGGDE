@@ -1,0 +1,13 @@
+Prenom: Larezin	Nom : Haben
+Sexe : Male	Race : Human
+Classe : Ranger
+
+Points de vie :  24 / 24
+Points de mana : 30 / 30
+
+Force : 		10
+Constitution : 8
+Dexterite : 	11
+Intelligence : 9
+Sagesse : 		12
+Charisme :		9
