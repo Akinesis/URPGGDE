@@ -1,14 +1,43 @@
+/**
+* @file Character.cpp
+* @brief Classe abstraite du personnage.
+* @author HERAUD Xavier 
+* 
+* Classe abstraite du personnage possédant des variables et méthodes communes utilisés par tous les autres
+* types de personnages.
+*/
+
 #include "Character.hpp"
 #include "Race.hpp"
 #include "Classes.hpp"
 #include "Inventory.hpp"
 
-// Constructeur avec liste d'initialisation
+/**
+* @fn Character()
+* @brief Constructeur de @class Character Character.hpp 
+*
+* @param
+* @return
+*/
 Character::Character() : race(new Race()), classe(new Classes()), bag(new Inventory()){
 }
 
+/**
+* @fn ~Character()
+* @brief Destructeur de @class Character Character.hpp
+*
+* @param 
+* @return
+*/
 Character::~Character(){}
 
+/**
+* @fn void applyMinStat()
+* @brief Applique aux attributs de @class Character Character.hpp le nombre de points minimums authorisé par la race.
+*
+* @param
+* @return 
+*/
 void Character::applyMinStat(){
 	strength = race->getRangeStrengthMin();
 	constitution = race->getRangeConstitutionMin();
@@ -18,6 +47,13 @@ void Character::applyMinStat(){
 	charisma = race->getRangeCharismaMin();
 }
 
+/**
+* @fn void applyModifications()
+* @brief Applique aux attributs de @class Character Character.hpp les changements du nombre de points en rapport avec la classe.
+*
+* @param
+* @return
+*/
 void Character::applyModifications(){
 	strength = strength + classe->getModifStrength();
 	constitution = constitution + classe->getModifConstitution();

@@ -1,12 +1,39 @@
+/**
+* @file Race.cpp
+* @brief Classe de races
+* @author HERAUD Xavier 
+* 
+* Classes qui gères les races jouables par les personnages.
+*/
 #include "Race.hpp"
 
-// Constructeur Destructeur
+/**
+* @fn Race()
+* @brief Constructeur de @class Race Race.hpp
+*
+* @param
+* @return
+*/
 Race::Race(){}
 
+/**
+* @fn ~Race()
+* @brief Destructeur de @class Race Race.hpp
+*
+* @param
+* @return
+*/
 Race::~Race(){}
 
 
-// Methodes de la classe Race
+/**
+* @fn void createHuman()
+* @brief Attribut aux variables de la @class Race Race.hpp les points
+* min et max correspondant à la race Humain.
+*
+* @param
+* @return
+*/
 void Race::createHuman(){
 	raceName = "Human";
 	frenchRaceName = "Humain";
@@ -24,6 +51,14 @@ void Race::createHuman(){
 	rangeCharisma.max = 12;
 }
 
+/**
+* @fn void createOrc()
+* @brief Attribut aux variables de la @class Race Race.hpp les points
+* min et max correspondant à la race Orc.
+*
+* @param
+* @return
+*/
 void Race::createOrc(){
 	raceName = "Orc";
 	frenchRaceName = "Orc";
@@ -41,6 +76,14 @@ void Race::createOrc(){
 	rangeCharisma.max = 12;
 }
 
+/**
+* @fn void createElf()
+* @brief Attribut aux variables de la @class Race Race.hpp les points
+* min et max correspondant à la race Elfe.
+*
+* @param
+* @return
+*/
 void Race::createElf(){
 	raceName = "Elf";
 	frenchRaceName = "Elfe";
@@ -58,6 +101,14 @@ void Race::createElf(){
 	rangeCharisma.max = 14;
 }
 
+/**
+* @fn void createDwarf()
+* @brief Attribut aux variables de la @class Race Race.hpp les points
+* min et max correspondant à la race Humain.
+*
+* @param
+* @return
+*/
 void Race::createDwarf(){
 	raceName = "Dwarf";
 	frenchRaceName = "Nain";
@@ -75,6 +126,14 @@ void Race::createDwarf(){
 	rangeCharisma.max = 10;
 }
 
+/**
+* @fn void createRandomRace()
+* @brief Attribut aux variables de la @class Race Race.hpp les points 
+* min et max correspondant à une race aléatoire.
+*
+* @param
+* @return
+*/
 void Race::createRandomRace(){
 	std::srand(std::time(0));
 	int rdmVar = (std::rand() % 4) + 1;

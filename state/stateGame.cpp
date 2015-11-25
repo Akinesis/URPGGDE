@@ -1,3 +1,10 @@
+/**
+* @file stateGame
+* @brief Classe d'état jeu.
+* @author Vanoni Joachim
+* 
+* Classe état qui gère 
+*/
 #include "stateGame.hpp"
 
 StateGame::StateGame(CommandManager* commandManager) : State(commandManager){

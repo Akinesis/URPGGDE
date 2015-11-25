@@ -1,13 +1,37 @@
+/**
+* @file Monster.cpp
+* @brief Classe de personnage monstre.
+* @author HERAUD Xavier 
+* 
+* Classe fille de Character qui possèdes les variables et méthodes propres aux monstres.
+*/
 #include "Monster.hpp"
 
-
-// Constructeur destructeurs de la classe Monster
+/**
+* @fn Monster()
+* @brief Constructeur de @class Monster Monster.hpp
+*
+* @param
+* @return
+*/
 Monster::Monster(){}
 
+/**
+* @fn ~Monster()
+* @brief Destructeur de @class Monster Monster.hpp
+*
+* @param
+* @return
+*/
 Monster::~Monster(){}
 
-
-// Methodes de la classe Monster
+/**
+* @fn std::string performAttack()
+* @brief Lance un d20 et compare le résultat à l'attribut attack.
+*
+* @param
+* @return std::string indiquant si l'attack est réussi ou non.
+*/
 std::string Monster::performAttack(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
@@ -23,6 +47,13 @@ std::string Monster::performAttack(){
 	}
 }
 
+/**
+* @fn std::string defend()
+* @brief Lance un d20 et compare le résultat à l'attribut defense.
+*
+* @param
+* @return std::string indiquant si l'attaque est réussi ou non.
+*/
 std::string Monster::defend(){
 	std::srand(std::time(0));
 	int random_variable = (std::rand() % 20) + 1;

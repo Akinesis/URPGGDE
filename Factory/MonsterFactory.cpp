@@ -1,9 +1,37 @@
+/**
+* @file MonsterFactory.cpp
+* @brief Classe fabrique de monstres
+* @author HERAUD Xavier 
+* 
+* Classe qui gère la fabrication de personnages de type monstre.
+*/
 #include "MonsterFactory.hpp"
 
+/**
+* @fn MonsterFactory()
+* @brief Constructeur de @class MonsterFactory MonsterFactory.hpp
+*
+* @param
+* @return
+*/
 MonsterFactory::MonsterFactory(CommandManager * man) : Factory(man){}
 
+/**
+* @fn ~MonsterFactory
+* @brief Destructeur de @class MonsterFactory MonsterFactory.hpp
+*
+* @param 
+* @return
+*/
 MonsterFactory::~MonsterFactory() {}
 
+/**
+* @fn void createAllRandom(Character* chara)
+* @brief Attribut aléatoirement toutes les variables d'un personnage de type monstre
+*
+* @param chara Pointeur sur un objet de type Character.
+* @return
+*/
 void MonsterFactory::createAllRandom(Character* chara){	
 	const int nbCategory = 3;
 	const int passToH = 9;
@@ -32,25 +60,31 @@ void MonsterFactory::createAllRandom(Character* chara){
 			
 			//Attribution NOM
 			chara->setName(chaine);
+			std::cout << "Vous etes un : " << chaine << std::endl;
 			//Attribution VIE
 			bestiaryFile >> chaine;
 			chara->setLifePoints(std::stoi(chaine));
 			chara->setCurrentLifePoints(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de vie." << std::endl;
 			//Attribution ATT
 			bestiaryFile >> chaine;
 			chara->setAttack(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points d'attaque'." << std::endl;
 			//Attribution PRD
 			bestiaryFile >> chaine;
 			chara->setDefense(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de defense." << std::endl;
 			//Attribution PR
 			bestiaryFile >> chaine;
 			chara->setProtection(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de protection." << std::endl;
 			//Attribution DMGD
 			bestiaryFile >> chaine;
 			chara->setDommagesDe(std::stoi(chaine));
 			//Attribution DMGA
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
+			std::cout << "Vous faites : 1d" << chara->getDommagesDe() << "+" << chara->getDommagesAdditionnels() << " points de dégât." << std::endl;
 		}//if
 		else{
 			std::cout << "Impossible d'acceder au fichier" << std::endl;
@@ -79,25 +113,31 @@ void MonsterFactory::createAllRandom(Character* chara){
 			}//for
 			//Attribution NOM
 			chara->setName(chaine);
+			std::cout << "Vous etes un : " << chaine << std::endl;
 			//Attribution VIE
 			bestiaryFile >> chaine;
 			chara->setLifePoints(std::stoi(chaine));
 			chara->setCurrentLifePoints(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de vie." << std::endl;
 			//Attribution ATT
 			bestiaryFile >> chaine;
 			chara->setAttack(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points d'attaque'." << std::endl;
 			//Attribution PRD
 			bestiaryFile >> chaine;
 			chara->setDefense(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de defense." << std::endl;
 			//Attribution PR
 			bestiaryFile >> chaine;
 			chara->setProtection(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de protection." << std::endl;
 			//Attribution DMGD
 			bestiaryFile >> chaine;
 			chara->setDommagesDe(std::stoi(chaine));
 			//Attribution DMGA
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
+			std::cout << "Vous faites : 1d" << chara->getDommagesDe() << "+" << chara->getDommagesAdditionnels() << " points de dégât." << std::endl;
 		}//if
 		else{
 			std::cout << "Impossible d'acceder au fichier" << std::endl;
@@ -134,25 +174,32 @@ void MonsterFactory::createAllRandom(Character* chara){
 			}//for
 			//Attribution NOM
 			chara->setName(chaine);
+			std::cout << "Vous etes un : " << chaine << std::endl;
 			//Attribution VIE
 			bestiaryFile >> chaine;
 			chara->setLifePoints(std::stoi(chaine));
 			chara->setCurrentLifePoints(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de vie." << std::endl;
 			//Attribution ATT
 			bestiaryFile >> chaine;
 			chara->setAttack(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points d'attaque'." << std::endl;
 			//Attribution PRD
 			bestiaryFile >> chaine;
 			chara->setDefense(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de defense." << std::endl;
 			//Attribution PR
 			bestiaryFile >> chaine;
 			chara->setProtection(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de protection." << std::endl;
 			//Attribution DMGD
 			bestiaryFile >> chaine;
 			chara->setDommagesDe(std::stoi(chaine));
 			//Attribution DMGApiou
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
+			std::cout << "Vous faites : 1d" << chara->getDommagesDe() << "+" << chara->getDommagesAdditionnels() << " points de dégât." << std::endl;
+
 		}//if
 		else{
 			std::cout << "Impossible d'acceder au fichier" << std::endl;
@@ -160,7 +207,14 @@ void MonsterFactory::createAllRandom(Character* chara){
 	}//else
 }
 
-
+/**
+* @fn void createPersonnalize(Character* chara)
+* @brief Affiche un interface pour que l'utilisateur puisse choisir toutes les variables 
+* d'un personnage de type monstre
+*
+* @param chara Pointeur de type Character
+* @return
+*/
 void MonsterFactory::createPersonnalize(Character* chara){
 
 	std::string reponseUtilisateur;
@@ -214,6 +268,13 @@ void MonsterFactory::createPersonnalize(Character* chara){
 	}
 }
 
+/**
+* @fn Character* createCharacterSaved()
+* @brief Lit une sauvegarde et créer un personnage de type monstre.
+*
+* @param
+* @return Pointeur de type Character
+*/
 Character* MonsterFactory::createCharacterSaved(){
 	chara = new Monster();
 
@@ -285,11 +346,15 @@ Character* MonsterFactory::createCharacterSaved(){
 	return chara;
 }
 
+/**
+* @fn Character* createCharacter()
+* @brief Propose à l'utilisateur de choisir entre créer un monstre personnalisé et
+* un monstre aléatoire.
+*
+* @param
+* @return Pointeur de type Character.
+*/
 Character* MonsterFactory::createCharacter(){
-
-	////////////////////////////////////////////////////////////////
-	commandManager->setState(commandManager->getStateCreate());
-	////////////////////////////////////////////////////////////////
 	chara = new Monster();
 	config = new Config();
 	std::string reponseUtilisateur;
@@ -322,6 +387,14 @@ Character* MonsterFactory::createCharacter(){
 	return chara;
 }
 
+/**
+* @fn void createPersonnalizeMonster(Character* chara)
+* @brief Propose à l'utilisateur de choisir entre créer un monstre personnalisé et
+* un monstre aléatoire.
+*
+* @param chara Pointeur de type Character
+* @return 
+*/
 void MonsterFactory::createPersonnalizeMonster(Character* chara){
 	std::string reponseUtilisateur;
 	std::string memoireReponseUtilisateur;
@@ -598,6 +671,13 @@ void MonsterFactory::createPersonnalizeMonster(Character* chara){
 	}
 }
 
+/**
+* @fn void createBestiaryMonster(Character* chara)
+* @brief Propose à l'utilisateur de choisir un monstre du bestiaire
+*
+* @param chara Pointeur de type Character
+* @return 
+*/
 void MonsterFactory::createBestiaryMonster(Character* chara){
 	const int passToH = 9;
 	const int tailleH = 4;
@@ -1269,8 +1349,18 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 	}
 }
 
+/**
+* @fn void save(Character* chara, std::string path, bool boss)
+* @brief créé une sauvegarde d'un personnage de type monstre.
+*
+* @param chara Pointeur de type Character.
+* @param path std::string chemain de dossier de sauvegarde.
+* @param boss booléen, true si c'est un boss, false sinon.
+* @return
+*/
 void MonsterFactory::save(Character* chara, std::string path, bool boss){
 	config = new Config();
+	config->initialize();
 	std::string mySave;
 	if(boss == true){
 		config->updateBossCfg();
@@ -1294,7 +1384,6 @@ void MonsterFactory::save(Character* chara, std::string path, bool boss){
 	}
 	config->updateMonsterCfg();
 	config->updateBossCfg();
-	config->initialize();
 }
 
 

@@ -1,8 +1,37 @@
+/**
+* @file BossFactory.cpp
+* @brief Classe fabrique de boss.
+* @author HERAUD Xavier 
+* 
+* Classe qui gère la fabrication de personnages de type boss.
+*/
 #include "BossFactory.hpp"
 
+/**
+* @fn BossFactory()
+* @brief Constructeur de @class BossFactory BossFactory.hpp
+*
+* @param
+* @return
+*/
 BossFactory::BossFactory(CommandManager * man) : Factory(man){}
+
+/**
+* @fn ~BossFactory()
+* @brief Destructeur de @class BossFactory BossFactory.hpp
+*
+* @param
+* @return
+*/
 BossFactory::~BossFactory(){}
 
+/**
+* @fn void createAllRandom(Character* chara)
+* @brief Attribut aléatoirement toutes les variables d'un personnage de type PNJ
+*
+* @param chara Pointeur sur un objet de type Character.
+* @return
+*/
 void BossFactory::createAllRandom(Character* chara){
 	int rep = -1;
 	std::string reponseUtilisateur;
@@ -44,6 +73,14 @@ void BossFactory::createAllRandom(Character* chara){
 
 }
 
+/**
+* @fn void createPersonnalize(Character* chara)
+* @brief Affiche un interface pour que l'utilisateur puisse choisir toutes les variables 
+* d'un personnage de type PNJ
+*
+* @param chara Pointeur de type Character
+* @return
+*/
 void BossFactory::createPersonnalize(Character* chara){
 	std::string reponseUtilisateur;
 	int rep = -1;
@@ -73,6 +110,7 @@ void BossFactory::createPersonnalize(Character* chara){
 			chara->setIntelligence(chara->getIntelligence() *2);
 			chara->setWisdom(chara->getWisdom() *2);
 			chara->setCharisma(chara->getCharisma() *2);
+			std::cout << "Comme vous êtes un boss vous avez désormais" << std::endl;
 			pnjFact->applySkillPoints(chara);
 			pnjFact->save(chara, "Saves/Boss/", true);
 			rep = 1;
@@ -84,6 +122,13 @@ void BossFactory::createPersonnalize(Character* chara){
 	}
 }
 
+/**
+* @fn Character* createCharacterSaved()
+* @brief Lit une sauvegarde et créer un personnage de type PNJ.
+*
+* @param
+* @return Pointeur de type Character
+*/
 Character* BossFactory::createCharacterSaved(){
 	chara = new Boss();
 
@@ -235,9 +280,15 @@ Character* BossFactory::createCharacterSaved(){
 	return chara;
 }
 
+/**
+* @fn Character* createCharacter()
+* @brief Propose à l'utilisateur de choisir entre créer un PNJ personnalisé et
+* un PNJ aléatoire.
+*
+* @param
+* @return Pointeur de type Character.
+*/
 Character* BossFactory::createCharacter(){
-
-
 	chara = new Boss();
 	pnjFact = new PNJFactory(commandManager);			
 	monsterFact = new MonsterFactory(commandManager);

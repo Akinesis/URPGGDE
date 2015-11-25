@@ -1,8 +1,0 @@
-Nom: Loup
-Points de vie:  12 / 12
-
-Attaque: 12
-Defense: 8
-Protection: 0
-Dé: 6
-Dommages additionnels: 1

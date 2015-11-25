@@ -1,14 +1,41 @@
+/**
+* @file PNJ.cpp
+* @brief Classe de personnage PNJ.
+* @author HERAUD Xavier 
+* 
+* Classe fille de Character qui possèdes les variables et méthodes propres aux PNJs.
+*/
 #include "PNJ.hpp"
 
-// Constructeur Destructeur
+/**
+* @fn PNJ()
+* @brief Constructeur de @class PNJ PNJ.hpp
+*
+* @param
+* @return
+*/
 PNJ::PNJ(){}
 
+/**
+* @fn ~PNJ()
+* @brief Destructeur de @class PNJ PNJ.hpp
+*
+* @param
+* @return
+*/
 PNJ::~PNJ(){}
 
 
 // Méthodes de la classe PNJ
 ///////////////////////////////////////////////////////////////////////////////
 
+/**
+* @fn std::string performAttack()
+* @brief Lance un d20 et compare le résultat à l'attribut attack.
+*
+* @param
+* @return std::string indiquant si l'attack est réussi ou non.
+*/
 std::string PNJ::performAttack(){
 	std::srand((unsigned int)std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
@@ -24,6 +51,13 @@ std::string PNJ::performAttack(){
 	}
 }
 
+/**
+* @fn std::string defend()
+* @brief Lance un d20 et compare le résultat à l'attribut defense.
+*
+* @param
+* @return std::string indiquant si l'attaque est réussi ou non.
+*/
 std::string PNJ::defend(){
 	std::srand((unsigned int)std::time(0));
 	int random_variable = (std::rand() % 20) + 1;
@@ -74,6 +108,9 @@ void PNJ::setRandomName(){
 		}
 		name = chaine;
 	}
+	else{
+		std::cout << "impossible d'entrer dans le fichier :" << cast << std::endl;
+	}
 }
 
 void PNJ::setRandomLastName(){
@@ -93,14 +130,9 @@ void PNJ::setRandomLastName(){
 	std::ifstream file(raceFile, std::ios::in);
 	if(file){
 		std::string chaine;
-		std::string fName;
 		for(int i = 0; i < random_variable; i++){
 			file >> chaine;
-			file >> chaine;
 		}
-		fName = chaine + " ";
-		file >> chaine;
-		fName += chaine;
 		lastName = chaine;
 	}
 }

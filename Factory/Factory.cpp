@@ -1,15 +1,28 @@
-/*
- * Factory.cpp
- *
- *  Created on: 12 oct. 2015
- *      Author: E139824H
- */
-
-
+/**
+* @file Factory.cpp
+* @brief Classe abstraite de la Fabrique
+* @author HERAUD Xavier 
+* 
+* Classe mère possédants les méthodes communes à toutes les fabriques.
+*/
 #include "Factory.hpp"
 
+/**
+* @fn Factory()
+* @brief Constructeur de @class Factory Factory.hpp
+*
+* @param
+* @return
+*/
 Factory::Factory(CommandManager* man) : commandManager(man){}
 
+/**
+* @fn ~Factory()
+* @brief Destructeur de @class Factory Factory.hpp
+*
+* @param
+* @return
+*/
 Factory::~Factory(){}
 
 

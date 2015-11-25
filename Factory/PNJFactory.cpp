@@ -1,9 +1,38 @@
+/**
+* @file PNJFactory.cpp
+* @brief Classe fabrique de PNJs.
+* @author HERAUD Xavier 
+* 
+* Classe qui gère la fabrication de personnages de type PNJ.
+*/
 #include "PNJFactory.hpp"
 
+/**
+* @fn PNJFactory()
+* @brief Constructeur de @class PNJFactory PNJFactory.hpp
+*
+* @param man Pointeur de type CommandManager
+* @return
+*/
 PNJFactory::PNJFactory(CommandManager* man) : Factory(man){}
 
+
+/**
+* @fn ~PNJFactory()
+* @brief Destructeur de @class PNJFactory PNJFactory.hpp
+*
+* @param
+* @return
+*/
 PNJFactory::~PNJFactory() {}
 
+/**
+* @fn void randomSex(Character* chara)
+* @brief attribut aléatoirement un sexe.
+*
+* @param chara Pointeur de type Character
+* @return
+*/
 void PNJFactory::randomSex(Character* chara){
 	std::srand(std::time(0));
 	int rdmVar = (std::rand() % 2) + 1;
@@ -19,6 +48,13 @@ void PNJFactory::randomSex(Character* chara){
 	}
 }
 
+/**
+* @fn void randomSkillPoints(Character* chara)
+* @brief Attribut aléatoirement les points dans les attributs.
+*
+* @param chara Pointeur de type Character.
+* @return
+*/
 void PNJFactory::randomSkillPoints(Character* chara){
 	int competencePoints = 12;
 	int i = 0;
@@ -45,6 +81,13 @@ void PNJFactory::randomSkillPoints(Character* chara){
 	chara->setCharisma(chara->getCharisma()+stat[5]);
 }
 
+/**
+* @fn void applySkillPoints(Character* chara)
+* @brief Utilise les attributs pour calculer la vie le mana l'attack et la défense.
+*
+* @param chara Pointeur de type Character
+* @return
+*/
 void PNJFactory::applySkillPoints(Character* chara){
 		chara->setLifePoints(chara->getConstitution() * 3);
 	chara->setManaPoint(((chara->getIntelligence() + chara->getWisdom()) / 2) * 3);
@@ -58,6 +101,15 @@ void PNJFactory::applySkillPoints(Character* chara){
 	std::cout << "Vous avez : " << chara->getDefense() << " points de défense." << std::endl;
 }
 
+/**
+* @fn void save(Character* chara, std::string path, bool boss)
+* @brief créé une sauvegarde d'un personnage de type monstre.
+*
+* @param chara Pointeur de type Character.
+* @param path std::string chemain de dossier de sauvegarde.
+* @param boss booléen, true si c'est un boss, false sinon.
+* @return
+*/
 void PNJFactory::save(Character* chara, std::string path, bool boss){
 	config = new Config();
 	config->initialize();
@@ -90,9 +142,16 @@ void PNJFactory::save(Character* chara, std::string path, bool boss){
 		save << "Charisme :		" << chara->getCharisma() << std::endl;
 	}
 	config->updatePNJCfg();
-	
+	config->updateBossCfg();
 }
 
+/**
+* @fn void createAllRandom(Character* chara)
+* @brief Attribut aléatoirement toutes les variables d'un personnage de type PNJ
+*
+* @param chara Pointeur sur un objet de type Character.
+* @return
+*/
 void PNJFactory::createAllRandom(Character* chara){
 	
 	//Random du sexe
@@ -123,6 +182,14 @@ void PNJFactory::createAllRandom(Character* chara){
 	applySkillPoints(chara);
 }
 
+/**
+* @fn void createPersonnalize(Character* chara)
+* @brief Affiche un interface pour que l'utilisateur puisse choisir toutes les variables 
+* d'un personnage de type PNJ
+*
+* @param chara Pointeur de type Character
+* @return
+*/
 void PNJFactory::createPersonnalize(Character* chara){
 
 	std::string reponseUtilisateur;
@@ -718,18 +785,14 @@ void PNJFactory::createPersonnalize(Character* chara){
 
 }
 
-
-
-
-
-
-
+/**
+* @fn Character* createCharacterSaved()
+* @brief Lit une sauvegarde et créer un personnage de type PNJ.
+*
+* @param
+* @return Pointeur de type Character
+*/
 Character* PNJFactory::createCharacterSaved(){
-
-	////////////////////////////////////////////////////////////////
-	commandManager->setState(commandManager->getStateCreate());
-	////////////////////////////////////////////////////////////////
-
 	chara = new PNJ();
 	std::string reponseUtilisateur;
 	std::string fileName;
@@ -856,6 +919,14 @@ Character* PNJFactory::createCharacterSaved(){
 	return chara;
 }
 
+/**
+* @fn Character* createCharacter()
+* @brief Propose à l'utilisateur de choisir entre créer un PNJ personnalisé et
+* un PNJ aléatoire.
+*
+* @param
+* @return Pointeur de type Character.
+*/
 Character* PNJFactory::createCharacter(){
 	chara = new PNJ();
 	config = new Config();

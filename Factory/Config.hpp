@@ -10,6 +10,7 @@ class Config{
 		int numberMonsterSaves;
 		int numberBossSaves;
 		int numberPNJSaves;
+		void updateCfg();
 
 	public:
 		Config();

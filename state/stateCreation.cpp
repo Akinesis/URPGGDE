@@ -1,3 +1,10 @@
+/**
+* @file stateCreate.cpp
+* @brief Classe état création.
+* @author Vanoni Joachim
+* 
+* Classe s'état qui gère les commandes disponibles dans le menu création.
+*/
 #include "stateCreation.hpp"
 
 StateCreate::StateCreate(CommandManager* commandManager) : 	State(commandManager),

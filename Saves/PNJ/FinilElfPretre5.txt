@@ -1,0 +1,13 @@
+Prenom: Finil	Nom : Filiondëillë
+Sexe : Male	Race : Elf
+Classe : Pretre
+
+Points de vie :  15 / 15
+Points de mana : 39 / 39
+
+Force : 		4
+Constitution : 5
+Dexterite : 	12
+Intelligence : 10
+Sagesse : 		17
+Charisme :		11
