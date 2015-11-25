@@ -289,7 +289,7 @@ Character* BossFactory::createCharacterSaved(){
 * @return Pointeur de type Character.
 */
 Character* BossFactory::createCharacter(){
-
+	commandManager = new CommandManager();
 	////////////////////////////////////////////////////////////////
 	commandManager->setState(commandManager->getStateCreate());
 	////////////////////////////////////////////////////////////////

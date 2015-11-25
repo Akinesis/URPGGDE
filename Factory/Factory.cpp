@@ -14,7 +14,7 @@
 * @param
 * @return
 */
-Factory::Factory() : commandManager(new CommandManager()){}
+Factory::Factory(){}
 
 /**
 * @fn ~Factory()

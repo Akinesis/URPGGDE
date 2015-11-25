@@ -355,6 +355,7 @@ Character* MonsterFactory::createCharacterSaved(){
 * @return Pointeur de type Character.
 */
 Character* MonsterFactory::createCharacter(){
+	commandManager = new CommandManager();
 
 	////////////////////////////////////////////////////////////////
 	commandManager->setState(commandManager->getStateCreate());

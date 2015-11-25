@@ -938,6 +938,7 @@ Character* PNJFactory::createCharacterSaved(){
 Character* PNJFactory::createCharacter(){
 	chara = new PNJ();
 	config = new Config();
+	commandManager = new CommandManager();
 	config->initialize();
 	std::string reponseUtilisateur;
 	int rep = -1;
