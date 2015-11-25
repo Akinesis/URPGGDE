@@ -110,6 +110,7 @@ void BossFactory::createPersonnalize(Character* chara){
 			chara->setIntelligence(chara->getIntelligence() *2);
 			chara->setWisdom(chara->getWisdom() *2);
 			chara->setCharisma(chara->getCharisma() *2);
+			std::cout << "Comme vous êtes un boss vous avez désormais" << std::endl;
 			pnjFact->applySkillPoints(chara);
 			pnjFact->save(chara, "Saves/Boss/", true);
 			rep = 1;

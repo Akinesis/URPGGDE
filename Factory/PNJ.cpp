@@ -108,6 +108,9 @@ void PNJ::setRandomName(){
 		}
 		name = chaine;
 	}
+	else{
+		std::cout << "impossible d'entrer dans le fichier :" << cast << std::endl;
+	}
 }
 
 void PNJ::setRandomLastName(){
@@ -127,14 +130,9 @@ void PNJ::setRandomLastName(){
 	std::ifstream file(raceFile, std::ios::in);
 	if(file){
 		std::string chaine;
-		std::string fName;
 		for(int i = 0; i < random_variable; i++){
 			file >> chaine;
-			file >> chaine;
 		}
-		fName = chaine + " ";
-		file >> chaine;
-		fName += chaine;
 		lastName = chaine;
 	}
 }

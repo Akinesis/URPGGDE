@@ -60,25 +60,31 @@ void MonsterFactory::createAllRandom(Character* chara){
 			
 			//Attribution NOM
 			chara->setName(chaine);
+			std::cout << "Vous etes un : " << chaine << std::endl;
 			//Attribution VIE
 			bestiaryFile >> chaine;
 			chara->setLifePoints(std::stoi(chaine));
 			chara->setCurrentLifePoints(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de vie." << std::endl;
 			//Attribution ATT
 			bestiaryFile >> chaine;
 			chara->setAttack(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points d'attaque'." << std::endl;
 			//Attribution PRD
 			bestiaryFile >> chaine;
 			chara->setDefense(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de defense." << std::endl;
 			//Attribution PR
 			bestiaryFile >> chaine;
 			chara->setProtection(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de protection." << std::endl;
 			//Attribution DMGD
 			bestiaryFile >> chaine;
 			chara->setDommagesDe(std::stoi(chaine));
 			//Attribution DMGA
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
+			std::cout << "Vous faites : 1d" << chara->getDommagesDe() << "+" << chara->getDommagesAdditionnels() << " points de dégât." << std::endl;
 		}//if
 		else{
 			std::cout << "Impossible d'acceder au fichier" << std::endl;
@@ -107,25 +113,31 @@ void MonsterFactory::createAllRandom(Character* chara){
 			}//for
 			//Attribution NOM
 			chara->setName(chaine);
+			std::cout << "Vous etes un : " << chaine << std::endl;
 			//Attribution VIE
 			bestiaryFile >> chaine;
 			chara->setLifePoints(std::stoi(chaine));
 			chara->setCurrentLifePoints(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de vie." << std::endl;
 			//Attribution ATT
 			bestiaryFile >> chaine;
 			chara->setAttack(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points d'attaque'." << std::endl;
 			//Attribution PRD
 			bestiaryFile >> chaine;
 			chara->setDefense(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de defense." << std::endl;
 			//Attribution PR
 			bestiaryFile >> chaine;
 			chara->setProtection(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de protection." << std::endl;
 			//Attribution DMGD
 			bestiaryFile >> chaine;
 			chara->setDommagesDe(std::stoi(chaine));
 			//Attribution DMGA
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
+			std::cout << "Vous faites : 1d" << chara->getDommagesDe() << "+" << chara->getDommagesAdditionnels() << " points de dégât." << std::endl;
 		}//if
 		else{
 			std::cout << "Impossible d'acceder au fichier" << std::endl;
@@ -162,25 +174,32 @@ void MonsterFactory::createAllRandom(Character* chara){
 			}//for
 			//Attribution NOM
 			chara->setName(chaine);
+			std::cout << "Vous etes un : " << chaine << std::endl;
 			//Attribution VIE
 			bestiaryFile >> chaine;
 			chara->setLifePoints(std::stoi(chaine));
 			chara->setCurrentLifePoints(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de vie." << std::endl;
 			//Attribution ATT
 			bestiaryFile >> chaine;
 			chara->setAttack(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points d'attaque'." << std::endl;
 			//Attribution PRD
 			bestiaryFile >> chaine;
 			chara->setDefense(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de defense." << std::endl;
 			//Attribution PR
 			bestiaryFile >> chaine;
 			chara->setProtection(std::stoi(chaine));
+			std::cout << "Vous avez : " << chaine << " points de protection." << std::endl;
 			//Attribution DMGD
 			bestiaryFile >> chaine;
 			chara->setDommagesDe(std::stoi(chaine));
 			//Attribution DMGApiou
 			bestiaryFile >> chaine;
 			chara->setDommagesAdditionnels(std::stoi(chaine));
+			std::cout << "Vous faites : 1d" << chara->getDommagesDe() << "+" << chara->getDommagesAdditionnels() << " points de dégât." << std::endl;
+
 		}//if
 		else{
 			std::cout << "Impossible d'acceder au fichier" << std::endl;
@@ -1345,6 +1364,7 @@ void MonsterFactory::createBestiaryMonster(Character* chara){
 */
 void MonsterFactory::save(Character* chara, std::string path, bool boss){
 	config = new Config();
+	config->initialize();
 	std::string mySave;
 	if(boss == true){
 		config->updateBossCfg();
@@ -1368,7 +1388,6 @@ void MonsterFactory::save(Character* chara, std::string path, bool boss){
 	}
 	config->updateMonsterCfg();
 	config->updateBossCfg();
-	config->initialize();
 }
 
 

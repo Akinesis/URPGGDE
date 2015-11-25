@@ -70,24 +70,17 @@ void Config::updateMonsterCfg(){
 		exit(1);
 	}
 
-	int i = 1;
-	int j = 1;
+	int i = 0;
+	int j = 0;
 	while((fichierLu = readdir(rep)) != NULL){
-		if(i > 2){
+		if(i >= 2){
 			++j;
 		}
 		++i;
 	}
 	numberMonsterSaves = j;
-	std::ofstream cfgFile("cfg.ini", std::ios::out | std::ios::trunc);
-	if(cfgFile){
-		std::string chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile << j;
-	}
+	
+	updateCfg();
 }
 
 /**
@@ -112,19 +105,14 @@ void Config::updatePNJCfg(){
 	int i = 0;
 	int j = 0;
 	while((fichierLu = readdir(rep)) != NULL){
-		if(i > 2){
+		if(i >= 2){
 			++j;
 		}
 		++i;
 	}
 	numberPNJSaves = j;
-	std::ofstream cfgFile("cfg.ini", std::ios::out | std::ios::trunc);
-	if(cfgFile){
-		std::string chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile << j;
-	}
+	
+	updateCfg();
 }
 
 /**
@@ -149,22 +137,25 @@ void Config::updateBossCfg(){
 	int i = 0;
 	int j = 0;
 	while((fichierLu = readdir(rep)) != NULL){
-		if(i > 2){
+		if(i >= 2){
 			++j;
 		}
 		++i;
 	}
 	numberBossSaves = j;
+
+	updateCfg();
+}
+
+void Config::updateCfg(){
 	std::ofstream cfgFile("cfg.ini", std::ios::out | std::ios::trunc);
 	if(cfgFile){
-		std::string chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile >> chaine;
-		cfgFile << j;
+		cfgFile << "nbrPNJSaves= ";
+		cfgFile << std::to_string(numberPNJSaves) << std::endl;
+		cfgFile << "nbreMonsterSaves= ";
+		cfgFile << std::to_string(numberMonsterSaves) << std::endl;
+		cfgFile << "nbreBossSaves= ";
+		cfgFile << std::to_string(numberBossSaves) << std::endl;
 	}
 }
 

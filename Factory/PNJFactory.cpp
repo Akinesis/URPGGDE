@@ -111,6 +111,7 @@ void PNJFactory::applySkillPoints(Character* chara){
 */
 void PNJFactory::save(Character* chara, std::string path, bool boss){
 	config = new Config();
+	config->initialize();
 	std::string mySave;
 	if(boss == true){
 		config->updateBossCfg();
@@ -140,7 +141,7 @@ void PNJFactory::save(Character* chara, std::string path, bool boss){
 		save << "Charisme :		" << chara->getCharisma() << std::endl;
 	}
 	config->updatePNJCfg();
-	config->initialize();
+	config->updateBossCfg();
 }
 
 /**

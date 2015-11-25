@@ -79,42 +79,55 @@ void Boss::setLastName(std::string ln){
 }
 
 void Boss::setRandomName(){
-	std::srand(std::time(0));
+	std::string cast;
+	
+	std::srand((unsigned int)std::time(0));
 	const int taille = 150; // Taille des fichiers de nom
 	int random_variable = (std::rand() % taille) +1;
 
-	std::string characterRace = race->getRaceName();
+	std::string characterRace = getRace()->getRaceName();
 	char* raceFile;
-	std::string cast = "../NameGenerator/"+characterRace+sexe+"Names.txt";
+	if(characterRace == "Dwarf"){
+		cast = "NameGenerator/Orc"+sexe+"Names.txt";
+	}
+	else{
+		cast = "NameGenerator/"+characterRace+sexe+"Names.txt";
+	}
 	raceFile = (char*)cast.c_str();
 	std::ifstream file(raceFile, std::ios::in);
 
 	if(file){
 		std::string chaine;
-		for(int i = 0; i < random_variable; ++i){
+		for(int i = 0; i < random_variable; i++){
 			file >> chaine;
 		}
 		name = chaine;
 	}
+	else{
+		std::cout << "impossible d'entrer dans le fichier :" << cast << std::endl;
+	}
 }
-
 void Boss::setRandomLastName(){
+	std::string cast;
 	std::srand(std::time(0));
-	const int taille = 150; // Taille des fichiers de noms
+	const int taille = 150; // Taille des fichiers de nom
 	int random_variable = (std::rand() % taille) +1;
-
-	std::string characterRace = race->getRaceName();
+	std::string characterRace = getRace()->getRaceName();
 	char* raceFile;
-	std::string cast = "../NameGenerator/"+characterRace+"LastNames.txt";
+	if(characterRace == "Dwarf"){
+		cast = "NameGenerator/HumanLastNames.txt";
+	}
+	else{
+		cast = "NameGenerator/"+characterRace+"LastNames.txt";
+	}
 	raceFile = (char*)cast.c_str();
 	std::ifstream file(raceFile, std::ios::in);
-
 	if(file){
 		std::string chaine;
-		for(int i = 0; i < random_variable; ++i){
+		for(int i = 0; i < random_variable; i++){
 			file >> chaine;
 		}
-		name = chaine;
+		lastName = chaine;
 	}
 }
 
