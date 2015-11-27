@@ -19,7 +19,7 @@ void StateJoin::help(){}
 
 int StateJoin::join(){
 	manager->createConnexionJoin();
-	manager->setState(manager->getStateGame());
-	manager->analyse("joueur");
+	manager->setState(manager->getStateChoose());
+	manager->analyse("jouer");
 	return 0;
 }

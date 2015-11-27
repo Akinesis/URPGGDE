@@ -13,6 +13,7 @@
 #include "stateJoin.hpp"
 #include "stateHost.hpp"
 #include "stateGame.hpp"
+#include "stateChoose.hpp"
 
 CommandManager::CommandManager(Connexion* conect): inGame(false), stateStart(new StateStart(this)),
 									stateCreate(new StateCreate(this)),
@@ -20,6 +21,7 @@ CommandManager::CommandManager(Connexion* conect): inGame(false), stateStart(new
 									stateJoin(new StateJoin(this)),
 									stateHost(new StateHost(this)),
 									stateGame(new StateGame(this)),
+									stateChoose(new StateChoose(this)),
 									currentState(stateStart),
 									connexion(conect) {
 
@@ -91,7 +93,7 @@ int CommandManager::analyse(std::string commande){
 		return currentState->join();
 	}else if(commande == "hote"){
 		return currentState->host();
-	}else if(commande == "personnage"){
+	}else if(commande == "pnj"){
 		return currentState->npc();
 	}else if(commande == "monstre"){
 		return currentState->monster();
@@ -159,6 +161,10 @@ State* CommandManager::getStateGame(){
 	return stateGame;
 }
 
+State* CommandManager::getStateChoose(){
+	return stateChoose;
+}
+
 void CommandManager::setState(State* etat){
 	currentState = etat;
 }
@@ -187,4 +193,12 @@ bool CommandManager::getIsServer(){
 bool CommandManager::is_number(const std::string& s){
     return !s.empty() && std::find_if(s.begin(), 
         s.end(), [](char c) { return !std::isdigit(c); }) == s.end();
+}
+
+void CommandManager::addCharacter(Character* chara){
+	characters.push_back(chara);
+}
+
+std::vector<Character*> CommandManager::getCharacters(){
+	return characters;
 }

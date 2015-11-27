@@ -10,6 +10,7 @@ class StateGame : public State{
 		StateGame(CommandManager* commandManager);
 		virtual ~StateGame();
 		void help();
+		int attack();
 		int join();
 
 };

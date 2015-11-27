@@ -13,6 +13,7 @@ class StatePlay;
 class StateJoin;
 class StateHost;
 class StateGame;
+class StateChoose;
 
 /*
 Liste des commandes possible :
@@ -32,6 +33,7 @@ class CommandManager{
 		State *stateJoin;
 		State *stateHost;
 		State *stateGame;
+		State *stateChoose;
 		State *currentState;
 		Connexion *connexion;
 		std::vector<Character*> characters;
@@ -52,6 +54,7 @@ class CommandManager{
 		State* getStateJoin();
 		State* getStateHost();
 		State* getStateGame();
+		State* getStateChoose();
 
 		void createConnexionHost();
 		void createConnexionJoin();
@@ -60,6 +63,9 @@ class CommandManager{
 		void hostSend(std::string mes);
 		bool getIsServer();
 
+		void addCharacter(Character* chara);
+		std::vector<Character*> getCharacters();
+		
 		bool is_number(const std::string& s);
 	
 

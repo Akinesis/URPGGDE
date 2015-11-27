@@ -19,7 +19,7 @@ void StateHost::help(){}
 
 int StateHost::join(){
 	manager->createConnexionHost();
-	manager->setState(manager->getStateGame());
-	manager->analyse("joueur");
+	manager->setState(manager->getStateChoose());
+	manager->analyse("jouer");
 	return 0;
 }
